@@ -488,9 +488,27 @@
         you. Subscribe to our newsletter today and embark on a journey of
         discovery and connection with MotorEmpire
       </p>
-      <form action="">
-        <input type="email" required placeholder="Enter Your Email..." />
-        <input type="submit" value="Subscribe" />
+      <form action="index.php" method ="POST">
+        <?php
+        $userEmail = ""; //deklarimi i variables userEmail
+          if(isset($_POST['subscribe'])) { // kur klikohet buttoni subscribe
+              $userEmail = $_POST['email']; // e merr emailin e userit permes postit
+              if(filter_var($userEmail,FILTER_VALIDATE_EMAIL)) { // E VALIDON EMAILEN E DHANUN
+                $subject = "Thanks for subscribing us - MotorEmpire";
+                $message = "Thanks for subscribing to our blog. You'll always receive the latest updates from us.";
+                $sender = "From: motorempire123@gmail.com"; // emaili qe duhet me u konfiguru n xampp 
+                if (mail($userEmail, $subject,$message, $sender)) { //funksioni i php me qu email
+                     echo '<script>alert("Thanks for subscribing to us!");</script>';
+                }else{
+                  echo '<script>alert("The subscribtion email was not sent!");</script>';
+                }
+              }else{
+                echo "Email is invalid";
+              }
+          }
+        ?> 
+        <input type="email"  name = "email" required placeholder="Enter Your Email..." value="<?php echo $userEmail?>" />
+        <input type="submit" name="subscribe" value="Subscribe" />
       </form>
     </section>
 
