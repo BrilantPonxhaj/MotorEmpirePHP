@@ -17,7 +17,7 @@ html::-webkit-scrollbar-track{
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Besley",serif;
+    font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     border: none;
     outline: none;
@@ -40,30 +40,23 @@ html {
 }
 
   
-.btn
-{
-    /*padding-bottom: 0.5rem;*/
-    
-    padding: 0.9rem 3rem;
-    display:inline-block;
-    margin-top:1.6rem;
-    color:black;
-    cursor: pointer;
-    font-size: 1.7rem;
+.btn{
+    display: inline-block;
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 15px;
     font-weight: 500;
-    text-align: center;
-    border-radius: 0.5rem;
-    border:2px solid red;
+    padding: 10px 16px;
     text-decoration: none;
+ 
+    transition: all 0.5s;
 }
-
-.btn:hover{
-    transition: 1s ease;
-    border: 2px solid black;
-    background-color: red;
-    color: white;
+.btn:hover {
+    background-color: transparent;
+    color: #000000;
     text-decoration: none;
-}
+    border: 2px solid red;
+  }
 
 .heading
 {
@@ -109,8 +102,8 @@ header .navbar a:hover{
     text-decoration: none;
 }
 #LoginBtn .btn:hover {
-    background: #000; /* This sets the button background to black on hover */
-    color: #fff; /* This changes the text color to white on hover for better readability */
+    background:transparent; /* This sets the button background to black on hover */
+    color: #000000; /* This changes the text color to white on hover for better readability */
 }
 
 #LoginBtn .btn{
@@ -226,24 +219,56 @@ header .navbar a:hover{
 }
 
 .home-content {
-    position: relative;
-    z-index: 10;
+
+    left: 5%;
+    z-index: 20;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Adjusted to start from left */
     height: 100%;
+position: relative;
+
+    
+}
+.home-content .line-dec{
+    width: 80px;
+    height: 5px;
+    background-color: #f80000;
 }
 
 .home h1 {
-    position: absolute;
-    top:15%;
-    font-size: 8rem;
-    font-weight: bold;
-  color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+  text-shadow: #000;
+    margin-bottom: 0px;
+    font-size: 60px;
+    letter-spacing: 0.5px;
+    color: #fff;
 
 }
-
+.home h2{
+    font-size: 20px;
+    color: white;
+    }
+    
+    
+    .red-button {
+        display: inline-block;
+        background-color: #ff0000;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 10px 16px;
+        text-decoration: none;
+     
+        transition: all 0.5s;
+    }
+    .red-button:hover {
+        background-color: transparent;
+        color: #f8f8f8;
+        text-decoration: none;
+        border: 2px solid red;
+      }
   
   /* Button Styles 
   .home .explore-btn {
@@ -441,7 +466,7 @@ header .navbar a:hover{
     cursor: pointer;
 }
 .services .boxContainer .box:hover{
-    background: #000;
+    background: #6e6e6e;
     color: #fff;
 }
 .services .boxContainer .box i{

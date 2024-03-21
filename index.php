@@ -69,17 +69,27 @@
     <!--HOME SECTION-->
 
 <!--HOME SECTION-->
+
+
+
 <section id="Home" class="home">
   <div class="home-background">
       <img src="images/bgfr.png" alt="Featured Car" class="hero-image"> <!-- Replace with your hero image -->
   </div>
   <div class="home-content">
-    <h1 data-speed="-2" class="homeParallaxEffect">Motor Empire   </h1>
-
-    </div>
-  <div>
-    <a href="https://www.bmwusa.com/special-offers.html" class="btn">Explore Vehicles</a>
+  <div class="line+content"> 
+    <div class="line-dec"></div>
+    <p>
+      <h1>Motor Empire </h1>
+      <h2>Where Your Automotive Dreams Begin </h2>\
+      <div>
+        <a href="https://www.bmwusa.com/special-offers.html" class="red-button">Explore Vehicles</a>
+      </div>
+    </p>
+    
   </div>
+    </div>
+  
 </section>
 
 
@@ -685,9 +695,11 @@
       </div>
     </footer>
 
+    
+ <!-- 
 
-    <!--THEME TOGGLE-- NI BUTTON PER ME ZGJEDH CILEN NGJYRE DON MI PARAQIT BUTONAT TJERE-->
-    <div class="themeToggle">
+     THEME TOGGLE NI BUTTON PER ME ZGJEDH CILEN NGJYRE DON MI PARAQIT BUTONAT TJERE
+    //<div class="themeToggle">
 
       <div class="ToggleBtn">
         <i class="fas fa-cog"></i>
@@ -705,8 +717,9 @@
         
       </div>
     </div>
+     
 
-  <!-- VALIDIMI I FORMES LOGIN DUKE PERDORUR REGEX
+ VALIDIMI I FORMES LOGIN DUKE PERDORUR REGEX
   <script>
       document.addEventListener("DOMContentLoaded", function () {
           const emailInput = document.getElementById("emailInput");
