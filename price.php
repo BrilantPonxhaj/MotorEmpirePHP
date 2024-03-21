@@ -1,0 +1,539 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>Custom Price Range Slider</title> 
+	<link rel="icon" type="image/x-icon" href="images/favicon.png">
+	<link rel="stylesheet" href="style.css">
+    <title>Custom Price Range Slider</title>
+    <style>
+        /*internal style per qit pjese, pse jo?*/
+* { 
+	margin: 0; 
+	padding: 0;
+} 
+body { 
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+	min-height: 100vh; 
+	background: #ffffff; 
+	flex-direction: column; 
+} 
+.main { 
+	background-color: rgb(142, 134, 134); 
+	border-radius: 15px; 
+	box-shadow: 0 0 20px rgba(105, 18, 18, 0.2); 
+	padding: 20px; 
+	transition: transform 0.2s; 
+	width: 650px; 
+	margin-top: 100px;
+} 
+.main:hover { 
+	transform: scale(1.09); 
+} 
+.backvideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.gox { 
+	display:flex; 
+	align-items: center; 
+	justify-content: center; 
+	font-size: 24px; 
+	font-weight: 600; 
+	color: purple; 
+} 
+.custom-wrapper { 
+	margin: 0; 
+	width: 70%; 
+	padding: 0px 25px 40px; 
+	position: relative; 
+	left: 63px; 
+}
+.header h2 { 
+	font-size: 30px; 
+	color: red; 
+	display: flex; 
+	justify-content: center; 
+	padding: 20px; 
+} 
+/* Style per qat price input container */
+.price-input-container { 
+	width: 100%; 
+} 
+.price-input .price-field { 
+	display: flex; 
+	margin-bottom: 22px; 
+} 
+.price-field span { 
+	margin-right: 10px; 
+	margin-top: 6px; 
+	font-size: 17px; 
+    font-weight: bold;
+} 
+.price-field input { 
+	flex: 1; 
+	height: 35px; 
+	font-size: 15px; 
+	font-family: "DM Sans", sans-serif; 
+	border-radius: 19px; 
+	text-align: center; 
+	border: 10px; 
+	background: #9b9797; 
+} 
+.price-input { 
+	width: 100%; 
+	font-size: 19px; 
+	color:black ; 
+} 
+/* MI HEK ARROWS */
+input::-webkit-outer-spin-button, 
+input::-webkit-inner-spin-button { 
+	-webkit-appearance: none; 
+	margin: 0; 
+} 
+.slider-container { 
+	width: 100%; 
+} 
+
+.slider-container { 
+	height: 6px; 
+	position: relative; 
+	background: #e4e4e4; 
+	border-radius: 5px; 
+} 
+.slider-container .price-slider { 
+	height: 100%; 
+	left: 25%; 
+	right: 15%; 
+	position: absolute; 
+	border-radius: 5px; 
+	background: red;
+} 
+
+.range-input { 
+	position: relative; 
+}
+.range-input input { 
+	position: absolute; 
+	width: 100%; 
+	height: 5px; 
+	background: none;
+	top: -5px; 
+	pointer-events: none; 
+	cursor: pointer;
+	-webkit-appearance: none; 
+} 
+.warning-box {
+    background-color: #ffcccc;
+    color: #ff0000;
+    padding: 10px;
+    border: 1px solid #ff0000;
+    margin-top: 10px;
+    display: none; /* Initially hide the warnings */
+}
+
+
+
+/* STYLE PER SLIDERTHUMB */
+input[type="range"]::-webkit-slider-thumb { 
+	height: 18px; 
+	width: 18px; 
+	border-radius: 70%; 
+	background: #575353; 
+	pointer-events: auto; 
+	-webkit-appearance: none; 
+} 
+
+@media screen and (max-width: 768px)
+ { 
+	.main 
+	{ 
+		width: 80%; 
+		margin-right: 5px; 
+	} 
+
+	.custom-wrapper 
+	{ 
+		width: 100%; 
+		left: 0; 
+		padding: 0 10px; 
+	} 
+	.projtitle 
+	{ 
+		width: 100%; 
+		position: relative; 
+		right: 26px; 
+	} 
+	.price-input
+	 { 
+		flex-direction: column; 
+		align-items: center; 
+	} 
+	.price-field 
+	{
+		margin-bottom: 10px; 
+	} 
+}
+
+@media (min-aspect-ratio:16/9)
+{
+	.backvideo
+	{
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media (max-aspect-ratio:16/9)
+{
+	.backvideo
+	{
+		width: auto;
+		height: 100%;
+	}
+}
+/*
+.footer {
+    position: relative;
+    margin-top: auto;
+    background-color: rgb(142, 134, 134);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+    width: 100%;
+	margin-top: 200px;
+}
+.hArray {
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+.hArray > * {
+  display: flex;
+  font-size: 14px;
+}
+.footer-logo img {
+    max-width: 100%;
+    max-height: 48px;
+    height: 100%;
+}
+  .footer-list {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: none;
+    text-align: center;
+    margin-left: -40px;
+  }
+  .footer-item {
+    width: auto;
+    margin-left: 40px;
+    margin-bottom: 0;
+  }
+  .footer-item a {
+    color: rgb(255, 255, 255);
+    opacity: 0.5;
+    line-height: 18px;
+    text-decoration: none;
+    text-decoration-style: none;
+  }
+  .footer-list {
+    margin-top: 40px;
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    list-style-type: none;
+  }
+  .footer-item a:hover {
+    color: black;
+  }
+  .footer-module {
+    padding: 0 24px;
+    justify-content: end;
+    align-items: end;
+  }
+  .footer-content {
+    display: flex;
+    max-width: 1200px;
+  }
+  .footer-module2 {
+    margin-top: 40px;
+    max-width: none;
+    width: 100%;
+    background-color: #f4e9fd;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(77, 71, 81, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    max-width: 330px;
+    padding: 23px;
+  }
+  .footer-module-message {
+    color: #000000;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+  }
+  .footer-module-link {
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+  }
+  .footer-module-link > a {
+    background-color: rgb(255,0,25);
+    border-radius: 100px;
+    color: #fff;
+    display: flex;
+    font-family: Nexa Heavy, arial, helvetica, sans-serif;
+    justify-content: center;
+    padding: 13px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 240px;
+  }
+  .sub-footer-social {
+    box-sizing: border-box;
+    padding: 20px 20px 20px;
+  }
+  .li-facebook img {
+  height: 30px;
+  width: 30px;
+}
+.li-instagram img {
+  height: 30px;
+  width: 30px;
+}
+.li-x img {
+  height: 30px;
+  width: 30px;
+}
+.sub-footer-body {
+  color: white;
+  font-size: 13px;
+  padding: 10px 15px 30px;
+  text-align: center;
+  margin-bottom: -40px;
+}
+.sub-footer-copyright {
+  margin-bottom: 8px;
+  margin: 0;
+}
+.link {
+  text-decoration: none;
+  color: black;
+}
+.home{
+		margin: 0;
+	}
+	*/
+	
+</style>
+</head> 
+<body> 
+
+	    <!--HEADER/NAVBAR start-->
+		<header>
+			<div id="MenuBtn" class="fas fa-bars"></div>
+			<a href="#" class="logo"> <img src="images/logo2.png" width="100px " height="50px" ></a>
+			<nav class="navbar">
+			  <a href="index.html">Home</a>
+			  <a href="vehicles.html" target="blank">Vehicles</a>
+			  <a href="featured.html" target="_blank">Featured</a>
+			  <a href="#Services">Services</a>
+			  <a href="#Review">Review</a>
+			  <a href="#Contact">Contact</a>
+			  <a href="price.html" target="blank">PriceRange</a>
+			</nav>
+
+			<div id="LoginBtn">
+			  <button class="btn">Login</button>
+			  <i class="fas fa-user"></i>
+			</div>
+
+		  </header>
+
+
+    <!--Login Form Container-i
+    <div class="loginFormContainer">
+		<span id="CloseLoginForm" class="fas fa-times"></span>
+		<form action="">
+		  <h3>User Login</h3>
+		  <input type="email" placeholder="Email" required class="box" />
+		  <input type="password" placeholder="Password" required class="box" />
+		  <p>Forgot your Password? 
+			<a href="#">Click Here</a></p>
+		  <button class="btn">Submit</button>
+		  <p>
+			or Login With
+		</p>
+		  <div class="buttons">
+			<a href="#" class="btn">Google</a>
+			<a href="#" class="btn">Facebook</a>
+		  </div>
+		</form>
+	  </div>
+	-->	  
+
+
+	<div class="hero">
+		<video autoplay loop muted plays-inline class="backvideo">
+			<source src="videos/pexels-emre-vonal-14481683 (1440p).mp4" type="video/mp4">
+		</video>
+	</div>
+
+	<div class="main"> 
+		<div class="gox"></div> 
+		<div class="custom-wrapper"> 
+
+			<div class="header"> 
+				<h2 class="projtitle">Price Range Slider</h2> 
+			</div> 
+
+			<div class="price-input-container"> 
+				<div class="price-input"> 
+					<div class="price-field"> 
+						<span>Minimum Price</span> 
+						<input type="number" class="min-input" value="90000"> 
+					</div> 
+
+					<div class="price-field"> 
+						<span>Maximum Price</span> 
+						<input type="number" class="max-input" value="350000"> 
+					</div> 
+
+				</div> 
+				<div class="slider-container"> 
+					<div class="price-slider"></div> 
+				</div> 
+			</div> 
+			
+
+			<!-- Slider -->
+			<div class="range-input"> 
+				<input type="range" class="min-range" min="0" max="400000" value="90000" step="1"> 
+				<input type="range" class="max-range" min="0" max="400000" value="350000" step="1"> 
+			</div> 
+		</div> 
+	</div> 
+
+	
+	<!--PER WARNING BOX-->
+	<div id="warnings" class="warning-box"></div>
+
+
+
+	
+	<audio controls autoplay muted>
+		<source src="audios/mixkit-space-soundscape-653.mp3" type="audio/ogg" style="position:fixed;">
+	  </audio>
+
+	  <script src="index.js"></script>
+
+
+<!--
+	  <script>
+
+		// Funksion per mi update prices
+function updatePriceLabels() {
+  const minRangeInput = document.querySelector(".min-range");
+  const maxRangeInput = document.querySelector(".max-range");
+  const minPriceLabel = document.querySelector(".min-price-label");
+  const maxPriceLabel = document.querySelector(".max-price-label");
+
+  try {
+    const minPrice = parseInt(minRangeInput.value);
+    const maxPrice = parseInt(maxRangeInput.value);
+
+    if (isNaN(minPrice) || isNaN(maxPrice)) {
+      throw new Error("Invalid price values. Please enter valid numbers.");
+    }
+
+    minPriceLabel.textContent = `$${minPrice}`;
+    maxPriceLabel.textContent = `$${maxPrice}`;
+  } catch (error) {
+    console.error(error);
+    // You can handle the error here, such as displaying a message to the user.
+  }
+}
+
+// Initial update
+updatePriceLabels();
+
+// eventListeners per range inputs
+	const minRangeInput = document.querySelector(".min-range");
+	const maxRangeInput = document.querySelector(".max-range");
+	minRangeInput.addEventListener("input", updatePriceLabels);
+	maxRangeInput.addEventListener("input", updatePriceLabels);
+
+	  </script>
+	  -->
+<!--<footer class="footer">
+		<div class="footer-module">
+			<div class="footer-module2">
+				<div class="footer-module-message">
+					<p>You want to get the latest information on MotorEmpire? <br><b>Please Log In to continue</b></br></p>
+				</div>
+				<div class="footer-module-link">
+					<a href="#">Log In</a>
+				</div>
+			</div>
+		</div>
+		<ul class="footer-list">
+			<li class="footer-item">
+				<a href="#">About Us</a>
+			</li>
+			<li class="footer-item">
+				<a href="#">Contact Us</a>
+			</li>
+			<li class="footer-item">
+				<a href="#">Privacy Policy</a>
+			</li>
+			<li class="footer-item">
+				<a href="#">Terms of Service</a>
+			</li>
+		</ul>
+		
+	</div>
+	<div class="sub-footer-inner">
+		<div class="sub-footer-social">
+		 <ul class="hArray">
+			 <li>
+				 <a href="https://www.facebook.com/" class="li-facebook"><img src="./images/fb-logo.png" alt=""></a>
+			 </li>
+			 <li>
+				 <a href="https://www.instagram.com/" class="li-instagram"><img src="./images/instagram.png" alt=""></a>
+			 </li>
+			 <li>
+				 <a href="https://twitter.com/" class="li-x"><img src="./images/xlogo.png" alt=""></a>
+			 </li>
+		 </ul>
+		</div> 
+		<div class="sub-footer-body">
+		 <p class="sub-footer-copyright">
+			 ©
+			 2023
+			 MotorEmpire
+		 </p>
+		 <p class="sub-footer-trademark">
+			 All trademark are owned by MotorEmpire, or used with permission
+		 </p>
+		</div>
+	 </div>
+</footer>
+-->
+
+</body> 
+</html>
