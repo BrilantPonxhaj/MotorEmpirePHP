@@ -8,8 +8,14 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <!--SWIPER JS-->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <!--FONT AWESOME LINK-->
+    <!--FONT AWESOME LINK edhe ma posht osht si link i downlodum-->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+   <link rel="stylesheet" href="bootstrap+fonte/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap+fonte/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="bootstrap+fonte/fontAwesome.css">
+        <link rel="stylesheet" href="bootstrap+fonte/hero-slider.css">
+        <link rel="stylesheet" href="bootstrap+fonte/owl-carousel.css">
+
     <!--STYLESHEET I KTIJ PAGE-->
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -27,7 +33,7 @@
         <a href="featured.html" target="_blank">Featured</a>
         <a href="#Services">Services</a>
         <a href="#Review">Review</a>
-        <a href="#Contact">Contact</a>
+        <a href="contact.php" target="_blank">Contact</a>
         <a href="price.html" target="blank">PriceRange</a>
       </nav>
 
@@ -616,104 +622,77 @@
       </div>
     </section>
 
-    <!--CONTACT FORM START-->
-    <section id="Contact" class="contact">
-      <h1 class="heading">Contact us</h1>
-      <div class="row">
-        <iframe title="Anfahrt Konzernzentrale. " width="100%" height="500px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d332.57204895274396!2d11.561623099999997!3d48.17624500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e77652a744cd9%3A0x1d187ce191fc1f02!2sBMW%20Group%20Konzernzentrale%20Empfang%20Petuelring!5e0!3m2!1sde!2sde!4v1582273128261!5m2!1sde!2sde">
-        </iframe>
-        <form action="">
-          <h3>Book Appointment</h3>
-          <input type="text" placeholder="Your Name" required class="box" />
-          <input type="email" placeholder="Your Email" required class="box" />
-          <textarea class="box" required placeholder="Your Message" name="" id="" cols="30" rows="10"
-></textarea>
-          <button class="btn">Send</button>
-        </form>
-      </div>
-    </section>
-
-    <!--FOOTER START-->
+  
+<!-- footer -->
     <footer>
-      <div class="footer-content">
-        <!-- Brand app links edhe ikona per social media-->
-        <div class="footer-sectionbrand-section">
-          <h1>MOTOR EMPIRE</h1>
-          <p>Download Our App</p>
-          <div class="app-link">
-            <!-- Qasja ne app store -->
-            <a href="https://www.apple.com/app-store/" target="_blank" class="google-play-link">
-              <img src="assets/images/footerimg.png" alt="Download on the App Store">
-            </a>
-          </div>
-          <div class="social-icons">
-            <!-- Qasja ne social media -->
-            <a href="https://www.facebook.com/" target="_blank" class="facebook-icon">
-              <img src="assets/images/fb.png" alt="Facebook">
-            </a>
-            <a href="https://twitter.com/" target="_blank" class="twitter-icon">
-              <img src="assets/images/twitter.png" alt="Twitter">
-            </a>
-            <a href="https://www.instagram.com/" target="_blank" class="instagram-icon">
-              <img src="assets/images/ig.png" alt="Instagram">
-            </a>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="about-veno">
+                        <div class="logo">
+                            <img src="images/2.png" alt="Venue Logo">
+                        </div>
+                        <p>MotorEmpire is authorised and regulated by the Financial Conduct Authority.All vehicles are subject to prior sale. By accessing this website, you agree to the MotorEmpire's Terms of Service and Privacy Policy.</p>
+                        <ul class="social-icons">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="useful-links">
+                        <div class="footer-heading">
+                            <h4>Useful Links</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><a href="index.html"><i class="fa fa-stop"></i>Home</a></li>
+                                    <li><a href="about.html"><i class="fa fa-stop"></i>About</a></li>
+                                    <li><a href="team.html"><i class="fa fa-stop"></i>Team</a></li>
+                                    <li><a href="contact.html"><i class="fa fa-stop"></i>Contact Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><a href="faq.html"><i class="fa fa-stop"></i>FAQ</a></li>
+                                    <li><a href="testimonials.html"><i class="fa fa-stop"></i>Testimonials</a></li>
+                                    <li><a href="blog.html"><i class="fa fa-stop"></i>Blog</a></li>
+                                    <li><a href="terms.html"><i class="fa fa-stop"></i>Terms</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="footer-heading">
+                            <h4>Contact Information</h4>
+                        </div>
+                        <p><i class="fa fa-map-marker"></i> 212 Barrington Court New York, ABC</p>
+                        <ul>
+                            <li>Phone:<a href="#">+38344412817</a></li>
+                            <li>Email:<a href="#">MotorEmpire@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-    
-        <!-- Explore section -->
-        <div class="footer-section explore-section">
-          <h1>Explore</h1> 
-          <ul>
-            <!-- List items per nav -->
-            <li><a href="#">New Inventory</a></li>
-            <li><a href="#">Used Cars</a></li>
-            <li><a href="#">Special Offers</a></li>
-            <li><a href="#">Reviews</a></li>
-            <li><a href="#">Locations</a></li>
-          </ul>
-        </div>
-    
-        <!-- Company section -->
-        <div class="footer-section company-section">
-          <h1>Company</h1>
-          <ul>
-            <li><a href="#">About MotorEmpire</a></li>
-            <li><a href="#">Our Services</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Partnerships</a></li>
-            <li><a href="#">Press</a></li>
-          </ul>
-        </div>
-    
-        <!-- Contact section -->
-        <div class="footer-section contact-section">
-          <h1>Contact</h1>
-
-          <ul>
-            <li><i class="fas fa-map-marker-alt"></i> 123 Street, City, Country</li>
-            <li><i class="fas fa-phone-alt"></i> +123 456 7890</li>
-            <li><i class="fas fa-envelope"></i> contact@motorempire.com</li>
-
-            <li> <a href="mailto:someone@example.com">Send email</a></p></li>
-        </ul>
-        </div>
-    
-        <!-- Legal section -->
-        <div class="footer-section legal-section">
-          <h1>Legal</h1>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Legal Notice</a>
-        </div>
-      </div>
-    
-      <!-- Footer bottom section per copyright -->
-      <div class="footer-bottom">
-        <p>&copy; 2024 MotorEmpire. ALL RIGHTS RESERVED.</p>
-      </div>
     </footer>
-
     
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">Copyright © 2024 MotorEmpire </p>
+                </div>
+            </div>
+        </div>
+    </div>
+  
  <!-- 
 
      THEME TOGGLE NI BUTTON PER ME ZGJEDH CILEN NGJYRE DON MI PARAQIT BUTONAT TJERE
@@ -776,9 +755,3 @@
   </body>
 </html>
 
-
-<?php
-
-  echo "<h1>PSE HACK??</h1>"
-
-?>

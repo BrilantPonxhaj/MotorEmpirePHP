@@ -88,6 +88,12 @@ header .logo{
 header .logo span{
     color:var(--main);
 }
+header .navbar{
+    position: relative;
+    min-height: 9px;
+    margin-bottom: 6px;
+    border: 1px solid transparent;
+}
 header .navbar a{
     height: 10px; /* Adjust based on your layout */
     margin: auto; /* Center the navbar */
@@ -209,6 +215,9 @@ header .navbar a:hover{
     width: 100%;
     height: 100%;
     overflow: hidden;
+}
+.home-background .contactus_banner{
+    bottom: 20;
 }
 
 .hero-image {
@@ -579,9 +588,76 @@ position: relative;
 }
 
 
+/*CONTACT FORM START pjesa e banner o qekjo*/
+.contactus {
+    position: relative;
+    height: 90vh; /* Adjust based on your preference */
+    color: #fff;
+    text-align: center;
+}
+
+.contact-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.contact-background .contactus_banner{
+    bottom: 20;
+}
+
+
+
+.contactus-content {
+
+    left: 5%;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Adjusted to start from left */
+    height: 100%;
+position: relative;
+
+    
+}
+.contactus-content .line-dec{
+    width: 100px;
+    height: 5px;
+    background-color: #f80000;
+}
+
+.contactus h1 {
+    font-family: Arial, Helvetica, sans-serif;
+  text-shadow: #000;
+    margin-bottom: 0px;
+    font-size: 60px;
+    letter-spacing: 0.5px;
+    color: #fff;
+
+}
+.contactus h2{
+    font-size: 40px;
+    color: white;
+    }
+    
+
+
+
+
+
+
+
+
 /*CONTACT FORM START*/
 .contact {
     margin-bottom: 50px;
+}
+.contact h1{
+    font-size:xx-large;
+    color: #000;
 }
 .contact .row {
     display: flex;
@@ -622,6 +698,104 @@ position: relative;
     height: 18rem;
 }
 
+.popular-places .owl-nav {
+    display: none;
+  }
+  
+  .popular-places .owl-dots {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .popular-places .owl-dots .owl-dot span  {
+    width: 12px;
+    height: 12px;
+    background-color: #cdcdcd!important;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 3px;
+  }
+  
+  .popular-places .owl-dots .active span {
+    background-color: #4883ff!important;
+  }
+  
+  .popular-places .owl-dots button {
+    outline: none;
+  }
+  
+  .popular-item { margin-top: 15px; margin-bottom: 15px; }
+  
+  .popular-places .popular-item .thumb {
+    position: relative;
+  }
+  
+  .popular-places .popular-item .thumb img {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+   
+    z-index: 1;
+    border-radius: 8px;
+  }
+  
+  .popular-places .popular-item .thumb .text-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 9;
+    color: #000000;
+  }
+  
+  .popular-places .popular-item .thumb .text-content h4 {
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+  
+  .popular-places .popular-item .thumb .text-content span {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    display: block;
+  }
+  
+  .popular-places .popular-item .thumb .plus-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 9;
+  }
+  
+  .featured-item { margin-bottom: 30px; }
+  
+  .popular-places .popular-item .thumb .plus-button i {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    transition: all 0.5s;
+  }
+  
+  .popular-places .popular-item .thumb .plus-button i:hover {
+    background-color: rgba(250,250,250,0.3);
+  }
+  main > section { 
+    background: #fff;  
+  }
+    
+  main > section:nth-child(even) { 
+    background: #f8f8f8; 
+  }
+
+
 
 /*FOOTER START*/
 /*footer{
@@ -643,111 +817,113 @@ footer a{
 
  /* Main footer styling */
  footer {
-    background-color: #060a28; 
-    color: #fff; 
-    padding: 20px 0; 
-    font-family: 'Arial', sans-serif; 
+    padding: 80px 0px 70px 0px;
+    border-top: 1px solid #6b6a6a;
+
   }
   
-  /* Footer content styling */
-  .footer-content {
-    display: flex;
-    justify-content: space-between; 
-    align-items: start;  
-    flex-wrap: wrap; 
-    max-width: 1200px; 
-    margin: 0 auto; 
+  footer .footer-heading h4 {
+    font-size: 21px;
+    color: #232323;
+    letter-spacing: 0.5px;
+    margin-top: 15px;
+    margin-bottom: 40px;
   }
   
-  /* Footer section styling */
-  .footer-section {
-    margin: 0 10px; 
-    display: flex;
-    flex-direction: column; 
-    justify-content: flex-start; 
+  
+  footer .about-veno .logo {
+    margin-bottom: -60px;
+    width: 200px;
+    height: 200px;
+  
   }
   
-  /* Footer section headers */
-  .footer-section h1 {
-    font-size: 22px; 
-    margin-bottom: 15px; 
-  }
-  .footer-sectionbrand-section{
-    display: inline;
-  }
-  
-  /* Footer links */
-  .footer-section ul,
-  .footer-section p,
-  .footer-section a {
-    font-size: 13p;
-    list-style-type: none; 
-    padding: 0; 
-    margin-bottom: 5px; 
-    color: #fff; 
-    text-decoration: none; 
-  }
-  .social-icons a:hover {
-     text-decoration: underline; } 
-
-  .app-link img{ 
-    max-width: 100%; 
-    width: 150px;
-     height: 100px; } 
-
-    .social-icons img { 
-        margin-top: 10px;
-         width: 50px; 
-         height: auto; 
-         margin-right: 15px;
- }
-
-          .social-icons .facebook-icon img
-          { 
-            width: 60px;
-             height: 60px; 
-            }
-  
-  /* Footer bottom styling */
-  .footer-bottom {
-    text-align: center;
-    margin-top: 20px; 
-    font-size: 14px;
-  }
-p, ul {
-    margin-bottom: 15px;
-}
-
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-ul li a {
-    color: #f2f2f2;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-ul li a:hover {
-    color: #ff9800; 
-    text-decoration: underline; /* Underline effect on hover */
-}
-
-.social-links a {
+  footer .about-veno ul li a {
+    width: 32px;
+    height: 32px;
     display: inline-block;
-    margin: 0 10px;
-    color: #f2f2f2;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: #ff9800; 
-}
-
-.fa-brands {
-    font-size: 1.8em; 
-}
+    text-align: center;
+    line-height: 32px;
+    background-color: #cdcdcd;
+    border-radius: 50%;
+    font-size: 15px;
+    color: #fff;
+    margin-right: 3px;
+    transition: all 0.5s;
+  }
+  
+  footer .about-veno p {
+    margin-bottom: 25px;
+  }
+  
+  footer .about-veno ul li a:hover {
+    background-color: #ff0404;
+  }
+  
+  footer .useful-links ul li {
+    margin-bottom: 12px;
+  }
+  
+  footer .useful-links ul li a {
+    font-size: 15px;
+    color: #7a7a7a;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.5s;
+  }
+  
+  footer .useful-links ul li a:hover {
+    color: #ff0000;
+  }
+  
+  footer .useful-links ul li i {
+    color: #ff0000;
+    font-size: 6px;
+    position: relative;
+    top: -3px;
+    margin-right: 8px;
+  }
+  
+  footer .contact-info p {
+    margin-bottom: 25px;
+  }
+  
+  footer .contact-info ul li {
+    margin: 10px 0px;
+  }
+  
+  footer .contact-info ul li span {
+    font-size: 13px;
+    color: #7a7a7a;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    width: 80px;
+    display: inline-block;
+  }
+  
+  footer .contact-info ul li a {
+    font-size: 13px;
+    color: #ff0000;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+  
+  .sub-footer p {
+    text-align: center;
+    display: inline-block;
+    background-color: #f4f4f4;
+    width: 100%;
+    margin-bottom: 0px;
+    padding: 30px 0px;
+    font-size: 15px;
+    color: #aaaaaa;
+  }
+  
+  .sub-footer a {
+    text-decoration: none;
+    color: #4883ff;
+  }
+  
 
 
 .contact-info, .social-links, .quick-links {
@@ -784,7 +960,7 @@ a:hover {
 }
 
 
-/*THEME TOOGLE*/
+/*THEME TOOGLE sosht mo */
 .themeToggle {
     position: fixed;
     top: 10rem;
