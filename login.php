@@ -18,7 +18,7 @@
             <header>Login</header>
         </div>
         <div class="input-box">
-            <input type="text" class="input-field" placeholder="Email" required>
+            <input type="text" class="input-field" placeholder="Email" requires-validation required>
         </div>
         <div class="input-box">
             <input type="password" class="input-field" placeholder="Password" autocomplete="off" required>
@@ -37,7 +37,7 @@
             <label for="submit">Sign in</label>
         </div>
         <div class="sign-up-link">
-            <p>Don't have an account? <a href="#">Register</a></p>
+            <p>Don't have an account? <a href="register.php">Register</a></p>
         </div>
     </div>
 

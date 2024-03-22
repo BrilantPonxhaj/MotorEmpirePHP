@@ -109,3 +109,11 @@ section a{
     color:#000;
     font-weight: 600;
 }
+.container{
+    border: 5px solid white;
+    border-radius: 8px;
+    padding-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 130px;
+}
