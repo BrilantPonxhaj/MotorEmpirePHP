@@ -14,11 +14,9 @@
             <header>Sign Up</header>
         </div>
         <div class="input-box">
-            <input type="text" class="input-field" placeholder="Name" required>
+            <input type="text" class="input-field" placeholder="Full Name" required>
         </div>
-        <div class="input-box">
-            <input type="text" class="input-field" placeholder="Surname" required>
-        </div>
+      
         <div class="input-box">
             <input type="date" class="input-field" required>
         </div>
