@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<div class="container">
     <div class="login-box">
         <div class="login-header">
             <header>Sign Up</header>
@@ -49,6 +48,5 @@
             <p>Already have an account? <a href="login.php">Log In</a></p>
         </div>
     </div>
-</div>
 </body>
 </html>
