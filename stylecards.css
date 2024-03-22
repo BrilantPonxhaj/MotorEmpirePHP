@@ -1,0 +1,181 @@
+/* *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f9f6f2;
+}
+.card-img-top{
+    border-radius: 30px;
+    padding: 10px;
+    height: 200px;
+    width: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+.card{
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+*/
+.red-button a {
+    display: inline-block;
+    background-color: #a81e1e;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 16px;
+    text-decoration: none;
+    border: 2px solid #a81e1e;
+    transition: all 0.5s;
+    margin-top: 20px;
+}
+  
+.red-button a:hover {
+    background-color: rgba(155, 50, 50, 0.987);
+    color: #087aaf;
+}
+  /*
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+  
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.boxanimation {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.boxanimation {
+    flex: 1 0 200px;
+    width: 250px; height: 370px;
+    margin: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px #000;
+    transition: all 300ms ease-in-out;
+}
+
+.boxanimation:hover {
+    box-shadow: 0px 8px 30px;
+    width: 252px; height: 372px;
+}
+ */
+
+
+     /*  Helper Styles */
+     body {
+        font-family: Varela Round;
+        background: #f1f1f1;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    /* Card Styles */
+
+    .card-sl {
+        border-radius: 8px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .card-image img {
+        max-height: 100%;
+        max-width: 100%;
+        border-radius: 8px 8px 0px 0;
+    }
+
+    .card-action {
+        position: relative;
+        float: right;
+        margin-top: -25px;
+        margin-right: 20px;
+        z-index: 2;
+        color: #E26D5C;
+        background: #fff;
+        border-radius: 100%;
+        padding: 15px;
+        font-size: 15px;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .card-action:hover {
+        color: #fff;
+        background: #E26D5C;
+        
+    }
+
+    .card-heading {
+        font-size: 18px;
+        font-weight: bold;
+        background: #fff;
+        padding: 10px 15px;
+    }
+
+    .card-text {
+        padding: 10px 15px;
+        background: #fff;
+        font-size: 14px;
+        color: #636262;
+    }
+
+    .card-button {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        width: 100%;
+        background-color: #1F487E;
+        color: #fff;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .card-button:hover {
+        text-decoration: none;
+        background-color: #1D3461;
+        color: #fff;
+
+    }
+
+    /* .boxanimation {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    
+    .boxanimation {
+        flex: 1 0 200px;
+        width: 250px; height: 350px;
+        margin: 12px;
+        border-radius: 8px;
+        box-shadow: 0px 3px 8px #000;
+        transition: all 300ms ease-in-out;
+    }
+    
+    .boxanimation:hover {
+        box-shadow: 0px 8px 30px;
+        width: 252px; height: 372px;
+    } */
+    #Searchbtn .btn:hover {
+        background:transparent; /* This sets the button background to black on hover */
+        color: #000000; /* This changes the text color to white on hover for better readability */
+    }
+    
+    #Searchbtn .btn{
+        margin-top: 0;
+        
+    }
+    #Searchbtn i{
+        color: var(--main);
+        font-size: 2.5rem;
+        display: none;
+        font-weight: 900;
+    }

@@ -1,464 +1,439 @@
 <!DOCTYPE html>
-<html lang="zxx">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Vehicles | MotorEmpire</title>
-<link rel="icon" type="image/x-icon" href="images/favicon.png">
-<link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-
-<meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="./assets/css/style.css">
-<link rel="stylesheet" href="./assets/css/mobile.css">
-<meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en">
+  <head>
     <title>MotorEmpire</title>
-    
-    <!--SWIPER JS-->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
-    <!--FONT AWESOME LINK-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <!--STYLESHEET I KTIJ PAGE-->
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--External Css-->
+    <link rel="stylesheet" href="stylecards.css">
+    <link rel="stylesheet" href="style.css">
 
-</head>
-<body>
+  </head>
 
-
-    <!-- HEADER-SECTION -->
-    <div class="home-header-section sub-header-section">
-        <header class="header">
-            <div class="main-header">
-                <div class="container-fluid">
-                    <nav class="navbar navbar-expand-lg navbar-light p-0">
-                        
-                            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                            <span class="navbar-toggler-icon"></span>
-                            <span class="navbar-toggler-icon"></span>
-                            </button>
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    
-                                    <div class="btn-talk ml-auto">
-                                        <ul class="m-0 p-0">
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
-
-		<!--HEADER/NAVBAR start          
-            <a href="vehicles.html" target="blank">Vehicles</a>-->
-    <header>
-
+  <body>
+ <!--HEADER/NAVBAR start-->
+ <header>
+      
       <div id="MenuBtn" class="fas fa-bars"></div>
-      <a href="#" class="logo"> <img src="images/logo2.png" width="100px " height="50px" ></a>
+
+      <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
-        <a href="index.html" target="blank">Home</a>
-        <a href="vehicles.html" target="blank">Vehicles</a>
-        <a href="featured.html" target="_blank">Featured</a>
-        <a href="#index.html"target="blank">Services</a>
-        <a href="#index.html"target="blank">Review</a>
-        <a href="#index.html"target="blank">Contact</a>
-        <a href="price.html" target="blank">PriceRange</a>
+        <a href="index.php">Home</a>
+        <a href="vehicles.php">Vehicles</a>
+        <a href="featured.html">Featured</a>
+        <a href="#Services">Services</a>
+        <a href="#Review">Review</a>
+        <a href="contact.php">Contact</a>
       </nav>
-      <div id="LoginBtn">
-        <button class="btn">Login</button>
-        <i class="fas fa-user"></i>
+
+
+ </header>
+<br>
+<br>
+
+<div style="margin-top: 70px;">
+    <h3 class="text-center text-uppercase font-monospace m-3">
+        Filter
+      </h3>
+      <div class="container" style="margin-top: 4%;">
+          <form action="#">
+              <div class="row">
+                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <div class="form-group">
+                          <label>Used/New:</label>
+               
+                           <select class="form-control">
+                                <option value="">-- All --</option>
+                                <option value="new">New vehicle</option>
+                                <option value="used">Used vehicle</option>
+                           </select>
+                      </div>
+                  </div>
+      
+                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <div class="form-group">
+                          <label>Model</label>
+               
+                           <select class="form-control">
+                                <option value="">-- All --</option>
+                                <option value="">BMW 5 series</option>
+                                <option value="">BMW 4 series</option>
+                                <option value="">BMW 3 series</option>
+                                <option value="">BMW 2 series</option>
+                                <option value="">BMW 1 series</option>
+                           </select>
+                      </div>
+                  </div>
+      
+                  <!-- <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <div class="form-group">
+                          <label>Model:</label>
+               
+                           <select class="form-control">
+                                <option value="">-- All --</option>
+                                <option value="">-- All --</option>
+                                <option value="">-- All --</option>
+                                <option value="">-- All --</option>
+                           </select>
+                      </div>
+                  </div> -->
+      
+                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <div class="form-group">
+                          <label>Price:</label>
+               
+                           <select class="form-control">
+                                <option value="">-- All --</option>
+                                <option value="">20000$ - 50000$</option>
+                                <option value="">50000$ - 100000$</option>
+                                <option value="">100000$ - ...</option>
+                           </select>
+                      </div>
+                  </div>
+      
+                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <div class="form-group">
+                          <label>Kilometers:</label>
+               
+                           <select class="form-control">
+                            <!--Bon mebo 
+                              IF NEW DIFFERENT MILEAGE
+                              IF USED DIFFERENT
+                              ama edhe qishtu bon melan
+                            -->
+                                <option value="">-- All --</option>
+                                <option value="">0Km- 50000Km</option>
+                                <option value="">50000Km - 100000km</option>
+                                <option value="">100000Km - 150000Km</option>
+                                <option value="">150000Km - 250000Km</option>
+                                <option value="">250000Km - ...</option>
+                           </select>
+                      </div>
+                  </div>
+      
+                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>Engine type:</label>
+             
+                         <select class="form-control">
+                              <option value="">-- All --</option>
+                              <option value="">Disel</option>
+                              <option value="">Petrol</option>
+                              <option value="">Hybrid</option>
+                              <option value="">Electric</option>
+                         </select>
+                    </div>
+                </div>
+      
+      
+      
+                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <div class="form-group">
+                          <label>Gearbox:</label>
+               
+                           <select class="form-control">
+                                <option value="">-- All --</option>
+                                <option value="">Manual</option>
+                                <option value="">Automatic</option>
+                           </select>
+                      </div>
+                  </div>
+                  <div id="Searchbtn" class="text-center mt-5">
+    <a href="#" id="Searchbtn" class="btn">Search</a>
+  <i class="fas fa-user"></i>
+</div>
+          </form>
       </div>
+      
 
-    </header>
-
-
-    <!--Login Form Container-i-->
-    
-    <div class="loginFormContainer">
-      <span id="CloseLoginForm" class="fas fa-times"></span>
-      <form action="">
-        <h3>User Login</h3>
-        <input type="email" placeholder="Email" required class="box" />
-        <input type="password" placeholder="Password" required class="box" />
-        <p>Forgot your Password? <a href="#">Click Here</a></p>
-        <button class="btn">Submit</button>
-        <p>or Login With</p>
-        <div class="buttons">
-          <a href="#" class="btn">Google</a>
-          <a href="#" class="btn">Facebook</a>
-        </div>
-      </form>
-    </div>
-
-        <!-- BANNER-SECTION -->
-        <div class="sub-banner-section overflow-hidden">
-            <div class="banner-container-box">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 mb-md-0 mb-4 text-md-left text-center">
-                            <div class="home-banner-text aos-init aos-animate" data-aos="fade-up">
-                                <h1 class="text-white">vehicles</h1>
-                                <div class="banner-btn discover-btn-banner">
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
+      <div class="container" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+                <div class="card-sl">
+                    <div class="card-image">
+                        <img class=""
+                            src="#" alt="BMW Loading..." />
                     </div>
+                    <div class="d-flex justify-content-around mt-2">
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
+                      </div>
+
+                    <div class="card-heading">
+                        Audi Q8
+                    </div>
+                    <div class="card-text">
+                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                    </div>
+                    <div class="card-text">
+                        $67,400
+                    </div>
+                    <a href="#" class="card-button"> Purchase</a>
                 </div>
             </div>
-        </div>
-    </div>
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+                <div class="card-sl">
+                    <div class="card-image">
+                        <img class=""
+                            src="#" alt="BMW Loading..." />
+                    </div>
+                    <div class="d-flex justify-content-around mt-2">
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
+                      </div>
 
-    <!-- About-us-section-about-page -->
-    <section class="about-us-section-page overflow-hidden position-relative">
-        <div class="container">
-            <!-- <div class="row">
-                   <div class="col-lg-12-col-md-12-col-sm-12"> -->
-                       <div class="about-us-box-page">
-                       <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                            <figure class="mb-0  position-relative about-page-left-img-figure">
-                                <img src="./assets/images/about-page-left-img.png" alt="" class="img-fluid">
-                            </figure>
-                            <div class="about-red-box" data-aos="fade-up-right">
-                                <figure>
-                                    <img src="./assets/images/about-red.png" alt="">
-                                </figure>
-                                  <div class="red-box-content">
-                                    <span class="span28 counter">28</span><span  class="about-plus">+</span>
-                                    <p class="exp">Years of Experience</p>
-                                  </div>
-                            </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <div class="about-us-content aos-init aos-animate" data-aos="fade-up">
-                                    <h6 class="autorix-text">VEHICLES</h6>
-                                    <h2 class="aos-init aos-animate">We’re Commited to Meet the quality</h2>      
-                                    <p class="our-mission-p1">At Motor Empire, we understand that each driver is unique, and so are their needs. Our commitment is to provide a comprehensive range of vehicles that not only meet but exceed expectations. Whether you seek efficiency, power, or a blend of both, our collection ensures there's a perfect match for every discerning driver.</p> 
-                                    <p class="our-mission-p2">Take the driver's seat in your next adventure with confidence. Browse our vehicles section to discover the perfect blend of form and function, and let Motor Empire be your companion on the road to automotive excellence."</p>
-                                    <ul class="list-unstyled list-margin-bottom">
-                                        <li class="d-inline-block mb-lg-0 mb-3"><i class="fa-solid fa-check ml-0"></i><span class="d-inline-block email-span text-decoration-none list-span">24/7 Support</span></li>
-                                        <li class="d-inline-block user-li"><i class="fa-solid fa-check margin-left-checkk"></i><span class="d-inline-block user-span text-decoration-none list-span">Expert Team</span></li>
-                                    </ul>
-                                    <ul class="list-unstyled left-section-margin-bottom">
-                                        <li class="d-inline-block mb-lg-0 mb-3 mr-lg-1 smart-tools-li"><i class="fa-solid fa-check ml-0 last-li-form-section"></i><span class="d-inline-block email-span text-decoration-none list-span">Smart Tools</span></li>
-                                        <li class="d-inline-block user-li"><i class="fa-solid fa-check margin-left-checkk fast-work-m"></i><span class="d-inline-block user-span text-decoration-none list-span">Fast Work</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                       </div>
-                       </div>
-                   <!-- </div>
-            </div> -->
-        </div>
-    </section>       
+                    <div class="card-heading">
+                        Audi Q8
+                    </div>
+                    <div class="card-text">
+                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                    </div>
+                    <div class="card-text">
+                        $67,400
+                    </div>
+                    <a href="#" class="card-button"> Purchase</a>
+                </div>
+            </div>
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+                <div class="card-sl">
+                    <div class="card-image">
+                        <img class=""
+                            src="#" alt="BMW Loading..." />
+                    </div>
+                    <div class="d-flex justify-content-around mt-2">
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
+                      </div>
 
-         <!-- Best-Choice_SECTION -->
-    <section class="best-choice-section">
-        <figure class="best-choice-left">
-            <img src="./assets/images/about-before-img.png" alt="">
-        </figure>
+                    <div class="card-heading">
+                        Audi Q8
+                    </div>
+                    <div class="card-text">
+                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                    </div>
+                    <div class="card-text">
+                        $67,400
+                    </div>
+                    <a href="#" class="card-button"> Purchase</a>
+                </div>
+            </div>
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+                <div class="card-sl">
+                    <div class="card-image">
+                        <img class=""
+                            src="#" alt="BMW Loading..." />
+                    </div>
+                    <div class="d-flex justify-content-around mt-2">
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
+                      </div>
+
+                    <div class="card-heading">
+                        Audi Q8
+                    </div>
+                    <div class="card-text">
+                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                    </div>
+                    <div class="card-text">
+                        $67,400
+                    </div>
+                    <a href="#" class="card-button"> Purchase</a>
+                </div>
+            </div>
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+                <div class="card-sl">
+                    <div class="card-image">
+                        <img class=""
+                            src="#" alt="BMW Loading..." />
+                    </div>
+                    <div class="d-flex justify-content-around mt-2">
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
+                      </div>
+
+                    <div class="card-heading">
+                        Audi Q8
+                    </div>
+                    <div class="card-text">
+                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                    </div>
+                    <div class="card-text">
+                        $67,400
+                    </div>
+                    <a href="#" class="card-button"> Purchase</a>
+                </div>
+            </div>
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+                <div class="card-sl">
+                    <div class="card-image">
+                        <img class=""
+                            src="#" alt="BMW Loading..." />
+                    </div>
+                    <div class="d-flex justify-content-around mt-2">
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
+                      </div>
+
+                    <div class="card-heading">
+                        Audi Q8
+                    </div>
+                    <div class="card-text">
+                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                    </div>
+                    <div class="card-text">
+                        $67,400
+                    </div>
+                    <a href="#" class="card-button"> Purchase</a>
+                </div>
+            </div>
+        </div>  
+        </div>
+    <!-- <div class="container py-5">
+        <h1 class="text-center ">Product Cards</h1>
+
+        <div class="container-fluid  mt-4">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4 boxanimation"> 
+                    <div> 
+                        <img class="card-img-top" src="img/images/bmwred.jpg" alt="BMW" style="width:100%">
+                        <div class="card-img-overlay d-flex justify-content-around ">
+                            <strong class="text-muted"><i class="fa fa-dashboard"></i> 130 000km</strong>
+                            <strong class="text-muted"><i class="fa fa-cube"></i> 2000cc</strong>
+                            <strong class="text-muted"><i class="fa fa-cog"></i> Automatic</strong>
+                          </div>
+                          <div class="card-body">
+                              <h1 class="card-title">BMW 1 Series</h1>
+                              <p>Some text about the BMW 1 Series</p>
+                              <p class="price">32500$</p>
+                           <div class="p-1 rounded text-center">
+                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
+                           </div>
+                           </div>
+                      
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
+                    <div class="card"> 
+                        <img class="card-img-top" src="img/images/bmwred.jpg" alt="BMW" style="width:100%">
+                        <div class="card-img-overlay d-flex justify-content-around ">
+                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
+                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
+                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
+                          </div>
+                          <div class="card-body">
+                              <h1 class="card-title">BMW...</h1>
+                              <p>Some text about the BMW..</p>
+                              <p class="price">...$</p>
+                           <div class="p-3 rounded">
+                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
+                           </div>
+                           </div>
+                      
+                    </div>
+                </div>
         
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-6 col-sm-6">
-                    <h6 class="autorix-text teams-text aos-init aos-animate" data-aos="flip-up">best choice</h6>
-                    <h2>We are best at what we do</h2>
-                    <p class="teams-p1 aos-init aos-animate" data-aos="fade-left">Empower your journey with BMW: Where precision meets performance, and every drive is a testament to unrivaled excellence.</p>
-                    <p class="teams-p2">BMW: Elegance in Motion.</p>
-                    <div class="banner-btn discover-btn-banner">
-                        <a href="https://www.gocompare.com/car-insurance/" target="_blank" class="text-decoration-none">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
+               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
+                    <div class="card"> 
+                        <img class="card-img-top" src="img/images/bmwzez.jpg" alt="BMW" style="width:100%">
+                        <div class="card-img-overlay d-flex justify-content-around ">
+                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
+                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
+                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
+                          </div>
+                          <div class="card-body">
+                              <h1 class="card-title">BMW...</h1>
+                              <p>Some text about the BMW..</p>
+                              <p class="price">...$</p>
+                           <div class="p-3 rounded">
+                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
+                           </div>
+                           </div>
+                      
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-3 col-md-3 col-sm-6 d-lg-block d-none"></div>
-                <div class="col-xl-2 col-lg-3 col-md-5 col-sm-6">
-                    <a class="popup-vimeo" href="https://www.youtube.com/watch?v=pWVwVaYAVlM" target="_blank">
-                        <figure class="play-video-icon">
-                            <img src="./assets/images/play-video-icon.png" alt="">
-                        </figure>
-                    </a>
+        
+               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
+                    <div class="card"> 
+                        <img class="card-img-top" src="img/images/vehiclesbmw4.jpg" alt="BMW" style="width:100%">
+                        <div class="card-img-overlay d-flex justify-content-around ">
+                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
+                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
+                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
+                          </div>
+                          <div class="card-body">
+                              <h1 class="card-title">BMW...</h1>
+                              <p>Some text about the BMW..</p>
+                              <p class="price">...$</p>
+                           <div class="p-3 rounded">
+                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
+                           </div>
+                           </div>
+                      
+                    </div>
                 </div>
-                <div class="col-xl-1 col-lg-1 col-md-3 col-sm-6 d-lg-block d-none"></div>
+        
+               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
+                    <div class="card"> 
+                        <img class="card-img-top" src="img/images/vehiclessbmw.webp" alt="BMW" style="width:100%">
+                        <div class="card-img-overlay d-flex justify-content-around ">
+                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
+                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
+                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
+                          </div>
+                          <div class="card-body">
+                              <h1 class="card-title">BMW...</h1>
+                              <p>Some text about the BMW..</p>
+                              <p class="price">...$</p>
+                           <div class="p-3 rounded">
+                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
+                           </div>
+                           </div>
+                      
+                    </div>
+                </div>
+        
+               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
+                    <div class="card"> 
+                        <img class="card-img-top" src="img/images/vehiclesbmw.png" alt="BMW" style="width:100%">
+                        <div class="card-img-overlay d-flex justify-content-around ">
+                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
+                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
+                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
+                          </div>
+                          <div class="card-body">
+                              <h1 class="card-title">BMW...</h1>
+                              <p>Some text about the BMW..</p>
+                              <p class="price">...$</p>
+                           <div class="p-3 rounded">
+                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
+                           </div>
+                           </div>
+                      
+                    </div>
+                </div>
+
+
             </div>
         </div>
-    </section>
+        </div> -->
 
-    <!-- box-section -->
-    <div class="box-section">
-        <div class="container">
-            <div class="row  box-section-row">
-                <div class="col-lg-3 col-md-3 col-sm-6 mb-lg-0 mb-sm-3 mb-2">
-                    <div class="mission-box"  data-aos="fade-up-right">
-                        <div class="mission-counter"><span class="counter">8</span><span>K</span><sup class="plus-sign">+</sup>
-                        </div>
-                        <div class="mb-0 box-p">Happy Clients</div>
-                    </div>
 
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 mb-lg-0 mb-sm-3 mb-2">
-                    <div class="mission-box" data-aos="fade-up-right">
-                        <div class="mission-counter"><span class="counter">22</span><sup class="plus-sign">+</sup>
-                            <div class="mb-0 box-p">Instruments</div>
-                        </div>
-                    </div>
 
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 mb-sm-0 mb-sm-0 mb-2">
-                    <div class="mission-box" data-aos="fade-up-left">
-                        <span class="mission-counter"><span class="counter">50</span><sup class="plus-sign">+</sup>
-                    </span>
-                        <div class="mb-0 box-p">Years in market</div>
-                    </div>
 
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6">
-                    <div class="mission-box" data-aos="fade-up-left">
-                        <span class="mission-counter"><span class="counter">99</span><sup class="plus-sign">%</sup></span>
-                        <div class="mb-0 box-p">Projects completed</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WhyCHooseUs_SECTION -->
-    <section class="whychoose-section overflow-hidden position-relative">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h6 class="autorix-text">Why Choose Us?</h6>
-                    <h2 class="text-center"  data-aos="fade-zoom-in">We Have ALmost 28 Years of experience</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-md-0 mb-4 text-center">
-                    <div class="blogs-section" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                            <div class="images-blog">
-                                <figure class="mb-0"><img class="img-fluid" src="./assets/images/whychooseus-img1.png" alt="">
-                                </figure>
-                            </div>
-                            <h5 class="blogs-h5">Professional Standard</h5>
-                            <p class="blogs-p">Welcome to Motor Empire, where we redefine automotive excellence with our BMW collection, setting a benchmark for professional standards. Each BMW in our lineup is a testament to precision engineering, cutting-edge technology, and a commitment to delivering vehicles that meet the highest professional standards.
-
-                                Experience the epitome of driving sophistication, where performance meets professionalism. Our curated selection of BMWs combines power, style, and innovation, ensuring that every journey is not just a commute but a statement of professionalism on the road.
-                                
-                                Choose Motor Empire for a driving experience that exceeds expectations. BMW – Setting the professional standard in every detail.</p>
-                            <div class="read-more">
-                                <a href="#" class="text-decoration-none"> read more <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-md-0 mb-4 text-center">
-                    <div class="blogs-section" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                            <div class="images-blog">
-                                <figure class="mb-0"><img class="img-fluid" src="./assets/images/whychooseus-img2.png" alt="">
-                                </figure>
-                            </div>
-                            <h5 class="blogs-h5">Best Materials</h5>
-                            <p class="blogs-p">At Motor Empire, we redefine luxury with our BMW lineup, meticulously designed with the best materials available. From opulent interiors to cutting-edge features, our BMWs embody sophistication and precision. Elevate your driving experience – choose excellence, choose Motor Empire.</p>
-                            <div class="read-more">
-                                <a href="#" class="text-decoration-none"> read more <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-md-0 mb-4 text-center">
-                    <div class="blogs-section" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                            <div class="images-blog">
-                                <figure class="mb-0"><img class="img-fluid" src="./assets/images/whychooseus-img3.png" alt="">
-                                </figure>
-                            </div>
-                            <h5 class="blogs-h5">Long term warranty</h5>
-                            <p class="blogs-p">🔒 Extended Assurance: Beyond the standard warranty, our Long-Term Warranty provides extra protection for your peace of mind.
-
-                                🚀 Seamless Support: Enjoy hassle-free claims and nationwide assistance, ensuring quick resolution wherever you are.
-                                
-                                💎 Customer Focus: Our commitment to customer satisfaction shines through in every aspect of our Long-Term Warranty.
-                                
-                                Activate your extended coverage now – because your satisfaction is our priority at [Motor Empire].</p>
-                            <div class="read-more">
-                                <a href="#" class="text-decoration-none"> read more <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <figure class="position-absolute whychoseus-left-img left_icon"><img src="./assets/images/whychooseus-left-img.png" alt=""></figure>
-    </section>
-
-    <!-- Form-section -->
-    <section class="contact-us-form aos-init aos-animate" data-aos="fade-up-right">
-        <div class="container text-center">
-            <div class="col-12">
-                <h6 class="autorix-text text-center">Get in touch</h6>
-                <h2 class="text-center aos-init aos-animate" data-aos="fade-zoom-in">Send us a message</h2>
-            </div>
-
-            <form id="form_id" method="post" action="contact-form.php">
-                <div class="contact-us-wrapper">
-
-                    <!-- <section> -->
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="">
-                                <input type="text" name="name" class="form-control input-fill" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="">
-                                <input type="number" name="phone" class="form-control input-fill" placeholder="Phone">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12">
-                            <div class="col-inner">
-                                <input type="text" name="email" class="form-control input-fill" placeholder="Email">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="col-inner-msg">
-                                <!-- <input type="text" name="message" class="form-control input-fill" placeholder="Message"> -->
-                                <!-- <textarea name="message" id=""class="form-control input-fill"  cols="30" rows="10" placeholder="Message"></textarea> -->
-                                <textarea name="comments" rows="3" placeholder="Message" class="form-control border-none"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- </section> -->
-                    <div class="form-btn">
-                        <button type="submit" class="btn">Submit Now <i class="fa-solid fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-            </form>
-
-        </div>
-    </section>
-    
-  
-    <!-- Footer-Section -->
-    <div class="footer-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-3 col-sm-6 d-xl-block d-none">
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
-                    <a href="#" class="logo"><span>Motor</span>Empire</a>
-                    <p class="foot-text" data-aos="flip-left">When style and performance become one: BMW, savor every moment of your journey.</p>
-                        <div class="social-icons aos-init aos-animate position-relative">
-                            <ul class="list-unstyled" data-aos="fade-down">
-                                <li><a href="https://www.facebook.com/" target="_blank" class="text-decoration-none"><i class="fa-brands fa-facebook-f social-networks"></i></a></li>
-                                <li><a href="https://www.twitter.com/" target="_blank" class="text-decoration-none"><i class="fa-brands fa-twitter social-networks"></i></a></li>
-                                <li><a href="https://www.instagram.com/" target="_blank" class="text-decoration-none"><i class="fa-brands fa-linkedin-in social-networks"></i></a></li>
-                            </ul>
-                            <a href="statistics.html" target="_blank"><h5 class="foot-text">Click her for some statistics</h5></a>
-                        </div>
-                </div>
-
-                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 d-md-block d-none">
-                    <ul class="list-unstyled support-footer" data-aos="flip-left">
-                        <li class="list-item footer-margin-left">
-                            <h5 class="footer-link footer-services-heading">
-                                Opening Hours
-                            </h5>
-                        </li>
-                        <li>
-                          <p class="footer-days">Monday – Friday</p>
-                          <p class="footer-time">08.00 – 20.00</p>
-                        </li>
-                        <li>
-                          <p class="footer-days">Saturday – Sunday</p>
-                          <p class="footer-time">10.00 – 18.00</p>
-                        </li>
-                       
-                    </ul>
-                </div>
-
-                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 d-sm-block d-none">
-                    <div class="footer-list footer-link">
-                        <div class="icon-list-box1" data-aos="flip-left">
-                            <ul class="list-unstyled contact-us-ul">
-                                <li class="list-item pl-0">
-                                    <h5 class="footer-link footer-get-heading">
-                                        Contact Info
-                                    </h5>
-                                </li>
-                                <li class="list-item">
-                                <a href="tel:+4733378901" class="text-decoration-none footer-link-auto">+1(123)456-7890</a>
-                                <i class="fa fa-phone fa-icon footer-location3"></i>
-                                </li>
-                                <li class="list-item">
-                                <a href="mailto:webmaster@example.com" class="text-decoration-none footer-link-auto">info@bmwdealership.com</a>
-                                <i class="fa fa-envelope fa-icon footer-location2"></i>
-                                </li>
-                                <li class="list-item">
-                                <a  class="text-decoration-none footer-link-auto">Vierzylinder, Petuelring 130, 80809 München</a>
-                                <i class="fa-solid fa-location-dot footer-location"></i>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-right">
-            <figure class="left_icon">
-               <img src="./assets/images/footer-right.png" alt="">
-            </figure>
-        </div>
-    </div>
-        <div class="footer-outer-margin">
-            <figure class="left_icon">
-               <img src="./assets/images/bmwmajt.png" >
-            </figure>
-        </div>
-    <div class="footer-bar text-center">
-        <figure class="f-bar-left">
-            <img src="./assets/images/footer-bar-left.png" alt="">
-        </figure>
-        <div class="container">
-            <div class="row">
-               <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="footer-bar-content w-100 overflow-hidden">
-                    <p class="text-size-16 mb-0">
-                        Copyright 2024, Motor Empire All Rights Reserved.
-                    </p>
-                </div>
-               </div>
-            </div>
-        </div>
-    </div>
-   
-
-    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
-    <script src="assets/js/animations.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/custom-script.js"></script>
-    <script src="assets/js/owl.carousel.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/text-animations.js"></script>
-    <script src="assets/js/carousel.js"></script>
-    <script src="assets/js/showhide.js"></script>
-    <script src="assets/js/video-section.js"></script>
-    <script src="./assets/js/video-popup.js"></script>
-
-</body>
-
+    <!--Bootstrap5 JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+  </body>
 </html>
