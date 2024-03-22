@@ -155,8 +155,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
                 <div class="card-sl">
                     <div class="card-image">
-                        <img class=""
-                            src="#" alt="BMW Loading..." />
+                        <img src="#" alt="BMW Loading..." />
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
