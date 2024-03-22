@@ -724,7 +724,9 @@ position: relative;
     outline: none;
   }
   
-  .popular-item { margin-top: 15px; margin-bottom: 15px; }
+  .popular-item { 
+border: 5px solid black;
+border-radius: 8px; }
   
   .popular-places .popular-item .thumb {
     position: relative;
@@ -732,7 +734,7 @@ position: relative;
   
   .popular-places .popular-item .thumb img {
     position: relative;
-    width: 100%;
+    width: fit-content;
     overflow: hidden;
    
     z-index: 1;
@@ -785,7 +787,7 @@ position: relative;
   }
   
   .popular-places .popular-item .thumb .plus-button i:hover {
-    background-color: rgba(250,250,250,0.3);
+    background-color: rgba(0, 0, 0, 0.916);
   }
   main > section { 
     background: #fff;  
