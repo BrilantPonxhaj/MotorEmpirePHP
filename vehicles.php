@@ -39,7 +39,7 @@
     <h3 class="text-center text-uppercase font-monospace m-3">
         Filter
       </h3>
-      <div class="container" style="margin-top: 4%;">
+      <div class="container mt-1">
           <form action="#">
               <div class="row">
                   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
