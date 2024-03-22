@@ -203,7 +203,7 @@ header .navbar a:hover{
 
 .home {
     position: relative;
-    height: 90vh; /* Adjust based on your preference */
+    height: 90vh;
     color: #fff;
     text-align: center;
 }
@@ -216,51 +216,53 @@ header .navbar a:hover{
     height: 100%;
     overflow: hidden;
 }
-.home-background .contactus_banner{
+
+.home-background .contactus_banner {
     bottom: 20;
 }
 
 .hero-image {
-    padding-bottom: 0.5rem;
+  
     width: 100%;
     height: 100%;
-    object-fit:cover;
+    object-fit: cover;
     filter: brightness(70%);
 }
 
 .home-content {
-
     left: 5%;
     z-index: 20;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; /* Adjusted to start from left */
+    align-items: flex-start;
     height: 100%;
-position: relative;
-
+    position: relative;
     
 }
-.home-content .line-dec{
+
+.home-content .line-dec {
     width: 80px;
     height: 5px;
     background-color: #f80000;
 }
 
-.home h1 {
+.home-content h1 {
     font-family: Arial, Helvetica, sans-serif;
-  text-shadow: #000;
-    margin-bottom: 0px;
+    text-shadow: #000;
+     /* Adjusted margin */
     font-size: 60px;
-    letter-spacing: 0.5px;
+   font-weight:600;
     color: #fff;
-
+    margin-top: -11px;
 }
-.home h2{
+
+.home h2 {
     font-size: 20px;
     color: white;
-    }
-    
+    font-weight: 600;
+    margin-top: -15px;
+}
     
     .red-button {
         display: inline-block;
@@ -604,11 +606,17 @@ position: relative;
     height: 100%;
     overflow: hidden;
 }
-.contact-background .contactus_banner{
+.contact-background {
     bottom: 20;
 }
 
-
+.contactus_banner {
+    padding-bottom: 0.5rem;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    filter: brightness(70%);
+}
 
 .contactus-content {
 
@@ -624,12 +632,12 @@ position: relative;
     
 }
 .contactus-content .line-dec{
-    width: 100px;
+    width: 80px;
     height: 5px;
     background-color: #f80000;
 }
 
-.contactus h1 {
+.contactus h2 {
     font-family: Arial, Helvetica, sans-serif;
   text-shadow: #000;
     margin-bottom: 0px;
@@ -638,11 +646,9 @@ position: relative;
     color: #fff;
 
 }
-.contactus h2{
-    font-size: 40px;
-    color: white;
-    }
-    
+
+
+
 
 
 

@@ -40,16 +40,17 @@
     <section class="contactus" id="contactus" >
     <div class="contact-background">
         <img src="img/tyler2.png" alt="" class="contactus_banner">
-        </div>
-      
-                        <div class="contactus-content">
-                            <div class="line+content">
-                        <div class="line-dec"></div>
-                        <h2>Contact Us</h2>
-                    </div>
-             
+       </div>
+        <div class="contactus-content">
+            <div class="line+content">
+                <div class="line-dec ">
                 </div>
-            </div></div>
+                <p>
+                    <h2>Contact Us</h2>   
+                    </p>
+                        </div>
+                    
+            </div>
         </div>
     </section>
 
