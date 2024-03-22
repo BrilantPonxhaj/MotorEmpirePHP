@@ -15,7 +15,6 @@
         <link rel="stylesheet" href="style.css">
 
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
@@ -26,13 +25,13 @@
 
       <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
-        <a href="index.php" target="_blank">Home</a>
-        <a href="vehicles.html" target="blank">Vehicles</a>
-        <a href="featured.html" target="_blank">Featured</a>
+        <a href="index.php">Home</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="featured.html">Featured</a>
         <a href="#Services">Services</a>
         <a href="#Review">Review</a>
         <a href="contact.php">Contact</a>
-        <a href="price.html" target="blank">PriceRange</a>
+        <a href="price.html">PriceRange</a>
       </nav>
 
       <!-- Login Button e kom shly ktu se dalina na ka kritiku heren e kalume-->

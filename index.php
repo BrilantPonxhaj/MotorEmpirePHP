@@ -29,45 +29,22 @@
       <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
         <a href="#Home">Home</a>
-        <a href="vehicles.html" target="blank">Vehicles</a>
-        <a href="featured.html" target="_blank">Featured</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="featured.html">Featured</a>
         <a href="#Services">Services</a>
         <a href="#Review">Review</a>
-        <a href="contact.php" target="_blank">Contact</a>
-        <a href="price.html" target="blank">PriceRange</a>
+        <a href="contact.php">Contact</a>
       </nav>
 
       <!-- Login Button -->
 
 <div id="LoginBtn">
-  <button id="loginButton" class="btn">Login</button>
+  <a href="login.php" id="loginButton" class="btn">Login</a>
   <i class="fas fa-user"></i>
 </div>
     </header>
 
 
-<!-- Login Form Container -->
-
-<div id="id01" class="loginFormContainer">
-  <form action="" method="post">
-      <div>
-
-          <span class="close" title="Close Modal">&times;</span>
-    
-    </div>
-
-        <h3>User Login</h3>
-        <input type="email" placeholder="Email" required class="box" />
-        <input type="password" placeholder="Password" required class="box" />
-        <p>Forgot your Password? <a href="#">Click Here</a></p>
-        <button class="btn">Submit</button>
-        <p>or Login With</p>
-        <div class="buttons">
-          <a href="http://www.gmail.com" target="_blank" class="btn">Google</a>
-          <a href="http://www.facebook.com" target="_blank" class="btn">Facebook</a>
-        </div>
-      </form>
-    </div>  
 
 
     <!--HOME SECTION startpoint-->
