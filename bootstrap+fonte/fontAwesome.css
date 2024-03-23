@@ -224,9 +224,13 @@
 .fa-times:before {
   content: "\f00d";
 }
+
 .fa-search-plus:before {
   content: "\f00e";
 }
+
+
+
 .fa-search-minus:before {
   content: "\f010";
 }
