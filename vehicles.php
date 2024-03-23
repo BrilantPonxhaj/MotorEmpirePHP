@@ -172,7 +172,7 @@
                     <div class="card-text">
                         67,400€
                     </div>
-                    <a href="#" class="card-button"> Purchase</a>
+                    <a href="cardemo.php" class="card-button"> Purchase</a>
                 </div>
             </div>
            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
