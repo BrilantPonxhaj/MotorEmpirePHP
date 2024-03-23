@@ -90,9 +90,11 @@ body{
     }
 
     .card-image img {
-        max-height: 100%;
-        max-width: 100%;
+        height: 150px;
+        width: 100%;
         border-radius: 8px 8px 0px 0;
+        object-fit: cover;
+        object-position: center;
     }
 
     .card-action {
@@ -147,6 +149,40 @@ body{
         transition: 1s ease;
         border: 1.5px solid #1D3461;
     }
+
+    .form-control {
+        border-radius: 0px;
+        padding-left: 15px;
+        font-size: 13px;
+        color: #574747;
+        background-color: #cfcece;
+        border: 1px solid #eee;
+        outline: none;
+        box-shadow: none;
+        line-height: 40px;
+        height: 40px;
+        width: 100%;
+        margin-bottom: 25px;
+      }
+
+      textarea.form-control {
+        border-radius: 0px;
+        padding-left: 15px;
+        padding-top: 10px;
+        font-size: 13px;
+        color: #574747;
+        background-color: #cfcece;
+        border: 1px solid #eee;
+        outline: none;
+        box-shadow: none;
+        min-height: 140px;
+        height: 160px;
+        max-height: 180px;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 25px;
+      }
+      
 
     /* .boxanimation {
         display: flex;

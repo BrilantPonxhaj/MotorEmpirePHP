@@ -39,7 +39,7 @@
     <h3 class="text-center text-uppercase font-monospace m-3">
         Filter
       </h3>
-      <div class="container" style="margin-top: 4%;">
+      <div class="container mt-1">
           <form action="#">
               <div class="row">
                   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -155,23 +155,22 @@
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
                 <div class="card-sl">
                     <div class="card-image">
-                        <img class=""
-                            src="#" alt="BMW Loading..." />
+                        <img src="images/bmw cards/1-BMW-3-Series.jpg" alt="BMW Loading..." />
                     </div>
                     <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 65 000km</strong>
                         <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
-
                     <div class="card-heading">
-                        Audi Q8
+                        BMW 3 Series
                     </div>
                     <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                    Experience unmatched elegance and precision with the iconic BMW 3 Series, where dynamic performance meets timeless sophistication on every journey.
+                    Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving.
                     </div>
                     <div class="card-text">
-                        $67,400
+                        67,400€
                     </div>
                     <a href="#" class="card-button"> Purchase</a>
                 </div>
@@ -180,22 +179,22 @@
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
-                            src="#" alt="BMW Loading..." />
+                            src="images/bmw cards/bmw 5.jpg" alt="BMW Loading..." />
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 2500cc</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
-
                     <div class="card-heading">
-                        Audi Q8
+                        BMW 5 Series
+                    </div>
+                    <div class="card-text">                      
+                        Indulge in refined luxury and exhilarating performance with the BMW 5 Series, where every detail is crafted for a seamless fusion of power. 
+                        Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence.
                     </div>
                     <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
+                        89,000€
                     </div>
                     <a href="#" class="card-button"> Purchase</a>
                 </div>
@@ -204,22 +203,23 @@
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
-                            src="#" alt="BMW Loading..." />
+                            src="images/bmw cards/bmw m3cs.jpg" alt="BMW Loading..." />
                     </div>
                     <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
-                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 45 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 3000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cog"></i> Manual</strong>
                       </div>
 
                     <div class="card-heading">
-                        Audi Q8
+                        BMW M3 cs
+                    </div>
+                    <div class="card-text">    
+                        Unleash the adrenaline with the BMW M3 CS series, designed to dominate both the road and the track.
+                        Experience the ultimate driving experience, where every curve becomes a conquest and every moment an exhilarating symphony of performance and precision.
                     </div>
                     <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
+                        158,000€
                     </div>
                     <a href="#" class="card-button"> Purchase</a>
                 </div>
@@ -228,22 +228,23 @@
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
-                            src="#" alt="BMW Loading..." />
+                            src="images/bmw cards/bmw 7 hybrid.jpg" alt="BMW Loading..." />
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 3000cc</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
 
                     <div class="card-heading">
-                        Audi Q8
+                        BMW 7 Series
                     </div>
                     <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
+                        Embark on a journey of sustainable luxury with the BMW 7 Series Plug-in Hybrid, seamlessly combining eco-consciousness with unparalleled comfort. 
+                        Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future.
                     </div>
                     <div class="card-text">
-                        $67,400
+                        133,000€
                     </div>
                     <a href="#" class="card-button"> Purchase</a>
                 </div>
@@ -252,22 +253,23 @@
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
-                            src="#" alt="BMW Loading..." />
+                            src="images/bmw cards/bmw m4.jpg" alt="BMW Loading..." />
                     </div>
                     <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 90 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 3000cc</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
 
                     <div class="card-heading">
-                        Audi Q8
+                        BMW M4
+                    </div>
+                    <div class="card-text">               
+                        Unleash the beast within with the BMW M4, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. 
+                        Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel.
                     </div>
                     <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
+                        113,000€
                     </div>
                     <a href="#" class="card-button"> Purchase</a>
                 </div>
@@ -276,22 +278,23 @@
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
-                            src="#" alt="BMW Loading..." />
+                            src="images/bmw cards/bmw m5CS.jpg" alt="BMW Loading..." />
                     </div>
                     <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 25 000km</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> 4400cc</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
 
                     <div class="card-heading">
-                        Audi Q8
+                        BMW M5 CS
+                    </div>
+                    <div class="card-text">   
+                        Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill.
+                        Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication.
                     </div>
                     <div class="card-text">
-                        Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
-                    </div>
-                    <div class="card-text">
-                        $67,400
+                        179,000€
                     </div>
                     <a href="#" class="card-button"> Purchase</a>
                 </div>
