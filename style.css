@@ -55,7 +55,7 @@ html {
     background-color: transparent;
     color: #000000;
     text-decoration: none;
-    border: 2px solid red;
+    border: 1px solid red;
     transition: .7s ease;
   }
 
