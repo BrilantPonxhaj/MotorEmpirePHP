@@ -187,7 +187,7 @@
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
                     <div class="card-heading">
-                        BMW 5 Series
+                        BMW 545e xDrive
                     </div>
                     <div class="card-text">                      
                         Indulge in refined luxury and exhilarating performance with the BMW 5 Series, where every detail is crafted for a seamless fusion of power. 
@@ -212,7 +212,7 @@
                       </div>
 
                     <div class="card-heading">
-                        BMW M3 cs
+                        BMW M3 CS
                     </div>
                     <div class="card-text">    
                         Unleash the adrenaline with the BMW M3 CS series, designed to dominate both the road and the track.
@@ -262,7 +262,7 @@
                       </div>
 
                     <div class="card-heading">
-                        BMW M4
+                        BMW M4 Competition
                     </div>
                     <div class="card-text">               
                         Unleash the beast within with the BMW M4, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. 

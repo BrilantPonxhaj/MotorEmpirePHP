@@ -26,12 +26,12 @@
       <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
         <a href="index.php">Home</a>
-        <a href="vehicles.html">Vehicles</a>
+        <a href="vehicles.php">Vehicles</a>
         <a href="featured.html">Featured</a>
         <a href="#Services">Services</a>
         <a href="#Review">Review</a>
         <a href="contact.php">Contact</a>
-        <a href="price.html">PriceRange</a>
+        
       </nav>
 
       <!-- Login Button e kom shly ktu se dalina na ka kritiku heren e kalume-->
@@ -90,7 +90,7 @@
                                 <img src="img/team-image-1-646x680.jpg" alt="">
                             </div>
                             <div class="text-content">
-                                <h4>John Doe</h4>
+                                <h4>Caleb Wayne</h4>
                                 <span>CEO</span>
                             </div>
                             <div class="plus-button">
@@ -104,7 +104,7 @@
                                 <img src="img/team-image-2-646x680.jpg" alt="">
                             </div>
                             <div class="text-content">
-                                <h4>Jane Doe</h4>
+                                <h4>Freya Walker</h4>
                                 <span>Marketing Manager</span>
                             </div>
                             <div class="plus-button">
@@ -132,7 +132,7 @@
                                 <img src="img/team-image-4-646x680.jpg" alt="">
                             </div>
                             <div class="text-content">
-                                <h4>Dan Blatan</h4>
+                                <h4>Jasper Mitchell</h4>
                                 <span>Customer Service</span>
                             </div>
                             <div class="plus-button">
