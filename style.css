@@ -1203,3 +1203,6 @@ body.dark-mode {
     color: black;
 }
 
+.text-primary {
+    color: red;
+}

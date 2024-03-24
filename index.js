@@ -126,6 +126,19 @@ function showSlides(n) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Swiper JS per slider t featured 
 var swiper = new Swiper(".FeatureSlider", {
     grabCursor:true,
@@ -153,6 +166,9 @@ var swiper = new Swiper(".FeatureSlider", {
         },
     }
 });
+
+
+
 
 
 
