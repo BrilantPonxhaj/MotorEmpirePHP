@@ -144,8 +144,8 @@ body{
 
     .card-button:hover {
         text-decoration: none;
-        color: #ffffff;
-        background-color: #ff0000;
+        color: red;
+        background-color: #fff;
         transition: 1s ease;
         border: 1.5px solid #ff0000;
     }
