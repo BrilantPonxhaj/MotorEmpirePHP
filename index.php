@@ -29,11 +29,9 @@
 
       <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
-        <a href="#Home">Home</a>
+        <a href="index.php">Home</a>
         <a href="vehicles.php">Vehicles</a>
-        <a href="featured.html">Featured</a>
-        <a href="#Services">Services</a>
-        <a href="#Review">Review</a>
+  
         <a href="contact.php">Contact</a>
       </nav>
 
@@ -149,7 +147,7 @@
       <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
         <img src="images/bmwred.jpg" style="width: 100%" />
-        <div class="text">BMW M4 Coupe 50 Jahre</div>
+        <div class="text">M4 Coupe 50 Jahre</div>
       </div>
 
       <div class="mySlides fade">

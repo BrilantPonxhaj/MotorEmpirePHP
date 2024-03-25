@@ -249,13 +249,11 @@ img{
         <div id="MenuBtn" class="fas fa-bars"></div>
   
         <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
-        <nav class="navbar">
-          <a href="index.php">Home</a>
-          <a href="vehicles.php">Vehicles</a>
-          <a href="featured.html">Featured</a>
-          <a href="#Services">Services</a>
-          <a href="#Review">Review</a>
-          <a href="contact.php">Contact</a>
+      <nav class="navbar">
+        <a href="index.php">Home</a>
+        <a href="vehicles.php">Vehicles</a>
+  
+        <a href="contact.php">Contact</a>
         </nav>
   
   

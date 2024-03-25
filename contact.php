@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MotorEmpire | Contact</title>
     <meta name="description" content="">
-
-        <link rel="icon" type="image/x-icon" href="images/favicon.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
         <link rel="stylesheet" href="bootstrap+fonte/bootstrap.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        
         <link rel="stylesheet" href="bootstrap+fonte/bootstrap-theme.min.css">
         <link rel="stylesheet" href="bootstrap+fonte/fontAwesome.css">
         <link rel="stylesheet" href="bootstrap+fonte/hero-slider.css">
@@ -17,6 +17,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <link rel="stylesheet" href="contact.css">
 </head>
 <body>
 
@@ -26,11 +27,10 @@
 
       <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
+  
         <a href="index.php">Home</a>
         <a href="vehicles.php">Vehicles</a>
-        <a href="featured.html">Featured</a>
-        <a href="#Services">Services</a>
-        <a href="#Review">Review</a>
+  
         <a href="contact.php">Contact</a>
         
       </nav>
@@ -122,80 +122,98 @@ function isWorkingHours($time) {
 }
 ?>
 
-
-    <section class="popular-places" id="popular">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-heading">
-                            
-                            <h1>Team</h1>
-                        </div>
-                    </div> 
-                </div> 
-
-                <div class="owl-carousel owl-theme">
-                    <div class="item popular-item">
-                        <div class="thumb">
-                            <div class="thumb-img">
-                                <img src="img/team-image-1-646x680.jpg" alt="">
-                            </div>
-                            <div class="text-content">
-                                <h4>Caleb Wayne</h4>
-                                <span>CEO</span>
-                            </div>
-                            <div class="plus-button">
-                                <a href="team.html"><i class="fa fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item popular-item">
-                        <div class="thumb">
-                            <div class="thumb-img">
-                                <img src="img/team-image-2-646x680.jpg" alt="">
-                            </div>
-                            <div class="text-content">
-                                <h4>Freya Walker</h4>
-                                <span>Marketing Manager</span>
-                            </div>
-                            <div class="plus-button">
-                                <a href="team.html"><i class="fa fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item popular-item">
-                        <div class="thumb">
-                            <div class="thumb-img">
-                                <img src="img/team-image-3-646x680.jpg" alt="">
-                            </div>
-                            <div class="text-content">
-                                <h4>Paula Jeorge</h4>
-                                <span>Customer Service</span>
-                            </div>
-                            <div class="plus-button">
-                                <a href="team.html"><i class="fa fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item popular-item">
-                        <div class="thumb">
-                            <div class="thumb-img">
-                                <img src="img/team-image-4-646x680.jpg" alt="">
-                            </div>
-                            <div class="text-content">
-                                <h4>Jasper Mitchell</h4>
-                                <span>Customer Service</span>
-                            </div>
-                            <div class="plus-button">
-                                <a href="team.html"><i class="fa fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
+<section id="Feature" class="team">
+            <h1 class="heading"><b>Our Team</b></h1>
+            <div class="swiper TeamSlider">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                  <img src="img/team-image-1-646x680.jpg" alt="" />
+                  <div class="content">
+                    
+                    <h3>John Doe-<b>CEO</b></h3>
+                  
+                   
+                  </div>
                 </div>
-            </div>
-        </section>
 
-        </main>
+
+                <div class="swiper-slide box">
+                  <img src="img/team-image-2-646x680.jpg" alt="" />
+                  <div class="content">
+                    <h3>Jane Doe-<b>Administrative Assistant</b></h3>
+                 
+                  </div>
+                </div>
+
+
+
+                <div class="swiper-slide box">
+                  <img src="img/team-image-3-646x680.jpg" alt="" />
+                  <div class="content">
+                    <h3>Paula George-<b>Marketing Manager</b></h3>
+                    
+                  </div>
+                </div>
+
+
+
+                <div class="swiper-slide box">
+                  <img src="img/team-image-4-646x680.jpg" alt="" />
+                  <div class="content">
+                    <h3>Dan Blatan-<b>Office Assistant</b></h3>
+                   
+                  </div>
+                </div>
+
+
+
+                <div class="swiper-slide box">
+                  <img src="img/albertdera2.png" alt="" />
+                  <div class="content">
+                    <h3>Albert Deda-<b>Sales Manager</b></h3>
+                   
+                  </div>
+                </div>
+
+
+
+                <div class="swiper-slide box">
+                  <img src="img/teamimage5.png" alt="" />
+                  <div class="content">
+                    <h3>Jake Peralta-<b>Customer Service Representative</b></h3>
+                    
+                  </div>
+                </div>
+
+                <div class="swiper-slide box">
+                  <img src="img/teamimage6.png" alt="" />
+                  <div class="content">
+                    <h3>Robin Williams-<b>Customer Service Representative</b></h3>
+                    
+                  </div>
+                </div>
+
+                <div class="swiper-slide box">
+                  <img src="img/teamimage7.png" alt="" />
+                  <div class="content">
+                    <h3>Mary Jane-<b>Customer Service Representative</b></h3>
+                    
+                  </div>
+                </div>
+      
+
+
+      
+
+
+            
+              </div>
+            </div>
+          </section>
+
+          
+
+
 <br><br><br>
 <!-- Footeri -->
 <footer>
@@ -275,9 +293,47 @@ function isWorkingHours($time) {
     <script src="js/main.js"></script>
 
 
+  
    
 
 
+
+
+<!--SWIPER JS-->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+
+//Swiper JS per slider t ekipes 
+var swiper = new Swiper(".TeamSlider",
+ {
+    grabCursor:true,
+    spaceBetween:50,
+    centeredSlides:true,
+    loop: true,
+    autoplay:{
+        delay:2000,
+        disableOnInteraction:false,
+    },
+    pagination: 
+    { 
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    //Qikjo per Responsive -- mi bo boxes te Featured Cars qe kur ti bojsh slide me t dal tjetra
+    breakpoints: {
+        0: {
+            slidesPerView:1,
+        },
+        768: {
+            slidesPerView:2,
+        },
+        1024: {
+            slidesPerView:3,
+        },
+    }
+});
+</script>
     
 </body>
 </html>

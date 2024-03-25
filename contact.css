@@ -1,0 +1,47 @@
+.team
+{
+    margin-bottom: 50px;
+}
+.team img
+{
+    width: 100%; /* Change width to 100% */
+    height: 100%; /* Change height to 100% */
+    object-fit: cover; /* Ensure the image covers the entire box */
+    object-position: center; /* Center the image within the box */
+}
+.TeamSlider 
+{
+    padding: 1rem;
+    padding-bottom: 4rem;
+
+}
+.TeamSlider .box
+{
+    padding: 1rem; /* Adjust padding as needed */
+    text-align: center;
+    border: var(--border);
+    border-radius: 2rem;
+    box-shadow: var(--box_shadow);
+ 
+   
+}
+.team .box:hover img
+{
+    transform: scale(1.08);
+}
+.team .box .content h3
+{
+    font-size: 1.5rem;
+}
+.team .box .content .stars
+{
+    padding: 1rem 0;
+}
+.team .box .content .stars i
+{ 
+    font-size: 1rem;
+}
+.team .price
+{
+    font-size: 1.6rem;
+}

@@ -98,8 +98,8 @@ header .navbar a{
     height: 10px; /* Adjust based on your layout */
     margin: auto; /* Center the navbar */
      /* Flexbox layout for the items */
-
-    font-size: 1.6rem;
+ font-weight: 50;
+    font-size: 1.8rem;
     color: #000;
     margin: 0.6rem;
     justify-content: space-between;
@@ -107,6 +107,7 @@ header .navbar a{
 header .navbar a:hover{
     color: var(--main);
     text-decoration: none;
+
 }
 #LoginBtn .btn:hover {
     background:transparent; /* This sets the button background to black on hover */
@@ -457,6 +458,13 @@ header .navbar a:hover{
 {
     font-size: 1.6rem;
 }
+
+
+
+
+
+
+
 
 
 /*SERVICES SECTION STARTPOINT*/

@@ -14,42 +14,13 @@ window.onscroll = () => {
 
 //LoginForma bashk  me close form
 
-document.addEventListener('DOMContentLoaded', function() {
-    var loginButton = document.querySelector('#LoginBtn');
-    var closeButton = document.querySelector('.loginFormContainer .close');
-    var loginForm = document.getElementById('id01');
-
-    // Event listener to toggle the login form
-    loginButton.addEventListener('click', function() {
-        loginForm.classList.toggle('active');
-    });
-
-    // Event listener to close the login form
-    closeButton.addEventListener('click', function() {
-        loginForm.classList.remove('active');
-    });
-});
 
 
 
  
 
 //HomeParallaxEffect -- me leviz figura kryesore 
-document.querySelector(".home").onmousemove = (e) => {
-    document.querySelectorAll(".homeParallaxEffect").forEach((el) => {
-        let Speed = el.getAttribute("data-speed")
-        let X = (window.innerWidth - e.pageX*Speed) / 60;
-        let Y  = (window.innerHeight - e.pageY*Speed) / 60;
-       
 
-        el.style.transform=`translateX(${Y}px) translateY(${X}px)`;
-     });
-};
-document.querySelector(".home").onmouseleave = (e) => {
-    document.querySelectorAll(".homeParallaxEffect").forEach((el) => {
-        el.style.transform =`translateX(0px) translateY(0px)`;
-    });
-}; 
 
 
 //Swiper JS per Vehicle Slider-- slide me maus edhe me t dal tjetra
