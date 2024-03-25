@@ -278,7 +278,7 @@ img{
                 </div>
                 <div class = "product-div-right">
                     <span class = "product-name">BMW 3 SERIES</span>
-                    <span class = "product-price">$120,000</span>
+                    <span class = "product-price">$62,500€</span>
                     <div class = "product-rating">
                         <span><i class = "fas fa-star"></i></span>
                         <span><i class = "fas fa-star"></i></span>

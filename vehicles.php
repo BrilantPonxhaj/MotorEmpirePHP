@@ -170,7 +170,7 @@
                     Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving.
                     </div>
                     <div class="card-text">
-                        120,000€
+                        $62,500€
                     </div>
                     <a href="cardemo1.php" class="card-button"> Purchase</a>
                 </div>
@@ -194,7 +194,7 @@
                         Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence.
                     </div>
                     <div class="card-text">
-                        145,000€
+                        $84,500€
                     </div>
                     <a href="cardemo2.php" class="card-button"> Purchase</a>
                 </div>
@@ -244,7 +244,7 @@
                         Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future.
                     </div>
                     <div class="card-text">
-                        133,000€
+                        $97,000
                     </div>
                     <a href="cardemo4.php" class="card-button"> Purchase</a>
                 </div>
@@ -269,7 +269,7 @@
                         Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel.
                     </div>
                     <div class="card-text">
-                        113,000€
+                        $113,000
                     </div>
                     <a href="cardemo5.php" class="card-button"> Purchase</a>
                 </div>
@@ -294,7 +294,7 @@
                         Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication.
                     </div>
                     <div class="card-text">
-                        179,000€
+                        $179,000
                     </div>
                     <a href="cardemo6.php" class="card-button"> Purchase</a>
                 </div>

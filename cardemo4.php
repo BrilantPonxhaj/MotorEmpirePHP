@@ -267,31 +267,37 @@ img{
                     <div class = "img-container">
                         <img src = "images/w1.png" alt = "watch">
                     </div>
+
                     <div class = "hover-container">
-                        <div><img src = "./images/bmw cards/bmw5.1.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.2.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.3.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.4.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.5.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.6.webp"></div>
+                        <div><img src = "./images/bmw cards/bmw7.1.webp"></div>
+                        <div><img src = "./images/bmw cards/bmw7.2.webp"></div>
+                        <div><img src = "./images/bmw cards/bmw7.3.webp"></div>
+                        <div><img src = "./images/bmw cards/bmw7.4.webp"></div>
+                        <div><img src = "./images/bmw cards/bmw7.5.webp"></div>
+                        <div><img src = "./images/bmw cards/bmw7.6.webp"></div>
                     </div>
                 </div>
-                <div class = "product-div-right">
-                    <span class = "product-name">BMW 545e xDrive</span>
-                    <span class = "product-price">$84,500</span>
-                    <div class = "product-rating">
-                        <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star"></i></span>
-                        <span>(420 ratings)</span>
-                    </div>
-                    <p class = "product-description">                                          Indulge in refined luxury and exhilarating performance with the BMW 5 Series, where every detail is crafted for a seamless fusion of power. 
-                        Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence.
 
-</p>
+                <div class = "product-div-right">
+                    <span class = "product-name">BMW 7 Series </span>
+                    <span class = "product-price">$97,000</span>
+                    <div class = "product-rating">
+
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span><i class = "fas fa-star-half-alt"></i></span>
+                        <span>(345 ratings)</span>
+
+                    </div>
+
+                    <p class = "product-description"> 
+                        Embark on a journey of sustainable luxury with the BMW 7 Series Plug-in Hybrid, seamlessly combining eco-consciousness with unparalleled comfort. 
+                        Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future.  
+                    </p>
                     <div class = "btn-groups">
+
                         <button type = "button" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>add to cart</button>
                         <button type = "button" class = "buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button>
                     </div>
@@ -308,6 +314,9 @@ img{
                         <div class="logo">
                             <img src="images/2.png" alt="Venue Logo">
                         </div>
+
+
+
                         <p>MotorEmpire is authorised and regulated by the Financial Conduct Authority.All vehicles are subject to prior sale. By accessing this website, you agree to the MotorEmpire's Terms of Service and Privacy Policy.</p>
                         <ul class="social-icons">
                             <li>
@@ -318,11 +327,16 @@ img{
                         </ul>
                     </div>
                 </div>
+
+
+
                 <div class="col-md-4">
                     <div class="useful-links">
                         <div class="footer-heading">
                             <h4>Useful Links</h4>
                         </div>
+
+
                         <div class="row">
                             <div class="col-md-6">
                                 <ul>
@@ -332,6 +346,8 @@ img{
                                     <li><a href="contact.html"><i class="fa fa-stop"></i>Contact Us</a></li>
                                 </ul>
                             </div>
+
+
                             <div class="col-md-6">
                                 <ul>
                                     <li><a href="faq.html"><i class="fa fa-stop"></i>FAQ</a></li>
@@ -343,11 +359,15 @@ img{
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-md-3">
                     <div class="contact-info">
                         <div class="footer-heading">
                             <h4>Contact Information</h4>
                         </div>
+
+
                         <p><i class="fa fa-map-marker"></i> 212 Barrington Court New York, ABC</p>
                         <ul>
                             <li>Phone:<a href="#">+38344412817</a></li>
