@@ -265,7 +265,7 @@
                         BMW M4 Competition
                     </div>
                     <div class="card-text">               
-                        Unleash the beast within with the BMW M4, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. 
+                        Unleash the beast within with the BMW M4 Competition, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. 
                         Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel.
                     </div>
                     <div class="card-text">

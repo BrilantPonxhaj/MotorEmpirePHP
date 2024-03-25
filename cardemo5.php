@@ -269,32 +269,32 @@ img{
                     </div>
 
                     <div class = "hover-container">
-                        <div><img src = "./images/bmw cards/bmw7.2.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw7.1.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw7.3.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw7.4.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw7.5.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw7.6.webp"></div>
+                        <div><img src = "./images/bmw cards/m4.1.webp"></div>
+                        <div><img src = "./images/bmw cards/m4.2.webp"></div>
+                        <div><img src = "./images/bmw cards/m4.3.webp"></div>
+                        <div><img src = "./images/bmw cards/m4.4.webp"></div>
+                        <div><img src = "./images/bmw cards/m4.5.webp"></div>
+                        <div><img src = "./images/bmw cards/m4.6.webp"></div>
                     </div>
                 </div>
 
                 <div class = "product-div-right">
-                    <span class = "product-name">BMW 7 Series </span>
-                    <span class = "product-price">$97,000</span>
+                    <span class = "product-name">BMW M4 Competiton </span>
+                    <span class = "product-price">$82,800</span>
                     <div class = "product-rating">
 
                         <span><i class = "fas fa-star"></i></span>
                         <span><i class = "fas fa-star"></i></span>
                         <span><i class = "fas fa-star"></i></span>
                         <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star-half-alt"></i></span>
-                        <span>(345 ratings)</span>
+                        <span><i class = "far fa-star"></i></span>
+                        <span>(268 ratings)</span>
 
                     </div>
 
                     <p class = "product-description"> 
-                        Embark on a journey of sustainable luxury with the BMW 7 Series Plug-in Hybrid, seamlessly combining eco-consciousness with unparalleled comfort. 
-                        Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future.  
+                        Unleash the beast within with the BMW M4 Competition, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. 
+                        Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel.  
                     </p>
                     <div class = "btn-groups">
 
