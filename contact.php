@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MotorEmpire | Contact</title>
     <meta name="description" content="">
-  
+
+        <link rel="icon" type="image/x-icon" href="images/favicon.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
         <link rel="stylesheet" href="bootstrap+fonte/bootstrap.min.css">
         <link rel="stylesheet" href="bootstrap+fonte/bootstrap-theme.min.css">
@@ -74,6 +75,7 @@
 </section>
 
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $email = $_POST["email"];
@@ -90,12 +92,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     elseif (!isWorkingHours($time)) {
         echo '<script>alert("Please select a time during working hours (8 AM to 4 PM).")</script>';
     } else {
-        //Kysmet qitu duhet me bo me rujt dikun po niher veq per test e bona qitfar manovre
-        echo "<h2>Name: " . $name . "</h2><br>";
-        echo "<h2>Email: " . $email . "</h2><br>";
-        echo "<h2>Date: " . $date . "</h2><br>";
-        echo "<h2>Time: " . $time . "</h2><br>";
-        echo "<h2>Message: " . $message . "</h2><br>";
+        $appointment = array(
+            'name' => $name,
+            'email' => $email,
+            'date' => $date,
+            'time' => $time,
+            'message' => $message
+        );
+        $_SESSION['appointments'][] = $appointment;
+        exit();
     }
 }
 function isWorkingHours($time) {
