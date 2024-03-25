@@ -40,6 +40,8 @@
     <h1><b>Appointments</b></h1>
 
     <?php 
+    // Qikjo pjes veq i merr vargjet qe jon n sessions prej sessionit n contact edhe i thirr me echo
+    // qekjo foreach bohet definohet kshtu puna qe te contacti vargu u deklaru si $appointment
         if(isset($_SESSION['appointments']) && !empty($_SESSION['appointments'])) {
             foreach($_SESSION['appointments'] as $appointment) {
                 echo "<h2>Name: " . $appointment['name'] . "</h2>";
@@ -50,6 +52,7 @@
                 echo "<hr>";
             }
         } else {
+            //Kur t qelet per her t par appointments.php qekjo del puna qe sessioni i ri ska asni data t rujtun
             echo "<p>No appointments yet.</p>";
         }
     ?>

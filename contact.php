@@ -77,6 +77,9 @@
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //qeky if $_SERVER osht tu e kqyr formen n contact a e ka metoden POST edhe nese osht tani i merr qato t dhana
+    // edhe i run n qito variabla per perdorim tani ma posht nuk ish kan keq edhe nese psh te qaj kushti me filter
+    // t emailit me shkru $_POST["email"] amo mu dok ma paqt
     $name = $_POST["name"];
     $email = $_POST["email"];
     $date = $_POST["date"];
@@ -84,14 +87,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST["message"];
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        //Validimi i emailit 
         echo '<script>alert("Please enter a valid email address.")</script>';
     }
+    
     elseif (strtotime($date) < strtotime('today')) {
+        // sikur n javascript me getDate edhe ktu veq sintaksa ndryshon 
         echo '<script>alert("Please select a date that is not in the past.")</script>';
     } 
     elseif (!isWorkingHours($time)) {
+        //qet funksion e kom definu posht me kohen n cilen mun me bo book
         echo '<script>alert("Please select a time during working hours (8 AM to 4 PM).")</script>';
     } else {
+        //tashti nese krejt qato kushte plotsohen vjen reni ku krejt qato ruhen n qit vargun $appointment
+        //qiky osht associative array tasht duhet me shtu edhe numeric edhe multidimensional amo jon shum palidhje ni zot e din ku ishtina   
         $appointment = array(
             'name' => $name,
             'email' => $email,
@@ -100,6 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'message' => $message
         );
         $_SESSION['appointments'][] = $appointment;
+        //Tash qetu t dhanat qe ndodhen n vargun $appointment ruhen n qet vargun tjeter 'appointments'
         exit();
     }
 }
