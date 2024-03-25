@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-     <!--FONT AWESOME LINK edhe ma posht osht si link i downlodum-->
-     <link rel="stylesheet" href="bootstrap+fonte/fontAwesome.css">
+    <!--FONT AWESOME LINK edhe ma posht osht si link i downlodum-->
+        <link rel="stylesheet" href="bootstrap+fonte/fontAwesome.css">
     <style>
 .heading
 {
@@ -271,35 +271,33 @@ img{
                     </div>
 
                     <div class = "hover-container">
-                        <div><img src = "./images/bmw cards/m3cs1.webp"></div>
-                        <div><img src = "./images/bmw cards/m3cs2.webp"></div>
-                        <div><img src = "./images/bmw cards/m3cs3.webp"></div>
-                        <div><img src = "./images/bmw cards/m3cs4.webp"></div>
-                        <div><img src = "./images/bmw cards/m3cs5.webp"></div>
-                        <div><img src = "./images/bmw cards/m3cs6.webp"></div>
+                        <div><img src = "./images/bmw cards/m5cs1.webp"></div>
+                        <div><img src = "./images/bmw cards/m5cs2.webp"></div>
+                        <div><img src = "./images/bmw cards/m5cs3.webp"></div>
+                        <div><img src = "./images/bmw cards/m5cs4.webp"></div>
+                        <div><img src = "./images/bmw cards/m5cs5.webp"></div>
+                        <div><img src = "./images/bmw cards/m5cs6.webp"></div>
                     </div>
                 </div>
 
                 <div class = "product-div-right">
-                    <span class = "product-name">BMW M3 CS</span>
-                    <span class = "product-price">$118,700</span>
+                    <span class = "product-name">BMW M5 CS </span>
+                    <span class = "product-price">$142,000</span>
                     <div class = "product-rating">
 
                         <span><i class = "fas fa-star"></i></span>
                         <span><i class = "fas fa-star"></i></span>
                         <span><i class = "fas fa-star"></i></span>
                         <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star-half-alt"></i></span>
-                        <span>(312 ratings)</span>
+                        <span><i class = "fas fa-star"></i></span>
+                        <span>(514 ratings)</span>
 
                     </div>
 
                     <p class = "product-description"> 
-                    Unleash the adrenaline with the BMW M3 CS series, designed to dominate both the road and the track.
-                        Experience the ultimate driving experience, where every curve becomes a conquest and every moment an exhilarating symphony of performance and precision.
-
-
-</p>
+                        Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill.
+                        Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication.  
+                    </p>
                     <div class = "btn-groups">
 
                         <button type = "button" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>add to cart</button>

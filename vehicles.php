@@ -253,7 +253,7 @@
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
-                            src="images/bmw cards/bmw m4.jpg" alt="BMW Loading..." />
+                            src="images/bmw cards/m4cardimg.jpg" alt="BMW Loading..." />
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 90 000km</strong>
@@ -294,7 +294,7 @@
                         Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication.
                     </div>
                     <div class="card-text">
-                        $179,000
+                        $142,000
                     </div>
                     <a href="cardemo6.php" class="card-button"> Purchase</a>
                 </div>
