@@ -57,20 +57,56 @@
     <main>
   <!--CONTACT FORM START-->
   <section id="Contact" class="contact">
-      <h1 class="heading">Contact us</h1>
-      <div class="row">
-        <iframe title="Anfahrt Konzernzentrale. " width="100%" height="500px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d332.57204895274396!2d11.561623099999997!3d48.17624500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e77652a744cd9%3A0x1d187ce191fc1f02!2sBMW%20Group%20Konzernzentrale%20Empfang%20Petuelring!5e0!3m2!1sde!2sde!4v1582273128261!5m2!1sde!2sde">
-        </iframe>
-        <form action="">
-          <h3>Book Appointment</h3>
-          <input type="text" placeholder="Your Name" required class="box" />
-          <input type="email" placeholder="Your Email" required class="box" />
-          <textarea class="box" required placeholder="Your Message" name="" id="" cols="30" rows="10"
-></textarea>
-          <button class="btn">Send</button>
-        </form>
-      </div>
-    </section>
+  <h1 class="heading">Contact us</h1>
+  <div class="row">
+    <iframe title="Anfahrt Konzernzentrale. " width="100%" height="550px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d332.57204895274396!2d11.561623099999997!3d48.17624500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e77652a744cd9%3A0x1d187ce191fc1f02!2sBMW%20Group%20Konzernzentrale%20Empfang%20Petuelring!5e0!3m2!1sde!2sde!4v1582273128261!5m2!1sde!2sde">
+    </iframe>
+    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
+      <h3>Book Appointment</h3>
+      <input type="text" name="name" placeholder="Your Name" required class="box" />
+      <input type="email" name="email" placeholder="Your Email" required class="box" />
+      <input type="date" name="date" placeholder="Appointment Date" required class="box" />
+      <input type="time" name="time" placeholder="Appointment Time" required class="box" />
+      <textarea class="box" name="message" required placeholder="Your Message" name="" id="" cols="30" rows="10"></textarea>
+      <button class="btn">Send</button>
+    </form>
+  </div>
+</section>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $date = $_POST["date"];
+    $time = $_POST["time"];
+    $message = $_POST["message"];
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo '<script>alert("Please enter a valid email address.")</script>';
+    }
+    elseif (strtotime($date) < strtotime('today')) {
+        echo '<script>alert("Please select a date that is not in the past.")</script>';
+    } 
+    elseif (!isWorkingHours($time)) {
+        echo '<script>alert("Please select a time during working hours (8 AM to 4 PM).")</script>';
+    } else {
+        //Kysmet qitu duhet me bo me rujt dikun po niher veq per test e bona qitfar manovre
+        echo "<h2>Name: " . $name . "</h2><br>";
+        echo "<h2>Email: " . $email . "</h2><br>";
+        echo "<h2>Date: " . $date . "</h2><br>";
+        echo "<h2>Time: " . $time . "</h2><br>";
+        echo "<h2>Message: " . $message . "</h2><br>";
+    }
+}
+function isWorkingHours($time) {
+    $start = strtotime('08:00:00');
+    $end = strtotime('16:00:00');
+    $selectedTime = strtotime($time);
+
+    return ($selectedTime >= $start && $selectedTime <= $end);
+}
+?>
+
 
     <section class="popular-places" id="popular">
             <div class="container">
