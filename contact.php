@@ -60,7 +60,7 @@
   <section id="Contact" class="contact">
   <h1 class="heading">Contact us</h1>
   <div class="row">
-    <iframe title="Anfahrt Konzernzentrale. " width="100%" height="550px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d332.57204895274396!2d11.561623099999997!3d48.17624500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e77652a744cd9%3A0x1d187ce191fc1f02!2sBMW%20Group%20Konzernzentrale%20Empfang%20Petuelring!5e0!3m2!1sde!2sde!4v1582273128261!5m2!1sde!2sde">
+    <iframe title="Anfahrt Konzernzentrale. " width="100%" height="650px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d332.57204895274396!2d11.561623099999997!3d48.17624500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e77652a744cd9%3A0x1d187ce191fc1f02!2sBMW%20Group%20Konzernzentrale%20Empfang%20Petuelring!5e0!3m2!1sde!2sde!4v1582273128261!5m2!1sde!2sde">
     </iframe>
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
       <h3>Book Appointment</h3>
@@ -69,7 +69,8 @@
       <input type="date" name="date" placeholder="Appointment Date" required class="box" />
       <input type="time" name="time" placeholder="Appointment Time" required class="box" />
       <textarea class="box" name="message" required placeholder="Your Message" name="" id="" cols="30" rows="10"></textarea>
-      <button class="btn">Send</button>
+      <!-- <button class="btn">Send</button> -->
+      <input type="submit" name="send" value="Send" class="btn">
     </form>
   </div>
 </section>
@@ -110,8 +111,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         );
         $_SESSION['appointments'][] = $appointment;
         //Tash qetu t dhanat qe ndodhen n vargun $appointment ruhen n qet vargun tjeter 'appointments'
-        exit();
-    }
+        
+        $message2 = "<b>Dear " . $_POST["name"] . ". <br>We are delighted to tell you that the time : <i>" . $_POST["time"] . " </i>on date : <i>" . $_POST["date"] . "</i> is availiable.";
+        require("scriptContact.php");
+          if(isset($_POST['send'])) {
+            if (empty($_POST['email'])) {
+              $response = "The email field is required";
+            }else{
+              $response = sendMail1($_POST['email'],$subject1 ,$message2);
+            }
+          }
+          exit();
+      }
 }
 function isWorkingHours($time) {
     $start = strtotime('08:00:00');
@@ -121,7 +132,6 @@ function isWorkingHours($time) {
     return ($selectedTime >= $start && $selectedTime <= $end);
 }
 ?>
-
 <section id="Feature" class="team">
             <h1 class="heading"><b>Our Team</b></h1>
             <div class="swiper TeamSlider">
