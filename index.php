@@ -36,11 +36,22 @@
       </nav>
 
       <!-- Login Button -->
-
-<div id="LoginBtn">
-  <a href="login.php" id="loginButton" class="btn">Login</a>
-  <i class="fas fa-user"></i>
-</div>
+      <?php
+  session_start();
+  if (isset($_SESSION['username'])) {
+      // If the user is logged in, display their name and a logout button
+      echo '<div id="UserBtn">';
+      echo '<span style="border: 2px solid black; padding: 5px; font-weight: bold" class=icons ><i class="fas fa-user"></i>' . $_SESSION['username'] . '</span> ';
+      echo '<a href="logout.php" class="btn">Logout</a>';
+      echo '</div>';
+  } else {
+      // If the user is not logged in, display the login button
+      echo '<div id="LoginBtn">';
+      echo '<a href="login.php" id="loginButton" class="btn">Login</a>';
+      echo '<i class="fas fa-user"></i>';
+      echo '</div>';
+  }
+  ?>
     </header>
 
 
