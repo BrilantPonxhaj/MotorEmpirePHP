@@ -396,102 +396,10 @@ $products = [
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        
-var products = <?php echo json_encode($products); ?>;
-
-function applyFilters() {
-    var filter1Value = document.getElementById("filter1").value;
-    var filter2Value = document.getElementById("filter2").value;
-    var filter3Value = document.getElementById("filter3").value;
-    var filter4Value = document.getElementById("filter4").value;
-    var filter5Value = document.getElementById("filter5").value;
-    var filter6Value = document.getElementById("filter6").value; 
-
-    var filteredProducts = products.filter(function(product) {
-        var filter1Match = filter1Value === "" || product.category === filter1Value;
-        var filter2Match = filter2Value === "" || product.model === filter2Value;
-        var filter3Match = filter3Value === "" || checkPriceRange(product.price, filter3Value); //Price
-        var filter4Match = filter4Value === "" || checkKilometers(product.kilometers, filter4Value); //Kilometrat
-        var filter5Match = filter5Value === "" || product.engineType === filter5Value;
-        var filter6Match = filter6Value === "" || product.gearbox === filter6Value;
-
-        return filter1Match && filter2Match && filter3Match && filter4Match && filter5Match && filter6Match;
-    });
-    displayProducts(filteredProducts);
-}
-
-function displayProducts(products) {
-    var productContainer = document.getElementById("productContainer");
-    var noResultsMessage = document.getElementById("noResultsMessage");
-
-    // E fshin previous content
-    productContainer.innerHTML = "";
-    // E bon check a ka sene Tfiltrune
-    if (products.length === 0) {
-        noResultsMessage.style.display = "block";
-    } else {
-        noResultsMessage.style.display = "none";
-        
-        products.forEach(function(product) {
-            var productCard = document.createElement("div");
-            productCard.classList.add("col-lg-4", "col-md-4", "col-sm-6", "col-xs-12", "pb-2", "pt-2");
-
-            // Construct the dynamic HTML content for the product card
-            productCard.innerHTML = `
-                <div class="card-sl" style="margin-top:52px">
-                    <div class="card-image">
-                        <img src="${product.image}" alt="${product.name}" />
-                    </div>
-                    <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted"><i class="fa fa-dashboard"></i> ${product.kilometers}</strong>
-                        <strong class="text-muted"><i class="fa fa-cube"></i> ${product.engineType}</strong>
-                        <strong class="text-muted"><i class="fa fa-cog"></i> ${product.gearbox}</strong>
-                    </div>
-                    <div class="card-heading">${product.name}</div>
-                    <div class="card-text">${product.description}</div>
-                    <div class="card-text">${product.price}</div>
-                    <a href="${product.demo}" class="card-button">Purchase</a>
-                </div>`;
-
-            productContainer.appendChild(productCard);
-        });
-    }
-}
-
-// funksioni per price
-function checkPriceRange(price, filterValue) {
-    var ranges = {
-        "priceRange1": [20000, 50000],
-        "priceRange2": [50000, 100000],
-        "priceRange3": [100000, Infinity]
-    };
-    var priceRange = ranges[filterValue];
-    if (priceRange) {
-        var priceValue = parseInt(price.replace(/[^0-9.-]+/g, ""));
-        return priceValue >= priceRange[0] && priceValue <= priceRange[1];
-    }
-    return false;
-}
-
-//funksioni per kilometra
-function checkKilometers(kilometers, filterValue) {
-    var ranges = {
-        "kmRange1": [0, 50000],
-        "kmRange2": [50001, 100000],
-        "kmRange3": [100001, Infinity]
-    };
-    var kilometersRange = ranges[filterValue];
-    if (kilometersRange) {
-        var kilometersValue = parseInt(kilometers.replace(/[^0-9.-]+/g, ""));
-        return kilometersValue >= kilometersRange[0] && kilometersValue <= kilometersRange[1];
-    }
-    return false;
-}
-
-
-
+    <script>   
+        var products = <?php echo json_encode($products); ?>;
     </script>
+    <script src="filterjavaScript.js"></script>
   </body>
 </html>
 
