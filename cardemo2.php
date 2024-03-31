@@ -265,15 +265,27 @@ img{
             <div class = "product-div">
                 <div class = "product-div-left">
                     <div class = "img-container">
-                        <img src = "images/w1.png" alt = "watch">
+                        <img src = "images/bmw cards/bmw5.1.webp" alt = "watch">
                     </div>
-                    <div class = "hover-container">
-                        <div><img src = "./images/bmw cards/bmw5.1.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.2.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.3.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.4.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.5.webp"></div>
-                        <div><img src = "./images/bmw cards/bmw5.6.webp"></div>
+                    <div class="hover-container">
+                        <?php
+                        // Image paths
+                        $imagePaths = [
+                            "./images/bmw cards/bmw5.1.webp",
+                            "./images/bmw cards/bmw5.2.webp",
+                            "./images/bmw cards/bmw5.3.webp",
+                            "./images/bmw cards/bmw5.4.webp",
+                            "./images/bmw cards/bmw5.5.webp",
+                            "./images/bmw cards/bmw5.6.webp"
+                        ];
+
+                        // Loop through the image paths and generate HTML for each image
+                        foreach ($imagePaths as $index => $path) {
+                            echo '<div>';
+                            echo '<img src="' . $path . '" alt="Image ' . ($index + 1) . '">';
+                            echo '</div>';
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class = "product-div-right">

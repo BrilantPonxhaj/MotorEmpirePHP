@@ -1,80 +1,4 @@
 
-        // Array i produktev muj mebo me php nashta
-    var products = [
-    { 
-        name: "BMW 3 Series", 
-        category: "new vehicles", 
-        model: "BMW 3 series", 
-        price: "$62,500", 
-        kilometers: "65,000 km", 
-        engineType: "disel", 
-        gearbox: "Automatic", 
-        image: "images/bmw cards/1-BMW-3-Series.jpg", 
-        demo:"cardemo1.php",
-        description: "Experience unmatched elegance and precision with the iconic BMW 3 Series, where dynamic performance meets timeless sophistication on every journey. Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving."
-    },
-    { 
-        name: "BMW 5 Series", 
-        category: "new vehicles", 
-        model: "BMW 5 series", 
-        price: "$84,500", 
-        kilometers: "130,000 km", 
-        engineType: "disel", 
-        gearbox: "Automatic", 
-        image: "images/bmw cards/bmw 5.jpg", 
-        demo:"cardemo2.php",
-        description: "Indulge in refined luxury and exhilarating performance with the BMW 5 Series, where every detail is crafted for a seamless fusion of power. Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence."
-    },
-    { 
-        name: "BMW M3 CS", 
-        category: "new vehicles", 
-        model: "BMW M3 CS", 
-        price: "$118,700", 
-        kilometers: "45,000 km", 
-        engineType: "petrol", 
-        gearbox: "Manual", 
-        image: "images/bmw cards/bmw m3cs.jpg", 
-        demo:"cardemo3.php",
-        description: "Unleash the adrenaline with the BMW M3 CS series, designed to dominate both the road and the track. Experience the ultimate driving experience, where every curve becomes a conquest and every moment an exhilarating symphony of performance and precision."
-    },
-    { 
-        name: "BMW 7 Series", 
-        category: "new vehicles", 
-        model: "BMW 7 series", 
-        price: "$97,000", 
-        kilometers: "130,000 km", 
-        engineType: "hybrid", 
-        gearbox: "Automatic", 
-        image: "images/bmw cards/bmw 7 hybrid.jpg", 
-        demo:"cardemo4.php",
-        description: "Embark on a journey of sustainable luxury with the BMW 7 Series Plug-in Hybrid, seamlessly combining eco-consciousness with unparalleled comfort. Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future."
-    },
-    { 
-        name: "BMW M4 Competition", 
-        category: "new vehicles", 
-        model: "BMW M4 Competition", 
-        price: "$113,000", 
-        kilometers: "90,000 km", 
-        engineType: "petrol", 
-        gearbox: "Automatic", 
-        image: "images/bmw cards/m4cardimg.jpg", 
-        demo:"cardemo5.php",
-        description: "Unleash the beast within with the BMW M4 Competition, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel."
-    },
-    { 
-        name: "BMW M5 CS", 
-        category: "new vehicles", 
-        model: "BMW M5 CS", 
-        price: "$142,000", 
-        kilometers: "25,000 km", 
-        engineType: "petrol", 
-        gearbox: "Automatic", 
-        image: "images/bmw cards/bmw m5CS.jpg", 
-        demo:"cardemo6.php",
-        description: "Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill. Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication."
-    },
-];
-
 function applyFilters() {
     var filter1Value = document.getElementById("filter1").value;
     var filter2Value = document.getElementById("filter2").value;
@@ -100,36 +24,92 @@ function displayProducts(products) {
     var productContainer = document.getElementById("productContainer");
     var noResultsMessage = document.getElementById("noResultsMessage");
 
-    // E fshin previous content
-    productContainer.innerHTML = "";
-    // E bon check a ka sene Tfiltrune
+    // Clear previous content
+    while (productContainer.firstChild) {
+        productContainer.removeChild(productContainer.firstChild);
+    }
+
+    // Add the static HTML part before the dynamic product cards
+    var containerDiv = document.createElement("div");
+    containerDiv.classList.add("container");
+    containerDiv.style.marginTop = "50px";
+
+    var rowDiv = document.createElement("div");
+    rowDiv.classList.add("row");
+
+    containerDiv.appendChild(rowDiv);
+    productContainer.appendChild(containerDiv);
+
+    // Check if there are any products to display
     if (products.length === 0) {
         noResultsMessage.style.display = "block";
     } else {
         noResultsMessage.style.display = "none";
-        
+
+        // Generate product cards for each product
         products.forEach(function(product) {
             var productCard = document.createElement("div");
             productCard.classList.add("col-lg-4", "col-md-4", "col-sm-6", "col-xs-12", "pb-2", "pt-2");
 
-            // Construct the dynamic HTML content for the product card
-            productCard.innerHTML = `
-                <div class="card-sl" style="margin-top:52px">
-                    <div class="card-image">
-                        <img src="${product.image}" alt="${product.name}" />
-                    </div>
-                    <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted"><i class="fa fa-dashboard"></i> ${product.kilometers}</strong>
-                        <strong class="text-muted"><i class="fa fa-cube"></i> ${product.engineType}</strong>
-                        <strong class="text-muted"><i class="fa fa-cog"></i> ${product.gearbox}</strong>
-                    </div>
-                    <div class="card-heading">${product.name}</div>
-                    <div class="card-text">${product.description}</div>
-                    <div class="card-text">${product.price}</div>
-                    <a href="${product.demo}" class="card-button">Purchase</a>
-                </div>`;
+            var cardSlDiv = document.createElement("div");
+            cardSlDiv.classList.add("card-sl");
 
-            productContainer.appendChild(productCard);
+            var cardImageDiv = document.createElement("div");
+            cardImageDiv.classList.add("card-image");
+
+            var image = document.createElement("img");
+            image.src = product.image;
+            image.alt = product.name;
+
+            cardImageDiv.appendChild(image);
+            cardSlDiv.appendChild(cardImageDiv);
+
+            var detailsDiv = document.createElement("div");
+            detailsDiv.classList.add("d-flex", "justify-content-around", "mt-2");
+
+            var mileageStrong = document.createElement("strong");
+            mileageStrong.classList.add("text-muted");
+            mileageStrong.innerHTML = `<i class="fa fa-dashboard"></i> ${product.kilometers}`;
+
+            var engineStrong = document.createElement("strong");
+            engineStrong.classList.add("text-muted");
+            engineStrong.innerHTML = `<i class="fa fa-cube"></i> ${product.engineType}`;
+
+            var gearboxStrong = document.createElement("strong");
+            gearboxStrong.classList.add("text-muted");
+            gearboxStrong.innerHTML = `<i class="fa fa-cog"></i> ${product.gearbox}`;
+
+            detailsDiv.appendChild(mileageStrong);
+            detailsDiv.appendChild(engineStrong);
+            detailsDiv.appendChild(gearboxStrong);
+
+            cardSlDiv.appendChild(detailsDiv);
+
+            var headingDiv = document.createElement("div");
+            headingDiv.classList.add("card-heading");
+            headingDiv.textContent = product.name;
+
+            var descriptionDiv = document.createElement("div");
+            descriptionDiv.classList.add("card-text");
+            descriptionDiv.textContent = product.description;
+
+            var priceDiv = document.createElement("div");
+            priceDiv.classList.add("card-text");
+            priceDiv.textContent = product.price;
+
+            var purchaseLink = document.createElement("a");
+            purchaseLink.href = product.demo;
+            purchaseLink.classList.add("card-button");
+            purchaseLink.textContent = "Purchase";
+
+            cardSlDiv.appendChild(headingDiv);
+            cardSlDiv.appendChild(descriptionDiv);
+            cardSlDiv.appendChild(priceDiv);
+            cardSlDiv.appendChild(purchaseLink);
+
+            productCard.appendChild(cardSlDiv);
+
+            rowDiv.appendChild(productCard);
         });
     }
 }

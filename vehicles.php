@@ -11,6 +11,43 @@
     <!--External Css-->
     <link rel="stylesheet" href="stylecards.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+    .container{
+    width: 900px;
+    margin: auto;
+    max-width: 90vw;
+    text-align: center;
+    padding-top: 10px;
+    transition: transform .5s;
+}
+svg{
+    width: 30px;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.icon-cart{
+    position: relative;
+    margin-right: 35px;
+}
+.icon-cart span{
+    position: absolute;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    top: 50%;
+    right: -20px;
+}
+
+    </style>
   </head>
 
   <body>
@@ -19,7 +56,7 @@
       
       <div id="MenuBtn" class="fas fa-bars"></div>
 
-      <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
+      <a href="#" style="margin-right:35px" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
       
         <a href="index.php">Home</a>
@@ -27,6 +64,12 @@
   
         <a href="contact.php">Contact</a>
       </nav>
+       <div class="icon-cart">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
+            </svg>
+        <span>0</span>
+        </div>
 
 
  </header>
@@ -54,17 +97,18 @@
       
                   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                       <div class="form-group">
-                          <label>Model</label>
-               
-                           <select class="form-control" id="filter2">
+                        <form method="post">
+                            <label>Model</label>
+                            <select method="post" class="form-control" id="filter2">
                                 <option value="">-- All --</option>
-                                <option value="BMW 5 series">BMW 5 series</option>
-                                <option value="BMW M3 CS">BMW M3 CS</option>
-                                <option value="BMW 3 series">BMW 3 series</option>
                                 <option value="BMW 7 series">BMW 7 series</option>
-                                <option value="BMW M4 Competition">BMW M4 Competition</option>
-                                <option value="BMW M5 CS">BMW M5 CS</option>
-                           </select>
+                                <option value="BMW M5 CS">BMW M5</option>
+                                <option value="BMW 5 series">BMW 5 series</option>
+                                <option value="BMW M4 Competition">BMW M4</option>
+                                <option value="BMW M3 CS">BMW M3</option>
+                                <option value="BMW 3 series">BMW 3 Series</option>
+                            </select>
+                        </form>
                       </div>
                   </div>
       
@@ -163,7 +207,7 @@ $products = [
         "description" => "Experience unmatched elegance and precision with the iconic BMW 3 Series, where dynamic performance meets timeless sophistication on every journey. Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving."
     ],
     [
-        "name" => "BMW 5 Series",
+        "name" => "BMW 545e xDrive",
         "category" => "new vehicles",
         "model" => "BMW 5 series",
         "price" => "$84,500",
@@ -226,19 +270,19 @@ $products = [
 ];
 
 ?>
-      
+
     <div id="productContainer">
 
       <div class="container" style="margin-top:50px;">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
-                <div class="card-sl">
+                <div class="card-sl" >
                     <div class="card-image">
                         <img src="images/bmw cards/1-BMW-3-Series.jpg" alt="BMW Loading..." />
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 65 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 2000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> Disel</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
                     <div class="card-heading">
@@ -249,12 +293,16 @@ $products = [
                     Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving.
                     </div>
                     <div class="card-text">
-                        $62,500€
+                        $62,500
                     </div>
-                    <a href="cardemo1.php" class="card-button"> Purchase</a>
+                    <form action="add_to_cart.php" method="post">
+                        <input type="hidden" name="product_name" value="BMW 3 Series">
+                        <input type="hidden" name="product_price" value="62500">
+                        <a href="cardemo1.php" class="card-button">Add to Cart</a>
+                    </form>
                 </div>
             </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
@@ -262,7 +310,7 @@ $products = [
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 2500cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> Disel</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
                     <div class="card-heading">
@@ -273,12 +321,12 @@ $products = [
                         Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence.
                     </div>
                     <div class="card-text">
-                        $84,500€
+                        $84,500
                     </div>
                     <a href="cardemo2.php" class="card-button"> Purchase</a>
                 </div>
             </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
@@ -286,7 +334,7 @@ $products = [
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 45 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 3000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> Petrol</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Manual</strong>
                       </div>
 
@@ -303,7 +351,7 @@ $products = [
                     <a href="cardemo3.php" class="card-button"> Purchase</a>
                 </div>
             </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
@@ -311,7 +359,7 @@ $products = [
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 3000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> Hybrid</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
 
@@ -328,7 +376,7 @@ $products = [
                     <a href="cardemo4.php" class="card-button"> Purchase</a>
                 </div>
             </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
@@ -336,7 +384,7 @@ $products = [
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 90 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 3000cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> Petrol</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
 
@@ -353,7 +401,7 @@ $products = [
                     <a href="cardemo5.php" class="card-button"> Purchase</a>
                 </div>
             </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
                 <div class="card-sl">
                     <div class="card-image">
                         <img class=""
@@ -361,7 +409,7 @@ $products = [
                     </div>
                     <div class="d-flex justify-content-around mt-2">
                         <strong class="text-muted "><i class="fa fa-dashboard"></i> 25 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> 4400cc</strong>
+                        <strong class="text-muted "><i class="fa fa-cube"></i> petrol</strong>
                         <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
                       </div>
 
@@ -400,6 +448,11 @@ $products = [
         var products = <?php echo json_encode($products); ?>;
     </script>
     <script src="filterjavaScript.js"></script>
+    <script>
+    
+
+
+    </script>
   </body>
 </html>
 
