@@ -9,7 +9,7 @@
         kilometers: "65,000 km", 
         engineType: "disel", 
         gearbox: "Automatic", 
-        image: "http://localhost/projekti%20php/web2%20version%206.0/Web-2/images/bmw%20cards/1-BMW-3-Series.jpg", 
+        image: "images/bmw cards/1-BMW-3-Series.jpg", 
         demo:"cardemo1.php",
         description: "Experience unmatched elegance and precision with the iconic BMW 3 Series, where dynamic performance meets timeless sophistication on every journey. Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving."
     },
@@ -21,7 +21,7 @@
         kilometers: "130,000 km", 
         engineType: "disel", 
         gearbox: "Automatic", 
-        image: "http://localhost/projekti%20php/web2%20version%206.0/Web-2/images/bmw%20cards/bmw 5.jpg", 
+        image: "images/bmw cards/bmw 5.jpg", 
         demo:"cardemo2.php",
         description: "Indulge in refined luxury and exhilarating performance with the BMW 5 Series, where every detail is crafted for a seamless fusion of power. Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence."
     },
@@ -33,7 +33,7 @@
         kilometers: "45,000 km", 
         engineType: "petrol", 
         gearbox: "Manual", 
-        image: "http://localhost/projekti%20php/web2%20version%206.0/Web-2/images/bmw%20cards/bmw m3cs.jpg", 
+        image: "images/bmw cards/bmw m3cs.jpg", 
         demo:"cardemo3.php",
         description: "Unleash the adrenaline with the BMW M3 CS series, designed to dominate both the road and the track. Experience the ultimate driving experience, where every curve becomes a conquest and every moment an exhilarating symphony of performance and precision."
     },
@@ -45,7 +45,7 @@
         kilometers: "130,000 km", 
         engineType: "hybrid", 
         gearbox: "Automatic", 
-        image: "http://localhost/projekti%20php/web2%20version%206.0/Web-2/images/bmw%20cards/bmw 7 hybrid.jpg", 
+        image: "images/bmw cards/bmw 7 hybrid.jpg", 
         demo:"cardemo4.php",
         description: "Embark on a journey of sustainable luxury with the BMW 7 Series Plug-in Hybrid, seamlessly combining eco-consciousness with unparalleled comfort. Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future."
     },
@@ -57,7 +57,7 @@
         kilometers: "90,000 km", 
         engineType: "petrol", 
         gearbox: "Automatic", 
-        image: "http://localhost/projekti%20php/web2%20version%206.0/Web-2/images/bmw%20cards/m4cardimg.jpg", 
+        image: "images/bmw cards/m4cardimg.jpg", 
         demo:"cardemo5.php",
         description: "Unleash the beast within with the BMW M4 Competition, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel."
     },
@@ -69,7 +69,7 @@
         kilometers: "25,000 km", 
         engineType: "petrol", 
         gearbox: "Automatic", 
-        image: "http://localhost/projekti%20php/web2%20version%206.0/Web-2/images/bmw%20cards/bmw%20m5CS.jpg", 
+        image: "images/bmw cards/bmw m5CS.jpg", 
         demo:"cardemo6.php",
         description: "Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill. Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication."
     },

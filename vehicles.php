@@ -33,7 +33,7 @@
 <br>
 <br>
 
-<div style="margin-top: 70px; filter-container">
+<div style="margin-top: 70px;" class="filter-container">
     <h3 class="text-center text-uppercase font-monospace m-3">
         Filter
       </h3>
