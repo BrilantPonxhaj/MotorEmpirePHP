@@ -8,44 +8,40 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<?php
-
-   session_start();
-
-   $users = [
-    'user'=>"test", 
-   "manager"=>"secret",
-    "guest"=>"abc123"];  //Qetu jon emrat e userav qa jon valid me bo login
-
-   if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {   //Tregon a osht bo submit logini edhe qe nuk jon zbrazet field me password edhe username         
-       $user = $_POST['username'];       // qekjo e bon assign username ti variabla user
-       if (array_key_exists($user, $users)) {//qeky if e bon check nese ekziston qaj user qe osht retrieve prej loginit ekziston te vargu i users ma nelt
-           if ($users[$_POST['username']] == $_POST['password']) { //tash qeky e bon check nese qaj username qe osht bo submit edhe gjindet n array osht i njejt me passwordin
-         
-               $_SESSION['username'] = $_POST['username']; //qetu qaj username qe o marr me post method qitet n varialbe $_session
-               echo "<script>alert('You have entered correct username and password');</script>";
-               header("Location: index.php"); // Redirect to the main page
-               exit(); // Make sure to exit after redirection
-           } else {
-               echo "<script>alert('You have entered wrong Password');</script>";
-           }
-       } else {
-           echo "<script>alert('You have entered wrong user name');</script>";
-       }
-   }
-?>
 
 <br><br>
-<form action="" method="post">
+
     <div class="login-box">
         <div class="login-header">
             <header>Login</header>
         </div>
+        <?php
+            if(isset($_POST["login"])){
+                $email = $_POST["email"];
+                $password = $_POST["password"];
+                require_once "database/configDatabase.php";
+                $sql = "SELECT * FROM register WHERE email = '$email'";
+                $result = mysqli_query($conn, $sql);
+                $useri = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                if ($useri) {
+                    if (password_verify($password,$useri["passwordi"])) {
+                        header("Location: index.php");
+                        die();
+                    }else{
+                        echo "<div class='alert alert-danger'>Incorrect Password<br></div>";                        
+                    }
+                }else{
+                    echo "<div class='alert alert-danger'>Email doesn't match<br></div>";
+                }
+            }
+        ?>
+        <br>
+        <form action="login.php" method="post">
         <div class="input-box">
-            <input type="text" class="input-field" name="username" placeholder="Username" required>
+            <input type="email" class="input-field" name="email" placeholder="Email">
         </div>
         <div class="input-box">
-            <input type="password" class="input-field" name="password" placeholder="Password" autocomplete="off" required>
+            <input type="password" class="input-field" name="password" placeholder="Password" autocomplete="off">
         </div>
         <div class="forgot">
             <section>
@@ -57,13 +53,12 @@
             </section>
         </div>
         <div class="input-submit">
-            <button type="submit" name="login" class="submit-btn" id="submit"></button>
-            <label for="submit">Sign in</label>
+            <input type="submit" name="login" value="Sign in" class="submit-btn" id="submit1" style="color: #fff;">
         </div>
         <div class="sign-up-link">
             <p>Don't have an account? <a href="register.php">Register</a></p>
         </div>
+        </form>
     </div>
-</form>
 </body>
 </html>
