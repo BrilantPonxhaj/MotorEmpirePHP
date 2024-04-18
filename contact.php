@@ -88,10 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $time = $_POST["time"];
     $message = $_POST["message"];
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        //Validimi i emailit 
-        echo '<script>alert("Please enter a valid email address.")</script>';
-    }
+    if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
+      echo '<script>alert("Please enter a valid email address.")</script>';
+  }
     
     elseif (strtotime($date) < strtotime('today')) {
         // sikur n javascript me getDate edhe ktu veq sintaksa ndryshon 
