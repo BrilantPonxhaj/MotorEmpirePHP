@@ -52,10 +52,14 @@
     // qekjo foreach bohet definohet kshtu puna qe te contacti vargu u deklaru si $appointment
         if(isset($_SESSION['appointments']) && !empty($_SESSION['appointments'])) {
             foreach($_SESSION['appointments'] as $appointment) {
+                // ME NUMRU SA HER JON BO TERMINE EHDE ME KALLZU TERMINI I SAT OSHT
                 $appointmentCount++;
+                echo "<h2> Appointment " . $appointmentCount . "</h2>";
                 echo "<h2>Name: " . $appointment['name'] . "</h2>";
                 echo "<h2>Email: " . $appointment['email'] . "</h2>";
-                echo "<h2>Date: " . $appointment['date'] . "</h2>";
+                // kjo me manipulim me dat hapsir
+                $formattedDate = preg_replace("/(\d{2})-(\d{2})-(\d{4})/", "$1 : $2 : $3", $appointment['date']);
+                echo "<h2>Date: " . $formattedDate . "</h2>";
                 echo "<h2>Time: " . $appointment['time'] . "</h2>";
                 echo "<h2>Message: " . $appointment['message'] . "</h2><br>";
                 echo "<hr>";
