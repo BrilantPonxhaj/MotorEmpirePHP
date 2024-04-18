@@ -46,9 +46,16 @@ header{
     color: #fff;
     top: 50%;
     right: -20px;
+    
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Ensures cards are evenly spaced */
 }
 
-    </style>
+
+</style>
   </head>
 
   <body>
@@ -82,7 +89,7 @@ header{
         Filter
       </h3>
       <div class="container mt-1">
-          <form action="#">
+          <form method="post">
               <div class="row">
                   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                       <div class="form-group">
@@ -127,17 +134,15 @@ header{
                   </div> -->
       
                   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                      <div class="form-group">
-                          <label>Price:</label>
-               
-                           <select class="form-control" id="filter3">
-                                <option value="">-- All --</option>
-                                <option value="priceRange1">20000$ - 50000$</option>
-                                <option value="priceRange2">50000$ - 100000$</option>
-                                <option value="priceRange3">100000$ - ...</option>
-                           </select>
-                      </div>
-                  </div>
+            <div class="form-group">
+                <label for="sortOrder">Sort Names:</label>
+                <select class="form-control" id="sortOrder" name="sortOrder">
+                    <option value="">Select Order</option>
+                    <option value="A-Z" <?= (isset($_POST['sortOrder']) && $_POST['sortOrder'] == 'A-Z') ? 'selected' : ''; ?>>A to Z</option>
+                    <option value="Z-A" <?= (isset($_POST['sortOrder']) && $_POST['sortOrder'] == 'Z-A') ? 'selected' : ''; ?>>Z to A</option>
+                </select>
+            </div>
+        </div>
       
                   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                       <div class="form-group">
@@ -161,14 +166,13 @@ header{
       
                   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Engine type:</label>
+                        <label>Price:</label>
              
-                         <select class="form-control" id="filter5">
-                              <option value="">-- All --</option>
-                              <option value="disel">Disel</option>
-                              <option value="petrol">Petrol</option>
-                              <option value="hybrid">Hybrid</option>
-                         </select>
+                        <select class="form-control" id="sortPrice" name="sortPrice">
+                          <option value="">Select</option>
+                          <option value="lowestToHighest">Lowest to Highest</option>
+                         <option value="highestToLowest">Highest to Lowest</option>
+                        </select>
                     </div>
                 </div>
       
@@ -186,7 +190,7 @@ header{
                       </div>
                   </div>
                   <div id="Searchbtn" class="text-center mt-5">
-    <button id="Searchbtn" class="btn" onclick="applyFilters()">Search</button>
+    <button id="Searchbtn" class="btn" type="submit">Search</button>
   <i class="fas fa-user"></i>
 </div>
           </form>
@@ -199,83 +203,196 @@ $products = [
         "name" => "BMW 3 Series",
         "category" => "new vehicles",
         "model" => "BMW 3 series",
-        "price" => "$62,500",
+         "price" => 62500,
         "kilometers" => "65,000 km",
         "engineType" => "disel",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/1-BMW-3-Series.jpg",
-        "demo" => "cardemo1.php",
+        "link" => "cardemo1.php",
         "description" => "Experience unmatched elegance and precision with the iconic BMW 3 Series, where dynamic performance meets timeless sophistication on every journey. Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving."
     ],
     [
         "name" => "BMW 545e xDrive",
         "category" => "new vehicles",
         "model" => "BMW 5 series",
-        "price" => "$84,500",
+        "price" => 84500,
         "kilometers" => "130,000 km",
         "engineType" => "disel",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/bmw 5.jpg",
-        "demo" => "cardemo2.php",
+        "link" => "cardemo2.php",
         "description" => "Indulge in refined luxury and exhilarating performance with the BMW 5 Series, where every detail is crafted for a seamless fusion of power. Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence."
     ],
     [
         "name" => "BMW M3 CS",
         "category" => "new vehicles",
         "model" => "BMW M3 CS",
-        "price" => "$118,700",
+        "price" => 118700,
         "kilometers" => "45,000 km",
         "engineType" => "petrol",
         "gearbox" => "Manual",
         "image" => "images/bmw cards/bmw m3cs.jpg",
-        "demo" => "cardemo3.php",
+        "link" => "cardemo3.php",
         "description" => "Unleash the adrenaline with the BMW M3 CS series, designed to dominate both the road and the track. Experience the ultimate driving experience, where every curve becomes a conquest and every moment an exhilarating symphony of performance and precision."
     ],
     [
         "name" => "BMW 7 Series",
         "category" => "new vehicles",
         "model" => "BMW 7 series",
-        "price" => "$97,000",
+        "price" => 97000,
         "kilometers" => "130,000 km",
         "engineType" => "hybrid",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/bmw 7 hybrid.jpg",
-        "demo" => "cardemo4.php",
+        "link" => "cardemo4.php",
         "description" => "Embark on a journey of sustainable luxury with the BMW 7 Series Plug-in Hybrid, seamlessly combining eco-consciousness with unparalleled comfort. Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future."
     ],
     [
         "name" => "BMW M4 Competition",
         "category" => "new vehicles",
         "model" => "BMW M4 Competition",
-        "price" => "$113,000",
+        "price" => 113000,
         "kilometers" => "90,000 km",
         "engineType" => "petrol",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/m4cardimg.jpg",
-        "demo" => "cardemo5.php",
+        "link" => "cardemo5.php",
         "description" => "Unleash the beast within with the BMW M4 Competition, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel."
     ],
     [
         "name" => "BMW M5 CS",
         "category" => "new vehicles",
         "model" => "BMW M5 CS",
-        "price" => "$142,000",
+        "price" => 142000,
         "kilometers" => "25,000 km",
         "engineType" => "petrol",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/bmw m5CS.jpg",
-        "demo" => "cardemo6.php",
+        "link" => "cardemo6.php",
         "description" => "Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill. Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication."
     ],
     // Add other products here
 ];
 
+//Sortimi me asort edhe arsort per qmim 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $filteredProducts = array_filter($products, function ($product) {
+        return (empty($_POST['category']) || $product['category'] === $_POST['category']) &&
+               (empty($_POST['model']) || $product['model'] === $_POST['model']) &&
+               (empty($_POST['gearbox']) || $product['gearbox'] === $_POST['gearbox']);
+    });
+
+    $priceSortArray = [];
+    foreach ($filteredProducts as $key => $product) {
+        $priceSortArray[$key] = $product['price'];
+    }
+
+    if (!empty($_POST['sortPrice']) && $_POST['sortPrice'] === 'lowestToHighest') {
+        asort($priceSortArray);
+    } elseif (!empty($_POST['sortPrice']) && $_POST['sortPrice'] === 'highestToLowest') {
+        arsort($priceSortArray);
+    }
+
+    $sortedProducts = [];
+    foreach ($priceSortArray as $key => $value) {
+        $sortedProducts[] = $filteredProducts[$key];
+    }
+
+    $products = $sortedProducts;
+}
 ?>
 
-    <div id="productContainer">
 
-      <div class="container" style="margin-top:50px;">
-        <div class="row">
+
+<?php
+//Sortimi prej A-Z te makinave
+// Assuming $products is predefined as shown in previous examples.
+
+// Check if form is submitted and sort order is set
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sortOrder'])) {
+    // Extract names and their corresponding indices
+    $nameIndexMap = [];
+    foreach ($products as $index => $product) {
+        $nameIndexMap[$product['name']] = $index;
+    }
+
+    // Sort by names using the selected order from the form
+    if ($_POST['sortOrder'] === 'A-Z') {
+        ksort($nameIndexMap);
+    } elseif ($_POST['sortOrder'] === 'Z-A') {
+        krsort($nameIndexMap);
+    }
+
+    // Rebuild the products array based on the sorted names
+    $sortedProducts = [];
+    foreach ($nameIndexMap as $name => $index) {
+        $sortedProducts[] = $products[$index];
+    }
+
+    // Use the sorted products for display
+    $products = $sortedProducts;
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+<div id="productContainer">
+<div class="container" style="margin-top:50px;">
+
+<?php
+      foreach ($products as $product):
+        ?>
+     
+    
+
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
+                <div class="card-sl">
+                    <div class="card-image">
+                        <img src="<?= $product['image']; ?>" alt="Loading image...">
+                    </div>
+                    <div class="d-flex justify-content-around mt-2">
+                        <strong class="text-muted"><i class="fa fa-dashboard"></i> <?= $product['kilometers']; ?></strong>
+                        <strong class="text-muted"><i class="fa fa-cube"></i> <?= $product['engineType']; ?></strong>
+                        <strong class="text-muted"><i class= "fa fa-cog"></i> <?= $product['gearbox']; ?></strong>
+                    </div>
+                    <div class="card-heading"><?= $product['name']; ?></div>
+                    <div class="card-text"><?= $product['description']; ?></div>
+                    <div class="card-text">$<?= number_format($product['price']); ?></div>
+                    <a href="<?= $product['link']; ?>" class="card-button"> Purchase</a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        <?php if (empty($products)): ?>
+            <p>No matching items found.</p>
+        <?php endif; ?>
+    </div>  
+</div>
+
+
+
+
+
+
+
+
+        <!-- <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
                 <div class="card-sl" >
                     <div class="card-image">
@@ -432,7 +549,7 @@ $products = [
     </div>
 
     <div id="noResultsMessage" style="display: none;">
-        <p class="mt-5 m-5 fs-2 fa fa-exclamation-circle">  No matching items found.</p>
+        <p class="mt-5 m-5 fs-2 fa fa-exclamation-circle">  No matching items found.</p> -->
     </div>
 
 
@@ -456,157 +573,3 @@ $products = [
     </script>
   </body>
 </html>
-
-
-<!-- sene qe mujn me vyjt ma von -->
-<!-- <div class="container py-5">
-        <h1 class="text-center ">Product Cards</h1>
-
-        <div class="container-fluid  mt-4">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4 boxanimation"> 
-                    <div> 
-                        <img class="card-img-top" src="img/images/bmwred.jpg" alt="BMW" style="width:100%">
-                        <div class="card-img-overlay d-flex justify-content-around ">
-                            <strong class="text-muted"><i class="fa fa-dashboard"></i> 130 000km</strong>
-                            <strong class="text-muted"><i class="fa fa-cube"></i> 2000cc</strong>
-                            <strong class="text-muted"><i class="fa fa-cog"></i> Automatic</strong>
-                          </div>
-                          <div class="card-body">
-                              <h1 class="card-title">BMW 1 Series</h1>
-                              <p>Some text about the BMW 1 Series</p>
-                              <p class="price">32500$</p>
-                           <div class="p-1 rounded text-center">
-                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
-                           </div>
-                           </div>
-                      
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
-                    <div class="card"> 
-                        <img class="card-img-top" src="img/images/bmwred.jpg" alt="BMW" style="width:100%">
-                        <div class="card-img-overlay d-flex justify-content-around ">
-                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
-                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
-                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
-                          </div>
-                          <div class="card-body">
-                              <h1 class="card-title">BMW...</h1>
-                              <p>Some text about the BMW..</p>
-                              <p class="price">...$</p>
-                           <div class="p-3 rounded">
-                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
-                           </div>
-                           </div>
-                      
-                    </div>
-                </div>
-        
-               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
-                    <div class="card"> 
-                        <img class="card-img-top" src="img/images/bmwzez.jpg" alt="BMW" style="width:100%">
-                        <div class="card-img-overlay d-flex justify-content-around ">
-                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
-                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
-                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
-                          </div>
-                          <div class="card-body">
-                              <h1 class="card-title">BMW...</h1>
-                              <p>Some text about the BMW..</p>
-                              <p class="price">...$</p>
-                           <div class="p-3 rounded">
-                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
-                           </div>
-                           </div>
-                      
-                    </div>
-                </div>
-        
-               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
-                    <div class="card"> 
-                        <img class="card-img-top" src="img/images/vehiclesbmw4.jpg" alt="BMW" style="width:100%">
-                        <div class="card-img-overlay d-flex justify-content-around ">
-                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
-                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
-                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
-                          </div>
-                          <div class="card-body">
-                              <h1 class="card-title">BMW...</h1>
-                              <p>Some text about the BMW..</p>
-                              <p class="price">...$</p>
-                           <div class="p-3 rounded">
-                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
-                           </div>
-                           </div>
-                      
-                    </div>
-                </div>
-        
-               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
-                    <div class="card"> 
-                        <img class="card-img-top" src="img/images/vehiclessbmw.webp" alt="BMW" style="width:100%">
-                        <div class="card-img-overlay d-flex justify-content-around ">
-                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
-                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
-                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
-                          </div>
-                          <div class="card-body">
-                              <h1 class="card-title">BMW...</h1>
-                              <p>Some text about the BMW..</p>
-                              <p class="price">...$</p>
-                           <div class="p-3 rounded">
-                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
-                           </div>
-                           </div>
-                      
-                    </div>
-                </div>
-        
-               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 p-4"> 
-                    <div class="card"> 
-                        <img class="card-img-top" src="img/images/vehiclesbmw.png" alt="BMW" style="width:100%">
-                        <div class="card-img-overlay d-flex justify-content-around ">
-                            <strong class="text-info"><i class="fa fa-dashboard"></i> 130 000km</strong>
-                            <strong class="text-info"><i class="fa fa-cube"></i> 2000cc</strong>
-                            <strong class="text-info"><i class="fa fa-cog"></i> Automatic</strong>
-                          </div>
-                          <div class="card-body">
-                              <h1 class="card-title">BMW...</h1>
-                              <p>Some text about the BMW..</p>
-                              <p class="price">...$</p>
-                           <div class="p-3 rounded">
-                              <p><button type="button" class="btn btn-primary rounded ">Add to Cart</button></p>
-                           </div>
-                           </div>
-                      
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-        </div> -->
-<!--function applyFilters() {
-//     var filter1Value = document.getElementById("filter1").value;
-//     var filter2Value = document.getElementById("filter2").value;
-//     var filter3Value = document.getElementById("filter3").value;
-//     var filter4Value = document.getElementById("filter4").value;
-//     var filter5Value = document.getElementById("filter5").value;
-
-//     // Filter products based on the selected criteria
-//     var filteredProducts = products.filter(function(product) {
-//         return (
-//             (filter1Value === "" || product.category === filter1Value) &&
-//             (filter2Value === "" || product.model === filter2Value) &&
-//             (filter3Value === "" || checkPriceRange(product.price, filter3Value)) &&
-//             (filter4Value === "" || product.engineType === filter4Value) &&
-//             (filter5Value === "" || product.gearbox === filter5Value)
-//         );
-//     });
-
-//     // Display filtered products
-//     displayProducts(filteredProducts);
-// } -->
-
