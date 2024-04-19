@@ -72,6 +72,7 @@
       <textarea class="box" name="message" required placeholder="Your Message" name="" id="" cols="30" rows="10"></textarea>
       <!-- <button class="btn">Send</button> -->
       <input type="submit" name="send" value="Send" class="btn">
+      <a href="appointments.php" class="btn">Appoinments made so far</a>
     </form>
   </div>
 </section>

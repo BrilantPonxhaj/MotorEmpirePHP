@@ -19,6 +19,7 @@
     <style>
         .h1text{
             text-align: center;
+            padding: 20px;
         }
         .appointmentCount{
             display: flex;
@@ -54,9 +55,6 @@
       <nav class="navbar">
         <a href="index.php">Home</a>
         <a href="vehicles.php">Vehicles</a>
-        <a href="featured.html">Featured</a>
-        <a href="#Services">Services</a>
-        <a href="#Review">Review</a>
         <a href="contact.php">Contact</a>
         
       </nav>
@@ -95,9 +93,6 @@
                 echo "</div>";
                 echo "<hr>";
             }
-        } else {
-            //Kur t qelet per her t par appointments.php qekjo del puna qe sessioni i ri ska asni data t rujtun
-            echo "<p>No appointments yet.</p>";
         }
 
         
