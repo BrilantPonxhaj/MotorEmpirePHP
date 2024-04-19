@@ -56,9 +56,10 @@ if(isset($_GET['cookie_decline']) && $_GET['cookie_decline'] == 1) {
     setcookie("cookie_decline", 1, time() + (86400 * 30), "/");
     header("Location: ".$_SERVER['PHP_SELF']);
     exit();
+
 }
 
-if(!isset($_COOKIE["cookie_consent"]) && !isset($_COOKIE["cookie_decline"])) {
+if(!isset($_COOKIE["cookie_consent"]) && !isset($_COOKIE["cookie_decline"])) { 
     echo "<div class=\"container-banner\">This site uses cookies to provide the best user experience. By continuing to use this site, you agree to the use of cookies. <a href='?cookie_consent=1'>Accept</a> | <a href='?cookie_decline=1'>Reject</a> </div>";
 }
 ?>
