@@ -19,6 +19,7 @@
 
     <!--STYLESHEET I KTIJ PAGE-->
     <link rel="stylesheet" href="style.css" />
+    
   </head>
   <body>
 
@@ -673,60 +674,8 @@
         </div>
     </div>
   
- <!-- 
-
-     THEME TOGGLE NI BUTTON PER ME ZGJEDH CILEN NGJYRE DON MI PARAQIT BUTONAT TJERE
-    //<div class="themeToggle">
-
-      <div class="ToggleBtn">
-        <i class="fas fa-cog"></i>
-      </div>
-
-      <h3>Choose Color</h3>
-      <div class="buttons">
-
-        <div class="themeBtn" style="background: #0011ff"></div>
-        <div class="themeBtn" style="background: #d4990d"></div>
-        <div class="themeBtn" style="background:rgb(43, 119, 43)"></div>
-        <div class="themeBtn" style="background: #590e4fe6"></div>
-        <div class="themeBtn" style="background: #c05508"></div>
-        <div class="themeBtn" style="background: #ff041d"></div>
-        
-      </div>
-    </div>
-     
-
- VALIDIMI I FORMES LOGIN DUKE PERDORUR REGEX
-  <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          const emailInput = document.getElementById("emailInput");
-          const passwordInput = document.getElementById("passwordInput");
-          const submitButton = document.getElementById("submitButton");
+ 
   
-          // Regular expression for a valid email address
-          const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  
-          // Event listener to validate the form when the Submit button is clicked
-          submitButton.addEventListener("click", function () {
-              const email = emailInput.value.trim();
-              const password = passwordInput.value;
-  
-              // Validate email using regex
-              if (!emailRegex.test(email)) {
-                  alert("Please enter a valid email address.");
-                  return;
-              }
-  
-              // You can add more password validation logic here if needed
-  
-              // If both email and password are valid, you can proceed with form submission
-              alert("Login successful!");
-              // Replace the alert with your actual form submission logic
-          });
-      });
-  </script>
-  -->
-
 
     <!--SWIPER JS-->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

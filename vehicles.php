@@ -48,6 +48,7 @@ header{
 
   overflow: hidden;
 width:100%;
+object-fit: cover;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 } 
