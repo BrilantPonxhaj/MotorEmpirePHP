@@ -17,9 +17,30 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+        .h1text{
+            text-align: center;
+        }
         .appointmentCount{
             display: flex;
             justify-content: center;
+        }
+        .appointment{
+            width: 80%;
+            padding-left: 25px;
+            
+        }
+        .appointmentContainer {
+            border: 3px solid red;
+            display: flex;
+            flex-direction: row;
+            border-radius: 15px;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+        .deleteSession {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -43,7 +64,7 @@
       <!-- Login Button e kom shly ktu se dalina na ka kritiku heren e kalume-->
     </header>
     <br><br><br><br>
-    <h1><b>Appointments</b></h1>
+    <h1 class="h1text"><b>Appointments</b></h1>
 
 
     <?php 
@@ -51,9 +72,11 @@
     // Qikjo pjes veq i merr vargjet qe jon n sessions prej sessionit n contact edhe i thirr me echo
     // qekjo foreach bohet definohet kshtu puna qe te contacti vargu u deklaru si $appointment
         if(isset($_SESSION['appointments']) && !empty($_SESSION['appointments'])) {
-            foreach($_SESSION['appointments'] as $appointment) {
+            foreach($_SESSION['appointments'] as $index => $appointment) {
                 // ME NUMRU SA HER JON BO TERMINE EHDE ME KALLZU TERMINI I SAT OSHT
-                $appointmentCount++;
+                $appointmentCount= $index + 1;
+                echo "<div class='appointmentContainer'>";
+                echo "<div class='appointment'>";
                 echo "<h2> Appointment " . $appointmentCount . "</h2>";
                 echo "<h2>Name: " . $appointment['name'] . "</h2>";
                 echo "<h2>Email: " . $appointment['email'] . "</h2>";
@@ -62,6 +85,14 @@
                 echo "<h2>Date: " . $formattedDate . "</h2>";
                 echo "<h2>Time: " . $appointment['time'] . "</h2>";
                 echo "<h2>Message: " . $appointment['message'] . "</h2><br>";
+                echo "</div>";
+                echo "<div class='deleteSession'>";
+                echo "<form action='cancel_appointment.php' method='post'>";
+                echo "<input type='hidden' name='appointment_index' value='$index'>";
+                echo "<input type='submit' class='btn' value='Cancel Appointment'>";
+                echo "</form>";
+                echo "</div>";
+                echo "</div>";
                 echo "<hr>";
             }
         } else {
