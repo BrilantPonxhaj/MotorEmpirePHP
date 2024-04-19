@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,14 +15,7 @@
     <link rel="stylesheet" href="stylecards.css">
     <link rel="stylesheet" href="style.css">
     <style>
-    .container{
-    width: 900px;
-    margin: auto;
-    max-width: 90vw;
-    text-align: center;
-    padding-top: 10px;
-    transition: transform .5s;
-}
+   
 svg{
     width: 30px;
 }
@@ -48,10 +43,25 @@ header{
     right: -20px;
     
 }
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* Ensures cards are evenly spaced */
+
+.featured-places .featured-item .card-image {
+
+  overflow: hidden;
+width:100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+} 
+.featured-places .featured-item{
+  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Horizontal offset, vertical offset, blur radius, color */
+ 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.featured-item:hover {
+    box-shadow: 0 20px 16px rgba(0, 0, 0, 0.4); /* Larger shadow on hover for a "lifting" effect */
+    transform: scale(1.05); /* Enlarge the card by 5% */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Larger shadow on hover for a "lifting" effect */
 }
 
 
@@ -189,10 +199,10 @@ header{
                            </select>
                       </div>
                   </div>
-                  <div id="Searchbtn" class="text-center mt-5">
+                 
     <button id="Searchbtn" class="btn" type="submit">Search</button>
-  <i class="fas fa-user"></i>
-</div>
+
+
           </form>
       </div>
 
@@ -350,44 +360,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sortOrder'])) {
 
 
 
-
-<div class="row">
-<div id="productContainer">
+<section class="featured-places">
 <div class="container" style="margin-top:50px;">
-
-<?php
-      foreach ($products as $product):
-        ?>
-     
-    
-
-
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
-                <div class="card-sl">
+    <div class="row" id="productContainer">
+        <?php foreach ($products as $product): ?>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mt-4 ">
+                <div class="featured-item">
                     <div class="card-image">
                         <img src="<?= $product['image']; ?>" alt="Loading image...">
                     </div>
                     <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted"><i class="fa fa-dashboard"></i> <?= $product['kilometers']; ?></strong>
+                        <strong class="text-muted"><i class="fa fa-dashboard"></i> <?= $product['kilometers']; ?> km</strong>
                         <strong class="text-muted"><i class="fa fa-cube"></i> <?= $product['engineType']; ?></strong>
-                        <strong class="text-muted"><i class= "fa fa-cog"></i> <?= $product['gearbox']; ?></strong>
+                        <strong class="text-muted"><i class="fa fa-cog"></i> <?= $product['gearbox']; ?></strong>
                     </div>
                     <div class="card-heading"><?= $product['name']; ?></div>
-                    <div class="card-text"><?= $product['description']; ?></div>
+                    <div class="card-text">
+                        <?php
+                        // Shorten description if it's longer than 100 characters
+                        if (strlen($product['description']) > 100) {
+                            echo substr($product['description'], 0, 100) . '...';
+                        } else {
+                            echo $product['description'];
+                        }
+                        ?>
+                    </div>
                     <div class="card-text">$<?= number_format($product['price']); ?></div>
-                    <a href="<?= $product['link']; ?>" class="card-button"> Purchase</a>
+                    <a href="<?= $product['link']; ?>" class="card-button">Purchase</a>
                 </div>
             </div>
         <?php endforeach; ?>
-        <?php if (empty($products)): ?>
-            <p>No matching items found.</p>
-        <?php endif; ?>
-    </div>  
+    </div>
 </div>
-
-
-
-
 
 
 
