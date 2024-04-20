@@ -7,17 +7,17 @@
     <title>BMW 7 Series</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap+fonte/bootstrap.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!--External Css-->
-    <link rel="stylesheet" href="stylecards.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../stylecards.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
      <!--FONT AWESOME LINK edhe ma posht osht si link i downlodum-->
-     <link rel="stylesheet" href="bootstrap+fonte/fontAwesome.css">
+     <link rel="stylesheet" href="../bootstrap+fonte/fontAwesome.css">
     <style>
 .heading
 {
@@ -248,39 +248,36 @@ img{
       
         <div id="MenuBtn" class="fas fa-bars"></div>
   
-        <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
+        <a href="#" class="logo"><span> <img src="../images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
-        <a href="index.php">Home</a>
-        <a href="vehicles.php">Vehicles</a>
-  
-        <a href="contact.php">Contact</a>
-        </nav>
-  
-  
-   </header>
+        <a href="../index.php">Home</a>
+        <a href="../vehicles.php">Vehicles</a>
+        <a href="../contact.php">Contact</a>
+      </nav>
+    </header>
 
-<!-- kodi per produktin -->
-    <div class = "main-wrapper">
-        <div class = "container">
-            <div class = "product-div">
-                <div class = "product-div-left">
-                    <div class = "img-container">
-                        <img src = "./images/bmw cards/bmw7.2.webp" alt = "watch">
+    <!-- Product Info -->
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="product-div">
+                <div class="product-div-left">
+                    <div class="img-container">
+                        <img src="../images/bmw cards/bmw7.2.webp" alt="BMW 7 Series">
                     </div>
 
                     <div class="hover-container">
                         <?php
                         // Image paths
                         $imagePaths = [
-                            "./images/bmw cards/bmw7.2.webp",
-                            "./images/bmw cards/bmw7.1.webp",
-                            "./images/bmw cards/bmw7.3.webp",
-                            "./images/bmw cards/bmw7.4.webp",
-                            "./images/bmw cards/bmw7.5.webp",
-                            "./images/bmw cards/bmw7.6.webp"
+                            "../images/bmw cards/bmw7.2.webp",
+                            "../images/bmw cards/bmw7.1.webp",
+                            "../images/bmw cards/bmw7.3.webp",
+                            "../images/bmw cards/bmw7.4.webp",
+                            "../images/bmw cards/bmw7.5.webp",
+                            "../images/bmw cards/bmw7.6.webp"
                         ];
 
-                        // Loop through the image paths and generate HTML for each image
+                        // Generate HTML for each image
                         foreach ($imagePaths as $index => $path) {
                             echo '<div>';
                             echo '<img src="' . $path . '" alt="Image ' . ($index + 1) . '">';
@@ -290,45 +287,41 @@ img{
                     </div>
                 </div>
 
-                <div class = "product-div-right">
-                    <span class = "product-name">BMW 7 Series </span>
-                    <span class = "product-price">$97,000</span>
-                    <div class = "product-rating">
-
-                        <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star"></i></span>
-                        <span><i class = "fas fa-star-half-alt"></i></span>
-                        <span>(345 ratings)</span>
-
+                <div class="product-div-right">
+                    <span class="product-name">BMW 7 Series</span>
+                    <span class="product-price">$97,000</span>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        (345 ratings)
                     </div>
 
-                    <p class = "product-description"> 
+                    <p class="product-description">
                         Embark on a journey of sustainable luxury with the BMW 7 Series Plug-in Hybrid, seamlessly combining eco-consciousness with unparalleled comfort. 
-                        Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future.  
+                        Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future.
                     </p>
-                    <div class = "btn-groups">
-
-                        <button type = "button" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>add to cart</button>
-                        <button type = "button" class = "buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button>
+                    <div class="btn-groups">
+                        <button type="button" class="add-cart-btn"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</body>
 
-    <footer>
+
+<footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
                     <div class="about-veno">
                         <div class="logo">
-                            <img src="images/2.png" alt="Venue Logo">
+                            <img src="../images/2.png" alt="Venue Logo">
                         </div>
-
-
-
                         <p>MotorEmpire is authorised and regulated by the Financial Conduct Authority.All vehicles are subject to prior sale. By accessing this website, you agree to the MotorEmpire's Terms of Service and Privacy Policy.</p>
                         <ul class="social-icons">
                             <li>
@@ -339,47 +332,36 @@ img{
                         </ul>
                     </div>
                 </div>
-
-
-
                 <div class="col-md-4">
                     <div class="useful-links">
                         <div class="footer-heading">
                             <h4>Useful Links</h4>
                         </div>
-
-
                         <div class="row">
                             <div class="col-md-6">
                                 <ul>
-                                    <li><a href="index.html"><i class="fa fa-stop"></i>Home</a></li>
-                                    <li><a href="about.html"><i class="fa fa-stop"></i>About</a></li>
-                                    <li><a href="team.html"><i class="fa fa-stop"></i>Team</a></li>
-                                    <li><a href="contact.html"><i class="fa fa-stop"></i>Contact Us</a></li>
+                                    <li><a href="../index.php"><i class="fa fa-stop"></i>Home</a></li>
+                                    <li><a href="../contact.html"><i class="fa fa-stop"></i>About</a></li>
+                                    <li><a href="../contact.html"><i class="fa fa-stop"></i>Team</a></li>
+                                    <li><a href="../contact.php"><i class="fa fa-stop"></i>Contact Us</a></li>
                                 </ul>
                             </div>
-
-
                             <div class="col-md-6">
                                 <ul>
-                                    <li><a href="faq.html"><i class="fa fa-stop"></i>FAQ</a></li>
-                                    <li><a href="testimonials.html"><i class="fa fa-stop"></i>Testimonials</a></li>
-                                    <li><a href="blog.html"><i class="fa fa-stop"></i>Blog</a></li>
-                                    <li><a href="terms.html"><i class="fa fa-stop"></i>Terms</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>FAQ</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Testimonials</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Blog</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Terms</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 <div class="col-md-3">
                     <div class="contact-info">
                         <div class="footer-heading">
                             <h4>Contact Information</h4>
                         </div>
-
-
                         <p><i class="fa fa-map-marker"></i> 212 Barrington Court New York, ABC</p>
                         <ul>
                             <li>Phone:<a href="#">+38344412817</a></li>
@@ -390,37 +372,17 @@ img{
             </div>
         </div>
     </footer>
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Select the "Add to Cart" button
-            const addToCartButton = document.querySelector('.add-cart-btn');
-
-            // Add event listener to the "Add to Cart" button
-            addToCartButton.addEventListener('click', function() {
-                // Get product details
-                const productName = document.querySelector('.product-name').textContent;
-                const productPrice = document.querySelector('.product-price').textContent;
-
-                // Create an object representing the item to be added to the cart
-                const item = {
-                    name: productName,
-                    price: productPrice,
-                    quantity: 1 // Assuming quantity is 1 for now
-                };
-
-                // Add the item to the cart (You can implement your own cart functionality)
-                addToCart(item);
-            });
-
-            function addToCart(item) {
-                // Implement your logic to add the item to the cart
-                // For demonstration purposes, let's just log the item details
-                console.log('Item added to cart:', item);
-            }
-        });
-    </script>
-    -->
-    <script src = "script.js"></script>
+    
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">Copyright © 2024 MotorEmpire </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src = "../script.js"></script>
 </body>
 </html>
 
