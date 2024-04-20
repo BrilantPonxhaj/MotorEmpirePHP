@@ -299,8 +299,63 @@ function checkKilometersRange($kmValue, $range) {
 }
 ?>
 
+<?php
+function console_var_dump($variable) {
+    echo "<script>console.log(" . json_encode($variable, JSON_PRETTY_PRINT) . ");</script>";
+}
 
+$bmw_cars = array(
+    "1 Series" => array(
+        "120d",
+        "135i",
+        "M140i",
+        "etc"
+    ),
+    "2 Series" => array(
+        "220d",
+        "M240i",
+        "etc"
+    ),
+    "3 Series" => array(
+        "320d",
+        "330i",
+        "M340i",
+        "etc"
+    ),
+    "4 Series" => array(
+        "420d",
+        "430i",
+        "M440i",
+        "etc"
+    ),
+    "5 Series" => array(
+        "520d",
+        "530i",
+        "M550i",
+        "etc"
+    ),
+    "6 Series" => array(
+        "620d",
+        "630i",
+        "M650i",
+        "etc"
+    ),
+    "7 Series" => array(
+        "730d",
+        "740i",
+        "M760i",
+        "etc"
+    ),
+    "8 Series" => array(
+        "840d",
+        "850i",
+        "M8" ,
+        "etc"
+    )
+);
 
+console_var_dump($bmw_cars);
+?>
 
 <section class="featured-places">
     <div class="container" style="margin-top:50px;">
