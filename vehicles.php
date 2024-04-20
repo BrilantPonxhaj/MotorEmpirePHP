@@ -215,6 +215,9 @@ width:100%;
                         </div>
                     </div>
 
+
+
+
                         <button id="Searchbtn" class="btn" type="submit">Search</button>
                 </div>
             </form>
@@ -297,6 +300,46 @@ $products = [
         "link" => "src/CarDemos/cardemo6.php",
         "description" => "Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill. Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication."
     ],
+    [
+        "name" => "BMW iX2",
+        "category" => "new vehicles",
+        "model" => "BMW ix2",
+        "price" => 61660,
+        "kilometers" => "15,000 km",
+        "engineType" => "electric",
+        "gearbox" => "Automatic",
+        "image" => "images/bmw cards/ix2.jpg",
+        "link" => "src/CarDemos/cardemo7.php",
+        "description" => "                    Experience the future of sustainable luxury with the BMW iX2, where innovative technology meets eco-conscious design, delivering an unmatched driving experience.
+        Crafted with precision to redefine electric mobility, it embodies the essence of automotive advancement, setting a new benchmark in sustainability and sophistication.             
+        "
+    ],
+    [
+        "name" => "BMW M3 Competition",
+        "category" => "used vehicles",
+        "model" => "BMW M3 Competition",
+        "price" => 50,500,
+        "kilometers" => "120,000 km",
+        "engineType" => "petrol",
+        "gearbox" => "Manual",
+        "image" => "images/bmw cards/bmw m5CS.jpg",
+        "link" => "src/CarDemos/cardemo8.php",
+        "description" => "Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill. Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication."
+    ],
+    [
+        "name" => "BMW X7",
+        "category" => "new vehicles",
+        "model" => "BMW X7",
+        "price" => 116,050,
+        "kilometers" => "15,000 km",
+        "engineType" => "petrol",
+        "gearbox" => "Automatic",
+        "image" => "images/bmw cards/bmw m5CS.jpg",
+        "link" => "src/CarDemos/cardemo9.php",
+        "description" => "Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill. Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication."
+    ],
+    
+
     // Add other products here
 ];
 

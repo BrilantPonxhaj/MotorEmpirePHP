@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMW 3 Series</title>
+    <title>BMW M5 CS</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../../bootstrap+fonte/bootstrap.css">
@@ -246,7 +246,7 @@ img{
 <body>
     <header>
         <div id="MenuBtn" class="fas fa-bars"></div>
-        <a href="../../Home/index.php" class="logo"><span><img src="../../images/logo2.png" width="100px" height="50px"></span></a>
+        <a href="../../Home/index.php" class="logo"><span> <img src="../../images/logo2.png" width="100px " height="50px" > </span></a>
         <nav class="navbar">
             <a href="../../Home/index.php">Home</a>
             <a href="../../vehicles.php">Vehicles</a>
@@ -254,23 +254,24 @@ img{
         </nav>
     </header>
 
+    <!-- Product Information -->
     <div class="main-wrapper">
         <div class="container">
             <div class="product-div">
                 <div class="product-div-left">
                     <div class="img-container">
-                        <img src="../../images/bmw cards/1-BMW-3-Series.jpg" alt="BMW 3 Series">
+                        <img src="../../images/bmw cards/ix2.1.webp" alt="BMW M5 CS">
                     </div>
                     <div class="hover-container">
-                    <?php
+                        <?php
                         // Image paths
                         $imagePaths = [
-                            "../../images/bmw cards/1-BMW-3-Series.jpg",
-                            "../../images/bmw cards/bmw3.1.webp",
-                            "../../images/bmw cards/bmw3.2.webp",
-                            "../../images/bmw cards/bmw3.3.webp",
-                            "../../images/bmw cards/bmw3.4.webp",
-                            "../../images/bmw cards/bmw3.5.webp"
+                            "../../images/bmw cards/ix2.1.webp",
+                            "../../images/bmw cards/ix2.2.webp",
+                            "../../images/bmw cards/ix2.3.webp",
+                            "../../images/bmw cards/ix2.4.webp",
+                            "../../images/bmw cards/ix2.5.webp",
+                            "../../images/bmw cards/ix2.6.webp"
                         ];
 
                         // Loop through the image paths and generate HTML for each image
@@ -283,28 +284,30 @@ img{
                     </div>
                 </div>
                 <div class="product-div-right">
-                    <span class="product-name">BMW 3 SERIES</span>
-                    <span class="product-price">$62,500€</span>
+                    <span class="product-name">BMW iX2</span>
+                    <span class="product-price">$61,660</span>
                     <div class="product-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
-                        (350 ratings)
+                        (482 ratings)
                     </div>
                     <p class="product-description">
-                        Experience unmatched elegance and precision with the iconic BMW 3 Series, where dynamic performance meets timeless sophistication on every journey.
-                        Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving.
-                    </p>
+
+                    Experience the future of sustainable luxury with the BMW iX2, where innovative technology meets eco-conscious design, delivering an unmatched driving experience.
+Crafted with precision to redefine electric mobility, it embodies the essence of automotive advancement, setting a new benchmark in sustainability and sophistication.                    </p>
+
                     <div class="btn-groups">
-                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i>buy now</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
@@ -331,10 +334,10 @@ img{
                         <div class="row">
                             <div class="col-md-6">
                                 <ul>
-                                    <li><a href="../index.php"><i class="fa fa-stop"></i>Home</a></li>
-                                    <li><a href="../contact.html"><i class="fa fa-stop"></i>About</a></li>
-                                    <li><a href="../contact.html"><i class="fa fa-stop"></i>Team</a></li>
-                                    <li><a href="../contact.php"><i class="fa fa-stop"></i>Contact Us</a></li>
+                                    <li><a href="../../index.php"><i class="fa fa-stop"></i>Home</a></li>
+                                    <li><a href="../../contact.html"><i class="fa fa-stop"></i>About</a></li>
+                                    <li><a href="../../contact.html"><i class="fa fa-stop"></i>Team</a></li>
+                                    <li><a href="../../contact.php"><i class="fa fa-stop"></i>Contact Us</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
@@ -376,7 +379,3 @@ img{
     <script src="../../script.js"></script>
 </body>
 </html>
-
-
-
-
