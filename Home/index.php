@@ -19,7 +19,19 @@
 
     <!--STYLESHEET I KTIJ PAGE-->
     <link rel="stylesheet" href="../style.css" />
-    
+    <style>
+.userbtn{
+ border: 2px solid black; 
+ font-size:16px;
+ padding: 7px;
+  padding-top: 8px; 
+  padding-bottom: 12px;
+  margin-right:5px;
+  font-weight: bold
+}
+
+
+    </style>
   </head>
   <body>
 
@@ -38,35 +50,24 @@
 
       <!-- Login Button -->
       <?php
-  session_start();
-  /*
-  if (isset($_SESSION['username'])) {
-      // If the user is logged in, display their name and a logout button
-      echo '<div id="UserBtn">';
-      echo '<span style="border: 2px solid black; padding: 5px; font-weight: bold" class=icons ><i class="fas fa-user"></i>' . $_SESSION['username'] . '</span> ';
-      echo '<a href="logout.php" class="btn">Logout</a>';
-      echo '</div>';
-  } else {
-      // If the user is not logged in, display the login button
-      echo '<div id="LoginBtn">';
-      echo '<a href="login.php" id="loginButton" class="btn">Login</a>';
-      echo '<i class="fas fa-user"></i>';
-      echo '</div>';
-  }
-  */
+session_start();
 
-  if (isset($_SESSION['user_logged_in'])) {
+// Check if user is logged in
+if (isset($_SESSION['login_user'])) {
+    // Ensure there is a username variable to display
+    $username = isset($_SESSION['login_user']) ? $_SESSION['login_user'] : 'User';
+
     echo '<div id="UserBtn">';
-    echo '<span style="border: 2px solid black; padding: 5px; font-weight: bold" class=icons ><i class="fas fa-user"></i>' . $_SESSION['username'] . '</span> ';
-    echo '<a href="logout.php" class="btn">Logout</a>';
+    echo '<span class="userbtn"><i class="fas fa-user"></i> '. htmlspecialchars($username) .'</span>';
+    echo '<a href="../src/Login/logout.php" class="btn">Logout</a>';
     echo '</div>';
-    } else {
-      echo '<div id="LoginBtn">';
-      echo '<a href="../src/Login/login.php" id="loginButton" class="btn">Login</a>';
-      echo '<i class="fas fa-user"></i>';
-      echo '</div>';
-    }
-  ?>
+} else {
+    echo '<div id="LoginBtn">';
+    echo '<a href="../src/Login/login.php" id="loginButton" class="btn">Login</a>';
+    echo '<i class="fas fa-user"></i>';
+    echo '</div>';
+}
+?>
     </header>
 
 

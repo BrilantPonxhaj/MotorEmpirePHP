@@ -1,7 +1,7 @@
-<?php  
-   session_start();
-   unset($_SESSION['user_logged_in']);
+<?php session_start();
+   unset($_SESSION["username"]);
+   unset($_SESSION["password"]);
+   
 
-   header('Refresh: 1;url=index.php');
-
-?>  
+   header('Refresh: 1; URL = login.php');
+?>
