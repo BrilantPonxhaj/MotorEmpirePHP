@@ -39,6 +39,7 @@
       <!-- Login Button -->
       <?php
   session_start();
+  /*
   if (isset($_SESSION['username'])) {
       // If the user is logged in, display their name and a logout button
       echo '<div id="UserBtn">';
@@ -52,6 +53,19 @@
       echo '<i class="fas fa-user"></i>';
       echo '</div>';
   }
+  */
+
+  if (isset($_SESSION['user_logged_in'])) {
+    echo '<div id="UserBtn">';
+    echo '<span style="border: 2px solid black; padding: 5px; font-weight: bold" class=icons ><i class="fas fa-user"></i>' . $_SESSION['username'] . '</span> ';
+    echo '<a href="logout.php" class="btn">Logout</a>';
+    echo '</div>';
+    } else {
+      echo '<div id="LoginBtn">';
+      echo '<a href="../src/Login/login.php" id="loginButton" class="btn">Login</a>';
+      echo '<i class="fas fa-user"></i>';
+      echo '</div>';
+    }
   ?>
     </header>
 

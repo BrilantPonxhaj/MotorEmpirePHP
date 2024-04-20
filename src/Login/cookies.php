@@ -34,7 +34,7 @@ if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['passw
            if ($users[$_POST['username']] == $_POST['password']) { 
                $_SESSION['username'] = $_POST['username']; 
                echo "<script>alert('You have entered correct username and password');</script>";
-               header("Location: index.php"); 
+               header("Location: ../../Home/index.php"); 
                exit(); 
            } else {
                echo "<script>alert('You have entered wrong Password');</script>";

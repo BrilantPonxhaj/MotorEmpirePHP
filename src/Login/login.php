@@ -150,6 +150,7 @@ section a{
             <header>Login</header>
         </div>
         <?php
+        /*
             if(isset($_POST["login"])){
                 $email = $_POST["email"];
                 $password = $_POST["password"];
@@ -167,7 +168,29 @@ section a{
                 }else{
                     echo "<div class='alert alert-danger'>Email doesn't match<br></div>";
                 }
+            } */
+
+            include("../../database/configDatabase.php");
+            if(isset($_POST['login'])) {
+                $email = mysqli_real_escape_string($conn, $_POST['email']);
+                $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+                $result = mysqli_query($conn, "SELECT * FROM register WHERE email ='$email' AND passwordi ='$password' ") or die("Error");
+                $row = mysqli_fetch_assoc($result);
+
+                if(is_array($row) &&  !empty($row)) {
+                    $_SESSION['valid'] = $row['email'];
+                    $_SESSION['fullname'] = $row['fullname'];
+                    $_SESSION['id'] = $row['id'];
+                }else{
+                    echo "<div class='alert alert-danger'>Wrong email or password<br></div>";
+                }
+                if(isset($_SESSION['valid'])) {
+                    $_SESSION['user_logged_in'] = true;
+                    header("refresh:1;url=../../Home/index.php");
+                }
             }
+
         ?>
         <br>
         <form action="login.php" method="post">
@@ -195,7 +218,7 @@ section a{
        
     
     <?php
-    include("cookies.php");
+    include("../../src/Login/cookies.php");
    
      ?>
 </body>

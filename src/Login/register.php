@@ -14,6 +14,7 @@
             <header>Sign Up</header>
         </div>
         <?php 
+        /*
             if (isset($_POST["submit"])) {
                 $fullname = $_POST["fullname"];
                 $email = $_POST["email"];
@@ -61,6 +62,31 @@
                     }
                 }
             }
+            */
+           
+            include("../../database/configDatabase.php");
+            if(isset($_POST["submit"])){
+                $fullname = $_POST["fullname"];
+                $email = $_POST["email"];
+                $password = $_POST["password"];
+                $confirmpassword = $_POST["confirmpassword"];
+
+                $verify_query = mysqli_query($conn, "SELECT email FROM register WHERE email = '$email'");
+                
+                if(empty($fullname) OR empty($email) OR empty($password) OR empty($confirmpassword) ) {
+                    echo "<div class='alert alert-danger'>All fields are required</div>";
+                }
+                if($password !== $confirmpassword) {
+                    echo "<div class='alert alert-danger'>Passwords do not match</div>";
+                }
+                
+                if(mysqli_num_rows($verify_query) !=0 ) {
+                    echo "<div class='alert alert-danger'>This email is used, try another one please</div>";
+                }else{
+                    mysqli_query($conn, "INSERT INTO register(fullname,email,passwordi) VALUES('$fullname', '$email', '$password')") or die("Error occurred");
+                    echo "<div class='alert alert-success'>You are registered succesfully</div>";
+                }
+            } 
         ?>
         <form action="register.php" method="post">
         <div class="input-box">
