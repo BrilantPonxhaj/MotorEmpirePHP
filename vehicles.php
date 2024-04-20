@@ -271,15 +271,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Sort products based on selection
     if ($sortOrder === 'A-Z') {
-        usort($filteredProducts, function ($a, $b) { return $a['name'] <=> $b['name']; });
+        ksort($filteredProducts);
     } elseif ($sortOrder === 'Z-A') {
-        usort($filteredProducts, function ($a, $b) { return $b['name'] <=> $a['name']; });
+        krsort($filteredProducts);
     }
 
     if ($sortPrice === 'lowestToHighest') {
-        usort($filteredProducts, function ($a, $b) { return $a['price'] <=> $b['price']; });
+        asort($filteredProducts);
     } elseif ($sortPrice === 'highestToLowest') {
-        usort($filteredProducts, function ($a, $b) { return $b['price'] <=> $a['price']; });
+        arsort($filteredProducts);
     }
 
     $products = $filteredProducts;
@@ -508,12 +508,6 @@ function checkKilometersRange($kmValue, $range) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>   
         var products = <?php echo json_encode($products); ?>;
-    </script>
-    <script src="filterjavaScript.js"></script>
-    <script>
-    
-
-
     </script>
   </body>
 </html>
