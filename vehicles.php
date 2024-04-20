@@ -65,6 +65,12 @@ width:100%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Larger shadow on hover for a "lifting" effect */
 }
 
+.no-products {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 24px;
+            color: red;
+        }
 
 </style>
   </head>
@@ -185,7 +191,7 @@ $products = [
         "engineType" => "disel",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/1-BMW-3-Series.jpg",
-        "link" => "CarDemos/cardemo1.php",
+        "link" => "src/CarDemos/cardemo1.php",
         "description" => "Experience unmatched elegance and precision with the iconic BMW 3 Series, where dynamic performance meets timeless sophistication on every journey. Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving."
     ],
     [
@@ -197,7 +203,7 @@ $products = [
         "engineType" => "disel",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/bmw 5.jpg",
-        "link" => "CarDemos/cardemo2.php",
+        "link" => "src/CarDemos/cardemo2.php",
         "description" => "Indulge in refined luxury and exhilarating performance with the BMW 5 Series, where every detail is crafted for a seamless fusion of power. Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence."
     ],
     [
@@ -209,7 +215,7 @@ $products = [
         "engineType" => "petrol",
         "gearbox" => "Manual",
         "image" => "images/bmw cards/bmw m3cs.jpg",
-        "link" => "CarDemos/cardemo3.php",
+        "link" => "src/CarDemos/cardemo3.php",
         "description" => "Unleash the adrenaline with the BMW M3 CS series, designed to dominate both the road and the track. Experience the ultimate driving experience, where every curve becomes a conquest and every moment an exhilarating symphony of performance and precision."
     ],
     [
@@ -221,7 +227,7 @@ $products = [
         "engineType" => "hybrid",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/bmw 7 hybrid.jpg",
-        "link" => "CarDemos/cardemo4.php",
+        "link" => "src/CarDemos/cardemo4.php",
         "description" => "Embark on a journey of sustainable luxury with the BMW 7 Series Plug-in Hybrid, seamlessly combining eco-consciousness with unparalleled comfort. Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future."
     ],
     [
@@ -233,7 +239,7 @@ $products = [
         "engineType" => "petrol",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/m4cardimg.jpg",
-        "link" => "CarDemos/cardemo5.php",
+        "link" => "src/CarDemos/cardemo5.php",
         "description" => "Unleash the beast within with the BMW M4 Competition, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel."
     ],
     [
@@ -245,7 +251,7 @@ $products = [
         "engineType" => "petrol",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/bmw m5CS.jpg",
-        "link" => "CarDemos/cardemo6.php",
+        "link" => "src/CarDemos/cardemo6.php",
         "description" => "Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill. Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication."
     ],
     // Add other products here
@@ -298,7 +304,7 @@ function checkKilometersRange($kmValue, $range) {
     }
 }
 ?>
-
+<!-- vardump  -->
 <?php
 function console_var_dump($variable) {
     echo "<script>console.log(" . json_encode($variable, JSON_PRETTY_PRINT) . ");</script>";
@@ -360,29 +366,37 @@ console_var_dump($bmw_cars);
 <section class="featured-places">
     <div class="container" style="margin-top:50px;">
         <div class="row" id="productContainer">
-            <?php foreach ($products as $product): ?>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mt-4">
-                    <div class="featured-item">
-                        <div class="card-image">
-                            <img src="<?= htmlspecialchars($product['image']); ?>" alt="Loading image...">
-                        </div>
-                        <div class="d-flex justify-content-around mt-2">
-                            <strong class="text-muted"><i class="fa fa-dashboard"></i> <?= htmlspecialchars($product['kilometers']); ?></strong>
-                            <strong class="text-muted"><i class="fa fa-cube"></i> <?= htmlspecialchars($product['engineType']); ?></strong>
-                            <strong class="text-muted"><i class="fa fa-cog"></i> <?= htmlspecialchars($product['gearbox']); ?></strong>
-                        </div>
-                        <div class="card-heading"><?= htmlspecialchars($product['name']); ?></div>
-                        <div class="card-text">
-                            <?php
-                            // Shorten description if it's longer than 100 characters
-                            echo strlen($product['description']) > 100 ? substr($product['description'], 0, 100) . '...' : $product['description'];
-                            ?>
-                        </div>
-                        <div class="card-text">$<?= number_format($product['price']); ?></div>
-                        <a href="<?= htmlspecialchars($product['link']); ?>" class="card-button">Purchase</a>
+            <?php if (empty($products)): ?>
+                <div class="col-12">
+                    <div class="no-products text-center">
+                        No products found
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php else: ?>
+                <?php foreach ($products as $product): ?>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mt-4">
+                        <div class="featured-item">
+                            <div class="card-image">
+                                <img src="<?= htmlspecialchars($product['image']); ?>" alt="Loading image...">
+                            </div>
+                            <div class="d-flex justify-content-around mt-2">
+                                <strong class="text-muted"><i class="fa fa-dashboard"></i> <?= htmlspecialchars($product['kilometers']); ?></strong>
+                                <strong class="text-muted"><i class="fa fa-cube"></i> <?= htmlspecialchars($product['engineType']); ?></strong>
+                                <strong class="text-muted"><i class="fa fa-cog"></i> <?= htmlspecialchars($product['gearbox']); ?></strong>
+                            </div>
+                            <div class="card-heading"><?= htmlspecialchars($product['name']); ?></div>
+                            <div class="card-text">
+                                <?php
+                                // Shorten description if it's longer than 100 characters
+                                echo strlen($product['description']) > 100 ? substr($product['description'], 0, 100) . '...' : $product['description'];
+                                ?>
+                            </div>
+                            <div class="card-text">$<?= number_format($product['price']); ?></div>
+                            <a href="<?= htmlspecialchars($product['link']); ?>" class="card-button">Purchase</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 </section>
@@ -390,165 +404,6 @@ console_var_dump($bmw_cars);
 
 
 
-
-        <!-- <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2">
-                <div class="card-sl" >
-                    <div class="card-image">
-                        <img src="images/bmw cards/1-BMW-3-Series.jpg" alt="BMW Loading..." />
-                    </div>
-                    <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 65 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> Disel</strong>
-                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
-                      </div>
-                    <div class="card-heading">
-                        BMW 3 Series
-                    </div>
-                    <div class="card-text">
-                    Experience unmatched elegance and precision with the iconic BMW 3 Series, where dynamic performance meets timeless sophistication on every journey.
-                    Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving.
-                    </div>
-                    <div class="card-text">
-                        $62,500
-                    </div>
-                    <form action="add_to_cart.php" method="post">
-                        <input type="hidden" name="product_name" value="BMW 3 Series">
-                        <input type="hidden" name="product_price" value="62500">
-                        <a href="cardemo1.php" class="card-button">Add to Cart</a>
-                    </form>
-                </div>
-            </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img class=""
-                            src="images/bmw cards/bmw 5.jpg" alt="BMW Loading..." />
-                    </div>
-                    <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> Disel</strong>
-                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
-                      </div>
-                    <div class="card-heading">
-                        BMW 545e xDrive
-                    </div>
-                    <div class="card-text">                      
-                        Indulge in refined luxury and exhilarating performance with the BMW 5 Series, where every detail is crafted for a seamless fusion of power. 
-                        Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence.
-                    </div>
-                    <div class="card-text">
-                        $84,500
-                    </div>
-                    <a href="cardemo2.php" class="card-button"> Purchase</a>
-                </div>
-            </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img class=""
-                            src="images/bmw cards/bmw m3cs.jpg" alt="BMW Loading..." />
-                    </div>
-                    <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 45 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> Petrol</strong>
-                        <strong class="text-muted "><i class="fa fa-cog"></i> Manual</strong>
-                      </div>
-
-                    <div class="card-heading">
-                        BMW M3 CS
-                    </div>
-                    <div class="card-text">    
-                        Unleash the adrenaline with the BMW M3 CS series, designed to dominate both the road and the track.
-                        Experience the ultimate driving experience, where every curve becomes a conquest and every moment an exhilarating symphony of performance and precision.
-                    </div>
-                    <div class="card-text">
-                    $118,700
-                    </div>
-                    <a href="cardemo3.php" class="card-button"> Purchase</a>
-                </div>
-            </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img class=""
-                            src="images/bmw cards/bmw 7 hybrid.jpg" alt="BMW Loading..." />
-                    </div>
-                    <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 130 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> Hybrid</strong>
-                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
-                      </div>
-
-                    <div class="card-heading">
-                        BMW 7 Series
-                    </div>
-                    <div class="card-text">
-                        Embark on a journey of sustainable luxury with the BMW 7 Series Plug-in Hybrid, seamlessly combining eco-consciousness with unparalleled comfort. 
-                        Redefining opulence, it offers a silent glide through city streets, empowered by cutting-edge technology and a commitment to a greener future.
-                    </div>
-                    <div class="card-text">
-                        $97,000
-                    </div>
-                    <a href="cardemo4.php" class="card-button"> Purchase</a>
-                </div>
-            </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img class=""
-                            src="images/bmw cards/m4cardimg.jpg" alt="BMW Loading..." />
-                    </div>
-                    <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 90 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> Petrol</strong>
-                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
-                      </div>
-
-                    <div class="card-heading">
-                        BMW M4 Competition
-                    </div>
-                    <div class="card-text">               
-                        Unleash the beast within with the BMW M4 Competition, where raw power meets refined precision, sculpted for the ultimate driving experience on both road and track. 
-                        Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel.
-                    </div>
-                    <div class="card-text">
-                        $113,000
-                    </div>
-                    <a href="cardemo5.php" class="card-button"> Purchase</a>
-                </div>
-            </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pb-2 pt-2" >
-                <div class="card-sl">
-                    <div class="card-image">
-                        <img class=""
-                            src="images/bmw cards/bmw m5CS.jpg" alt="BMW Loading..." />
-                    </div>
-                    <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted "><i class="fa fa-dashboard"></i> 25 000km</strong>
-                        <strong class="text-muted "><i class="fa fa-cube"></i> petrol</strong>
-                        <strong class="text-muted "><i class="fa fa-cog"></i> Automatic</strong>
-                      </div>
-
-                    <div class="card-heading">
-                        BMW M5 CS
-                    </div>
-                    <div class="card-text">   
-                        Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill.
-                        Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication.
-                    </div>
-                    <div class="card-text">
-                        $142,000
-                    </div>
-                    <a href="cardemo6.php" class="card-button"> Purchase</a>
-                </div>
-            </div>
-        </div>  
-        </div>
-    </div>
-
-    <div id="noResultsMessage" style="display: none;">
-        <p class="mt-5 m-5 fs-2 fa fa-exclamation-circle">  No matching items found.</p> -->
     </div>
 
 

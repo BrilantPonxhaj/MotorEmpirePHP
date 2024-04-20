@@ -6,19 +6,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MotorEmpire</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <!--SWIPER JS-->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!--FONT AWESOME LINK edhe ma posht osht si link i downlodum-->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-   <link rel="stylesheet" href="bootstrap+fonte/bootstrap.min.css">
-        <link rel="stylesheet" href="bootstrap+fonte/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="bootstrap+fonte/fontAwesome.css">
-        <link rel="stylesheet" href="bootstrap+fonte/hero-slider.css">
-        <link rel="stylesheet" href="bootstrap+fonte/owl-carousel.css">
+   <link rel="stylesheet" href="../bootstrap+fonte/bootstrap.min.css">
+        <link rel="stylesheet" href="../bootstrap+fonte/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../bootstrap+fonte/fontAwesome.css">
+        <link rel="stylesheet" href="../bootstrap+fonte/hero-slider.css">
+        <link rel="stylesheet" href="../bootstrap+fonte/owl-carousel.css">
 
     <!--STYLESHEET I KTIJ PAGE-->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
     
   </head>
   <body>
@@ -28,12 +28,12 @@
       
       <div id="MenuBtn" class="fas fa-bars"></div>
 
-      <a href="#" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
+      <a href="#" class="logo"><span> <img src="../images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
         <a href="index.php">Home</a>
-        <a href="vehicles.php">Vehicles</a>
+        <a href="../vehicles.php">Vehicles</a>
   
-        <a href="contact.php">Contact</a>
+        <a href="../src/ContactUs/contact.php">Contact</a>
       </nav>
 
       <!-- Login Button -->
@@ -68,7 +68,7 @@
 
 <section id="Home" class="home">
   <div class="home-background">
-      <img src="images/bgfr.png" alt="Featured Car" class="hero-image"> <!-- Replace with your hero image -->
+      <img src="../images/bgfr.png" alt="Featured Car" class="hero-image"> <!-- Replace with your hero image -->
   </div>
   <div class="home-content">
   <div class="line+content"> 
@@ -152,19 +152,19 @@
     <div class="slideshow-container">
       <div class="mySlides fade">
         <div class="numbertext">1 / 3</div>
-        <img src="images/bmwzez.jpg" style="width: 100%" />
+        <img src="../images/bmwzez.jpg" style="width: 100%" />
         <div class="text">BMW M4 CSL</div>
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">2 / 3</div>
-        <img src="images/bmwred.jpg" style="width: 100%" />
+        <img src="../images/bmwred.jpg" style="width: 100%" />
         <div class="text">M4 Coupe 50 Jahre</div>
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">3 / 3</div>
-        <img src="images/bmwgrey.jpg" style="width: 100%" />
+        <img src="../images/bmwgrey.jpg" style="width: 100%" />
         <div class="text">BMW M4 Edition 50 Jahre</div>
       </div>
 
@@ -185,7 +185,7 @@
       <div class="swiper VehiclesSlider">
         <div class="swiper-wrapper">
           <div class="swiper-slide box">
-            <img src="images/vehiclesbmw3.webp" alt="Fotoja1" />
+            <img src="../images/vehiclesbmw3.webp" alt="Fotoja1" />
             <div class="content">
               <h3>New Models</h3>
               <div class="price"><span>Price:</span> $100,000</div>
@@ -199,7 +199,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/vehiclessbmw.webp" alt="Fotoja2" />
+            <img src="../images/vehiclessbmw.webp" alt="Fotoja2" />
             <div class="content">
               <h3>New Models</h3>
               <div class="price"><span>Price:</span> $120,000</div>
@@ -213,7 +213,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/vehiclesbmw1.avif" alt="fotoja3" />
+            <img src="../images/vehiclesbmw1.avif" alt="fotoja3" />
             <div class="content">
               <h3>New Models</h3>
               <div class="price"><span>Price:</span> $90,000</div>
@@ -227,7 +227,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/vehiclesbmw2.webp" alt="fotoja4" />
+            <img src="../images/vehiclesbmw2.webp" alt="fotoja4" />
             <div class="content">
               <h3>New Models</h3>
               <div class="price"><span>Price:</span> $140,000</div>
@@ -241,7 +241,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/vehiclesbmw.png" alt="Fotoja5" />
+            <img src="../images/vehiclesbmw.png" alt="Fotoja5" />
             <div class="content">
               <h3>New Models</h3>
               <div class="price"><span>Price:</span> $150,000</div>
@@ -255,7 +255,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/vehiclesbmw4.jpg" alt="fotoja6" />
+            <img src="../images/vehiclesbmw4.jpg" alt="fotoja6" />
             <div class="content">
               <h3>New Models</h3>
               <div class="price"><span>Price:</span>$160,000</div>
@@ -280,7 +280,7 @@
       <div class="swiper FeatureSlider">
         <div class="swiper-wrapper">
           <div class="swiper-slide box">
-            <img src="images/featured1bmw.png" alt="" />
+            <img src="../images/featured1bmw.png" alt="" />
             <div class="content">
               <h3>BMW M4 Coupe</h3>
               <div class="starts">
@@ -295,7 +295,7 @@
             </div>
           </div>
           <div class="swiper-slide box">
-            <img src="images/featuredbmwreplace.avif" alt="" />
+            <img src="../images/featuredbmwreplace.avif" alt="" />
             <div class="content">
               <h3>BMW i8</h3>
               <div class="starts">
@@ -310,7 +310,7 @@
             </div>
           </div>
           <div class="swiper-slide box">
-            <img src="images/featured6.png" alt="" />
+            <img src="../images/featured6.png" alt="" />
             <div class="content">
               <h3>BMW 3 Series Sedan M Automobiles</h3>
               <div class="starts">
@@ -325,7 +325,7 @@
             </div>
           </div>
           <div class="swiper-slide box">
-            <img src="images/featuredx6comp.png" alt="" />
+            <img src="../images/featuredx6comp.png" alt="" />
             <div class="content">
               <h3>BMW X6 M Competition</h3>
               <div class="starts">
@@ -340,7 +340,7 @@
             </div>
           </div>
           <div class="swiper-slide box">
-            <img src="images/featuredbmwww.png" alt="" />
+            <img src="../images/featuredbmwww.png" alt="" />
             <div class="content">
               <h3>BMW X2 M35i xDrive</h3>
               <div class="starts">
@@ -355,7 +355,7 @@
             </div>
           </div>
           <div class="swiper-slide box">
-            <img src="images/featured4.png" alt="" />
+            <img src="../images/featured4.png" alt="" />
             <div class="content">
               <h3>BMW 5 Series Sedan</h3>
               <div class="starts">
@@ -371,7 +371,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/featured5.png" alt="" />
+            <img src="../images/featured5.png" alt="" />
             <div class="content">
               <h3>BMW i7 M70</h3>
               <div class="starts">
@@ -387,7 +387,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/featuredm3.webp" alt="" />
+            <img src="../images/featuredm3.webp" alt="" />
             <div class="content">
               <h3>BMW M3 Competition</h3>
               <div class="starts">
@@ -505,7 +505,7 @@
       <div class="swiper ReviewSlider">
         <div class="swiper-wrapper">
           <div class="swiper-slide box">
-            <img src="images/user1.jpg" alt="" />
+            <img src="../images/user1.jpg" alt="" />
             <div class="content">
               <p>
                 Exemplifies a strong commitment to teamwork, fostering a
@@ -521,7 +521,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/user2.jpg" alt="" />
+            <img src="../images/user2.jpg" alt="" />
             <div class="content">
               <p>
                 Highly organized and detail-oriented, ensuring accuracy and
@@ -537,7 +537,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/user3.webp" alt="" />
+            <img src="../images/user3.webp" alt="" />
             <div class="content">
               <p>
                 A highly motivated team who consistently deliver high-quality
@@ -553,7 +553,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/user4.webp" alt="" />
+            <img src="../images/user4.webp" alt="" />
             <div class="content">
               <p>
                 Demonstrates strong leadership qualities and effectively
@@ -569,7 +569,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/user5.jpg" alt="" />
+            <img src="../images/user5.jpg" alt="" />
             <div class="content">
               <p>
                 Demonstrates a strong sense of initiative and takes ownership of
@@ -585,7 +585,7 @@
           </div>
 
           <div class="swiper-slide box">
-            <img src="images/user6.jpg" alt="" />
+            <img src="../images/user6.jpg" alt="" />
             <div class="content">
               <p>
                 Reliable and trustworthy, with a proven track record of meeting
@@ -611,7 +611,7 @@
                 <div class="col-md-5">
                     <div class="about-veno">
                         <div class="logo">
-                            <img src="images/2.png" alt="Venue Logo">
+                            <img src="../images/2.png" alt="Venue Logo">
                         </div>
                         <p>MotorEmpire is authorised and regulated by the Financial Conduct Authority.All vehicles are subject to prior sale. By accessing this website, you agree to the MotorEmpire's Terms of Service and Privacy Policy.</p>
                         <ul class="social-icons">

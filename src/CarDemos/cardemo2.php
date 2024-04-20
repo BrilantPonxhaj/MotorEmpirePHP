@@ -1,25 +1,25 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMW M5 CS</title>
+    <title>BMW 545e xDrive</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="../bootstrap+fonte/bootstrap.css">
+    <link rel="stylesheet" href="../../bootstrap+fonte/bootstrap.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!--External Css-->
-    <link rel="stylesheet" href="../stylecards.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../stylecards.css">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-     <!--FONT AWESOME LINK edhe ma posht osht si link i downlodum-->
-     <link rel="stylesheet" href="../bootstrap+fonte/fontAwesome.css">
+    <link rel="stylesheet" href="../../bootstrap+fonte/fontAwesome.css">
     <style>
-.heading
+        /* Your CSS styles here */
+        .heading
 {
     padding-bottom: 2rem;
     font-size: 4.5rem;
@@ -246,76 +246,70 @@ img{
 <body>
     <header>
         <div id="MenuBtn" class="fas fa-bars"></div>
-        <a href="#" class="logo"><span> <img src="../images/logo2.png" width="100px " height="50px" > </span></a>
+        <a href="#" class="logo"><span><img src="../../images/logo2.png" width="100px" height="50px"></span></a>
         <nav class="navbar">
-            <a href="../index.php">Home</a>
-            <a href="../vehicles.php">Vehicles</a>
-            <a href="../contact.php">Contact</a>
+            <a href="../../index.php">Home</a>
+            <a href="../../vehicles.php">Vehicles</a>
+            <a href="../../contact.php">Contact</a>
         </nav>
     </header>
 
-    <!-- Product Information -->
     <div class="main-wrapper">
         <div class="container">
             <div class="product-div">
                 <div class="product-div-left">
                     <div class="img-container">
-                        <img src="../images/bmw cards/m5cs1.webp" alt="BMW M5 CS">
+                        <img src="../../images/bmw cards/bmw5.1.webp" alt="BMW 545e xDrive">
                     </div>
                     <div class="hover-container">
                         <?php
-                        // Image paths
-                        $imagePaths = [
-                            "../images/bmw cards/m5cs1.webp",
-                            "../images/bmw cards/m5cs2.webp",
-                            "../images/bmw cards/m5cs3.webp",
-                            "../images/bmw cards/m5cs4.webp",
-                            "../images/bmw cards/m5cs5.webp",
-                            "../images/bmw cards/m5cs6.webp"
-                        ];
-
-                        // Loop through the image paths and generate HTML for each image
-                        foreach ($imagePaths as $index => $path) {
-                            echo '<div>';
-                            echo '<img src="' . $path . '" alt="Image ' . ($index + 1) . '">';
-                            echo '</div>';
-                        }
+                            // PHP code for image paths
+                            $imagePaths = [
+                                "../../images/bmw cards/bmw5.1.webp",
+                                "../../images/bmw cards/bmw5.2.webp",
+                                "../../images/bmw cards/bmw5.3.webp",
+                                "../../images/bmw cards/bmw5.4.webp",
+                                "../../images/bmw cards/bmw5.5.webp",
+                                "../../images/bmw cards/bmw5.6.webp"
+                            ];
+                            foreach ($imagePaths as $index => $path) {
+                                echo '<div><img src="' . $path . '" alt="BMW 545e xDrive Detail ' . ($index + 1) . '"></div>';
+                            }
                         ?>
                     </div>
                 </div>
                 <div class="product-div-right">
-                    <span class="product-name">BMW M5 CS</span>
-                    <span class="product-price">$142,000</span>
+                    <span class="product-name">BMW 545e xDrive</span>
+                    <span class="product-price">$84,500</span>
                     <div class="product-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        (514 ratings)
+                        (420 ratings)
                     </div>
                     <p class="product-description">
-                        Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill.
-                        Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication.
+                        Indulge in refined luxury and exhilarating performance with the BMW 5 Series, where every detail is crafted for a seamless fusion of power.
+                        Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence.
                     </p>
                     <div class="btn-groups">
-                        <button type="button" class="add-cart-btn"><i class="fas fa-shopping-cart"></i>add to cart</button>
-                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i>buy now</button>
+                        <button type="button" class="add-cart-btn"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
 
-
-<footer>
+   <!-- footer -->
+   <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
                     <div class="about-veno">
                         <div class="logo">
-                            <img src="../images/2.png" alt="Venue Logo">
+                            <img src="../../images/2.png" alt="Venue Logo">
                         </div>
                         <p>MotorEmpire is authorised and regulated by the Financial Conduct Authority.All vehicles are subject to prior sale. By accessing this website, you agree to the MotorEmpire's Terms of Service and Privacy Policy.</p>
                         <ul class="social-icons">
@@ -335,10 +329,10 @@ img{
                         <div class="row">
                             <div class="col-md-6">
                                 <ul>
-                                    <li><a href="../index.php"><i class="fa fa-stop"></i>Home</a></li>
-                                    <li><a href="../contact.html"><i class="fa fa-stop"></i>About</a></li>
-                                    <li><a href="../contact.html"><i class="fa fa-stop"></i>Team</a></li>
-                                    <li><a href="../contact.php"><i class="fa fa-stop"></i>Contact Us</a></li>
+                                    <li><a href="../../index.php"><i class="fa fa-stop"></i>Home</a></li>
+                                    <li><a href="../../contact.html"><i class="fa fa-stop"></i>About</a></li>
+                                    <li><a href="../../contact.html"><i class="fa fa-stop"></i>Team</a></li>
+                                    <li><a href="../../contact.php"><i class="fa fa-stop"></i>Contact Us</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
@@ -377,10 +371,6 @@ img{
             </div>
         </div>
     </div>
-    <script src = "../script.js"></script>
+    <script src="../../script.js"></script>
 </body>
 </html>
-
-
-
-

@@ -3,9 +3,9 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
 
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
+    require '../src/PHPMailer/src/Exception.php';
+    require '../src/PHPMailer/src/PHPMailer.php';
+    require '../src/PHPMailer/src/SMTP.php';
 
     require 'config.php';
     $message = "Thanks for subscribing to us! We will keep in touch with you.";

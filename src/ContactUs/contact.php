@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MotorEmpire | Contact</title>
     <meta name="description" content="">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-        <link rel="stylesheet" href="bootstrap+fonte/bootstrap.min.css">
+        <link rel="stylesheet" href="../../bootstrap+fonte/bootstrap.min.css">
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
         
-        <link rel="stylesheet" href="bootstrap+fonte/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="bootstrap+fonte/fontAwesome.css">
-        <link rel="stylesheet" href="bootstrap+fonte/hero-slider.css">
-        <link rel="stylesheet" href="bootstrap+fonte/owl-carousel.css">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../../bootstrap+fonte/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../../bootstrap+fonte/fontAwesome.css">
+        <link rel="stylesheet" href="../../bootstrap+fonte/hero-slider.css">
+        <link rel="stylesheet" href="../../bootstrap+fonte/owl-carousel.css">
+        <link rel="stylesheet" href="../../style.css">
 
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -26,13 +26,13 @@
       
       <div id="MenuBtn" class="fas fa-bars"></div>
 
-      <a href="index.php" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
+      <a href="../../index.php" class="logo"><span> <img src="../../images/logo2.png" width="100px " height="50px" > </span></a>
       <nav class="navbar">
   
-        <a href="index.php">Home</a>
-        <a href="vehicles.php">Vehicles</a>
+        <a href="../../index.php">Home</a>
+        <a href="../../vehicles.php">Vehicles</a>
   
-        <a href="contact.php">Contact</a>
+        <a href="../../contact.php">Contact</a>
         
       </nav>
 
@@ -41,7 +41,7 @@
 
     <section class="contactus" id="contactus" >
     <div class="contact-background">
-        <img src="img/tyler2.png" alt="" class="contactus_banner">
+        <img src="../../img/tyler2.png" alt="" class="contactus_banner">
        </div>
         <div class="contactus-content">
             <div class="line+content">
@@ -138,7 +138,7 @@ function isWorkingHours($time) {
             <div class="swiper TeamSlider">
               <div class="swiper-wrapper">
                 <div class="swiper-slide box">
-                  <img src="img/team-image-1-646x680.jpg" alt="" />
+                  <img src="../../img/team-image-1-646x680.jpg" alt="" />
                   <div class="content">
                     
                     <h3>John Doe-<b>CEO</b></h3>
@@ -149,7 +149,7 @@ function isWorkingHours($time) {
 
 
                 <div class="swiper-slide box">
-                  <img src="img/team-image-2-646x680.jpg" alt="" />
+                  <img src="../../img/team-image-2-646x680.jpg" alt="" />
                   <div class="content">
                     <h3>Jane Doe-<b>Administrative Assistant</b></h3>
                  
@@ -159,7 +159,7 @@ function isWorkingHours($time) {
 
 
                 <div class="swiper-slide box">
-                  <img src="img/team-image-3-646x680.jpg" alt="" />
+                  <img src="../../img/team-image-3-646x680.jpg" alt="" />
                   <div class="content">
                     <h3>Paula George-<b>Marketing Manager</b></h3>
                     
@@ -169,7 +169,7 @@ function isWorkingHours($time) {
 
 
                 <div class="swiper-slide box">
-                  <img src="img/team-image-4-646x680.jpg" alt="" />
+                  <img src="../../img/team-image-4-646x680.jpg" alt="" />
                   <div class="content">
                     <h3>Dan Blatan-<b>Office Assistant</b></h3>
                    
@@ -179,7 +179,7 @@ function isWorkingHours($time) {
 
 
                 <div class="swiper-slide box">
-                  <img src="img/albertdera2.png" alt="" />
+                  <img src="../../img/albertdera2.png" alt="" />
                   <div class="content">
                     <h3>Albert Deda-<b>Sales Manager</b></h3>
                    
@@ -189,7 +189,7 @@ function isWorkingHours($time) {
 
 
                 <div class="swiper-slide box">
-                  <img src="img/teamimage5.png" alt="" />
+                  <img src="../../img/teamimage5.png" alt="" />
                   <div class="content">
                     <h3>Jake Peralta-<b>Customer Service Representative</b></h3>
                     
@@ -197,7 +197,7 @@ function isWorkingHours($time) {
                 </div>
 
                 <div class="swiper-slide box">
-                  <img src="img/teamimage6.png" alt="" />
+                  <img src="../../img/teamimage6.png" alt="" />
                   <div class="content">
                     <h3>Robin Williams-<b>Customer Service Representative</b></h3>
                     
@@ -205,7 +205,7 @@ function isWorkingHours($time) {
                 </div>
 
                 <div class="swiper-slide box">
-                  <img src="img/teamimage7.png" alt="" />
+                  <img src="../../img/teamimage7.png" alt="" />
                   <div class="content">
                     <h3>Mary Jane-<b>Customer Service Representative</b></h3>
                     
@@ -233,7 +233,7 @@ function isWorkingHours($time) {
                 <div class="col-md-5">
                     <div class="about-veno">
                         <div class="logo">
-                            <img src="images/2.png" alt="Venue Logo">
+                            <img src="../../images/2.png" alt="Venue Logo">
                         </div>
                         <p>MotorEmpire is authorised and regulated by the Financial Conduct Authority.All vehicles are subject to prior sale. By accessing this website, you agree to the MotorEmpire's Terms of Service and Privacy Policy.</p>
                         <ul class="social-icons">
