@@ -70,55 +70,44 @@ width:100%;
   </head>
 
   <body>
- <!--HEADER/NAVBAR start-->
- <header>
-      
-      <div id="MenuBtn" class="fas fa-bars"></div>
-
-      <a href="index.php" style="margin-right:35px" class="logo"><span> <img src="images/logo2.png" width="100px " height="50px" > </span></a>
-      <nav class="navbar">
-      
-        <a href="index.php">Home</a>
-        <a href="vehicles.php">Vehicles</a>
-  
-        <a href="contact.php">Contact</a>
-      </nav>
-       <div class="icon-cart">
+  <!-- HEADER/NAVBAR start -->
+  <header>
+        <div id="MenuBtn" class="fas fa-bars"></div>
+        <a href="#" style="margin-right:35px" class="logo"><img src="images/logo2.png" width="100px" height="50px"></a>
+        <nav class="navbar">
+            <a href="index.php">Home</a>
+            <a href="vehicles.php">Vehicles</a>
+            <a href="contact.php">Contact</a>
+        </nav>
+        <div class="icon-cart">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"/>
             </svg>
-        <span>0</span>
+            <span>0</span>
         </div>
+    </header>
+    <br><br>
 
-
- </header>
-<br>
-<br>
-
-<div style="margin-top: 70px;" class="filter-container">
-    <h3 class="text-center text-uppercase font-monospace m-3">
-        Filter
-      </h3>
-      <div class="container mt-1">
-          <form method="post">
-              <div class="row">
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                      <div class="form-group">
-                          <label>Used/New:</label>
-               
-                           <select class="form-control" id="filter1">
+    <div style="margin-top: 70px;" class="filter-container">
+        <h3 class="text-center text-uppercase font-monospace m-3">Filter</h3>
+        <div class="container mt-1">
+            <form method="post">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Used/New:</label>
+                            <select class="form-control" name="usedNew">
                                 <option value="">-- All --</option>
                                 <option value="new vehicles">New vehicle</option>
                                 <option value="used vehicles">Used vehicle</option>
-                           </select>
-                      </div>
-                  </div>
-      
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                      <div class="form-group">
-                        <form method="post">
-                            <label>Model</label>
-                            <select method="post" class="form-control" id="filter2">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Model:</label>
+                            <select class="form-control" name="model">
                                 <option value="">-- All --</option>
                                 <option value="BMW 7 series">BMW 7 series</option>
                                 <option value="BMW M5 CS">BMW M5</option>
@@ -127,85 +116,62 @@ width:100%;
                                 <option value="BMW M3 CS">BMW M3</option>
                                 <option value="BMW 3 series">BMW 3 Series</option>
                             </select>
-                        </form>
-                      </div>
-                  </div>
-      
-                  <!-- <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                      <div class="form-group">
-                          <label>Model:</label>
-               
-                           <select class="form-control">
-                                <option value="">-- All --</option>
-                                <option value="">-- All --</option>
-                                <option value="">-- All --</option>
-                                <option value="">-- All --</option>
-                           </select>
-                      </div>
-                  </div> -->
-      
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="form-group">
-                <label for="sortOrder">Sort Names:</label>
-                <select class="form-control" id="sortOrder" name="sortOrder">
-                    <option value="">Select Order</option>
-                    <option value="A-Z" <?= (isset($_POST['sortOrder']) && $_POST['sortOrder'] == 'A-Z') ? 'selected' : ''; ?>>A to Z</option>
-                    <option value="Z-A" <?= (isset($_POST['sortOrder']) && $_POST['sortOrder'] == 'Z-A') ? 'selected' : ''; ?>>Z to A</option>
-                </select>
-            </div>
-        </div>
-      
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                      <div class="form-group">
-                          <label>Kilometers:</label>
-               
-                           <select class="form-control" id="filter4">
-                            <!--Bon mebo 
-                              IF NEW DIFFERENT MILEAGE
-                              IF USED DIFFERENT
-                              ama edhe qishtu bon melan
-                            -->
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="sortOrder">Sort Names:</label>
+                            <select class="form-control" name="sortOrder">
+                                <option value="">Select Order</option>
+                                <option value="A-Z">A to Z</option>
+                                <option value="Z-A">Z to A</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Kilometers:</label>
+                            <select class="form-control" name="kilometers">
                                 <option value="">-- All --</option>
                                 <option value="kmRange1">0Km- 50000Km</option>
                                 <option value="kmRange2">50000Km - 100000km</option>
                                 <option value="kmRange3">100000Km - 150000Km</option>
                                 <option value="kmRange4">150000Km - 250000Km</option>
                                 <option value="kmRange5">250000Km - ...</option>
-                           </select>
-                      </div>
-                  </div>
-      
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Price:</label>
-             
-                        <select class="form-control" id="sortPrice" name="sortPrice">
-                          <option value="">Select</option>
-                          <option value="lowestToHighest">Lowest to Highest</option>
-                         <option value="highestToLowest">Highest to Lowest</option>
-                        </select>
+                            </select>
+                        </div>
                     </div>
-                </div>
-      
-      
-      
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                      <div class="form-group">
-                          <label>Gearbox:</label>
-               
-                           <select class="form-control" id="filter6">
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Price:</label>
+                            <select class="form-control" name="sortPrice">
+                                <option value="">Select</option>
+                                <option value="lowestToHighest">Lowest to Highest</option>
+                                <option value="highestToLowest">Highest to Lowest</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Gearbox:</label>
+                            <select class="form-control" name="gearbox">
                                 <option value="">-- All --</option>
                                 <option value="Manual">Manual</option>
                                 <option value="Automatic">Automatic</option>
-                           </select>
-                      </div>
-                  </div>
-                 
-    <button id="Searchbtn" class="btn" type="submit">Search</button>
+                            </select>
+                        </div>
+                    </div>
 
+                        <button id="Searchbtn" class="btn" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-          </form>
-      </div>
 
       <?php
 
@@ -288,111 +254,84 @@ $products = [
 //Sortimi me asort edhe arsort per qmim 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $filteredProducts = array_filter($products, function ($product) {
-        return (empty($_POST['category']) || $product['category'] === $_POST['category']) &&
-               (empty($_POST['model']) || $product['model'] === $_POST['model']) &&
-               (empty($_POST['gearbox']) || $product['gearbox'] === $_POST['gearbox']);
+    $usedNew = $_POST['usedNew'] ?? '';
+    $model = $_POST['model'] ?? '';
+    $kilometers = $_POST['kilometers'] ?? '';
+    $gearbox = $_POST['gearbox'] ?? '';
+    $sortOrder = $_POST['sortOrder'] ?? '';
+    $sortPrice = $_POST['sortPrice'] ?? '';
+
+    // Filter products based on selection
+    $filteredProducts = array_filter($products, function ($product) use ($usedNew, $model, $kilometers, $gearbox) {
+        return ($usedNew === '' || $product['category'] === $usedNew) &&
+               ($model === '' || $product['model'] === $model) &&
+               ($gearbox === '' || $product['gearbox'] === $gearbox) &&
+               ($kilometers === '' || checkKilometersRange($product['kilometers'], $kilometers));
     });
 
-    $priceSortArray = [];
-    foreach ($filteredProducts as $key => $product) {
-        $priceSortArray[$key] = $product['price'];
+    // Sort products based on selection
+    if ($sortOrder === 'A-Z') {
+        usort($filteredProducts, function ($a, $b) { return $a['name'] <=> $b['name']; });
+    } elseif ($sortOrder === 'Z-A') {
+        usort($filteredProducts, function ($a, $b) { return $b['name'] <=> $a['name']; });
     }
 
-    if (!empty($_POST['sortPrice']) && $_POST['sortPrice'] === 'lowestToHighest') {
-        asort($priceSortArray);
-    } elseif (!empty($_POST['sortPrice']) && $_POST['sortPrice'] === 'highestToLowest') {
-        arsort($priceSortArray);
+    if ($sortPrice === 'lowestToHighest') {
+        usort($filteredProducts, function ($a, $b) { return $a['price'] <=> $b['price']; });
+    } elseif ($sortPrice === 'highestToLowest') {
+        usort($filteredProducts, function ($a, $b) { return $b['price'] <=> $a['price']; });
     }
 
-    $sortedProducts = [];
-    foreach ($priceSortArray as $key => $value) {
-        $sortedProducts[] = $filteredProducts[$key];
-    }
+    $products = $filteredProducts;
 
-    $products = $sortedProducts;
+}
+
+function checkKilometersRange($kmValue, $range) {
+    $km = intval(str_replace(',', '', $kmValue)); // Remove commas and convert to integer
+    switch ($range) {
+        case 'kmRange1': return $km <= 50000;
+        case 'kmRange2': return $km > 50000 && $km <= 100000;
+        case 'kmRange3': return $km > 100000 && $km <= 150000;
+        case 'kmRange4': return $km > 150000 && $km <= 250000;
+        case 'kmRange5': return $km > 250000;
+        default: return true; // No filter selected
+    }
 }
 ?>
-
-
-
-<?php
-//Sortimi prej A-Z te makinave
-// Assuming $products is predefined as shown in previous examples.
-
-// Check if form is submitted and sort order is set
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sortOrder'])) {
-    // Extract names and their corresponding indices
-    $nameIndexMap = [];
-    foreach ($products as $index => $product) {
-        $nameIndexMap[$product['name']] = $index;
-    }
-
-    // Sort by names using the selected order from the form
-    if ($_POST['sortOrder'] === 'A-Z') {
-        ksort($nameIndexMap);
-    } elseif ($_POST['sortOrder'] === 'Z-A') {
-        krsort($nameIndexMap);
-    }
-
-    // Rebuild the products array based on the sorted names
-    $sortedProducts = [];
-    foreach ($nameIndexMap as $name => $index) {
-        $sortedProducts[] = $products[$index];
-    }
-
-    // Use the sorted products for display
-    $products = $sortedProducts;
-}
-?>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 <section class="featured-places">
-<div class="container" style="margin-top:50px;">
-    <div class="row" id="productContainer">
-        <?php foreach ($products as $product): ?>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mt-4 ">
-                <div class="featured-item">
-                    <div class="card-image">
-                        <img src="<?= $product['image']; ?>" alt="Loading image...">
+    <div class="container" style="margin-top:50px;">
+        <div class="row" id="productContainer">
+            <?php foreach ($products as $product): ?>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mt-4">
+                    <div class="featured-item">
+                        <div class="card-image">
+                            <img src="<?= htmlspecialchars($product['image']); ?>" alt="Loading image...">
+                        </div>
+                        <div class="d-flex justify-content-around mt-2">
+                            <strong class="text-muted"><i class="fa fa-dashboard"></i> <?= htmlspecialchars($product['kilometers']); ?></strong>
+                            <strong class="text-muted"><i class="fa fa-cube"></i> <?= htmlspecialchars($product['engineType']); ?></strong>
+                            <strong class="text-muted"><i class="fa fa-cog"></i> <?= htmlspecialchars($product['gearbox']); ?></strong>
+                        </div>
+                        <div class="card-heading"><?= htmlspecialchars($product['name']); ?></div>
+                        <div class="card-text">
+                            <?php
+                            // Shorten description if it's longer than 100 characters
+                            echo strlen($product['description']) > 100 ? substr($product['description'], 0, 100) . '...' : $product['description'];
+                            ?>
+                        </div>
+                        <div class="card-text">$<?= number_format($product['price']); ?></div>
+                        <a href="<?= htmlspecialchars($product['link']); ?>" class="card-button">Purchase</a>
                     </div>
-                    <div class="d-flex justify-content-around mt-2">
-                        <strong class="text-muted"><i class="fa fa-dashboard"></i> <?= $product['kilometers']; ?> km</strong>
-                        <strong class="text-muted"><i class="fa fa-cube"></i> <?= $product['engineType']; ?></strong>
-                        <strong class="text-muted"><i class="fa fa-cog"></i> <?= $product['gearbox']; ?></strong>
-                    </div>
-                    <div class="card-heading"><?= $product['name']; ?></div>
-                    <div class="card-text">
-                        <?php
-                        // Shorten description if it's longer than 100 characters
-                        if (strlen($product['description']) > 100) {
-                            echo substr($product['description'], 0, 100) . '...';
-                        } else {
-                            echo $product['description'];
-                        }
-                        ?>
-                    </div>
-                    <div class="card-text">$<?= number_format($product['price']); ?></div>
-                    <a href="<?= $product['link']; ?>" class="card-button">Purchase</a>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
+</section>
+
 
 
 
