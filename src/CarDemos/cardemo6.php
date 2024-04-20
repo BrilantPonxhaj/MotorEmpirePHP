@@ -246,11 +246,11 @@ img{
 <body>
     <header>
         <div id="MenuBtn" class="fas fa-bars"></div>
-        <a href="#" class="logo"><span> <img src="../../images/logo2.png" width="100px " height="50px" > </span></a>
+        <a href="../../Home/index.php" class="logo"><span> <img src="../../images/logo2.png" width="100px " height="50px" > </span></a>
         <nav class="navbar">
-            <a href="../../index.php">Home</a>
+            <a href="../../Home/index.php">Home</a>
             <a href="../../vehicles.php">Vehicles</a>
-            <a href="../../contact.php">Contact</a>
+            <a href="../../src/ContactUs/contact.php">Contact</a>
         </nav>
     </header>
 
@@ -299,7 +299,6 @@ img{
                         Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication.
                     </p>
                     <div class="btn-groups">
-                        <button type="button" class="add-cart-btn"><i class="fas fa-shopping-cart"></i>add to cart</button>
                         <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i>buy now</button>
                     </div>
                 </div>
