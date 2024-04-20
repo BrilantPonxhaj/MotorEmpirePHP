@@ -19,11 +19,54 @@
 svg{
     width: 30px;
 }
-header{
+.heading
+{
+    padding-bottom: 2rem;
+    font-size: 4.5rem;
+    text-align: center;
+}
+header
+{
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 9%;
+    background: #fff;
+    box-shadow: var(--box_shadow);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+}
+header .logo{
+    color: #000;
+    border: #000;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+header .logo span{
+    color:var(--main);
+}
+header .navbar{
+    position: relative;
+    min-height: 9px;
+    margin-bottom: 6px;
+    border: 1px solid transparent;
+}
+header .navbar a{
+    height: 10px; /* Adjust based on your layout */
+    margin: auto; /* Center the navbar */
+     /* Flexbox layout for the items */
+
+    font-size: 1.6rem;
+    color: #000;
+    margin: 0.6rem;
+    justify-content: space-between;
+}
+header .navbar a:hover{
+    color: var(--main);
+    text-decoration: none;
 }
 .icon-cart{
     position: relative;
@@ -79,11 +122,11 @@ width:100%;
   <!-- HEADER/NAVBAR start -->
   <header>
         <div id="MenuBtn" class="fas fa-bars"></div>
-        <a href="#" style="margin-right:35px" class="logo"><img src="images/logo2.png" width="100px" height="50px"></a>
+        <a href="Home/index.php"  class="logo"><img src="images/logo2.png" width="100px" height="50px"></a>
         <nav class="navbar">
-            <a href="index.php">Home</a>
+            <a href="Home/index.php">Home</a>
             <a href="vehicles.php">Vehicles</a>
-            <a href="contact.php">Contact</a>
+            <a href="src/ContactUs/contact.php">Contact</a>
         </nav>
         <div class="icon-cart">
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
