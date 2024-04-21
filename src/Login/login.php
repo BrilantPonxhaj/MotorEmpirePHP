@@ -171,35 +171,114 @@ section a{
             } */
 
 
+
+
+
+
+
+            class User {
+                protected $email;
+                private $password;
+            
+                public function __construct($email, $password) {
+                    $this->email = $email;
+                    $this->password = $password;
+                }
+            
+                public function getEmail() {
+                    return $this->email;
+                }
+            
+                protected function getPassword() {
+                    return $this->password;
+                }
+            
+                public function __destruct() {
+                    // Example: Cleaning up logs or closing connections
+                }
+            }
+            
+
+
+
+
+ 
+
+
+
+
+class AuthUser extends User {
+    public function login($conn) {
+        $email = mysqli_real_escape_string($conn, $this->getEmail());
+        $password = mysqli_real_escape_string($conn, $this->getPassword());
+
+        $sql = "SELECT fullname FROM register WHERE email = '$email' AND passwordi = '$password'";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_assoc($result);
+            $_SESSION['login_user'] = $row['fullname'];
+            header("location: ../../Home/index.php");
+            exit();
+        } else {
+            throw new Exception("Invalid login credentials.");
+        }
+    }
+
+
+}
+ 
+include("../../database/configDatabase.php");
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        // Assume AuthUser is defined in another included file or the same file above this script
+        $authUser = new AuthUser($_POST['email'], $_POST['password'], $conn); // Make sure to pass $conn if required as shown previously
+        $authUser->login($conn);
+    } catch (Exception $e) {
+        $error = $e->getMessage();
+        echo $error;  // Consider redirecting or displaying a user-friendly error message
+    }
+}
+
+
+            
+
+
+
+
+
+
+
           
-            include("../../database/configDatabase.php");
-   session_start();
-   $error='';
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
+//             include("../../database/configDatabase.php");
+//    session_start();
+//    $error='';
+//    if($_SERVER["REQUEST_METHOD"] == "POST") {
    
-      // username and password sent from form 
-      $myemail = mysqli_real_escape_string($conn,$_POST['email']);
-      $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
+//       // username and password sent from form 
+//       $myemail = mysqli_real_escape_string($conn,$_POST['email']);
+//       $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
 
-      $sql = "SELECT fullname FROM register WHERE email = '$myemail' and passwordi = '$mypassword'";
+//       $sql = "SELECT fullname FROM register WHERE email = '$myemail' and passwordi = '$mypassword'";
 
-      $result = mysqli_query($conn,$sql);      
-      $row = mysqli_num_rows($result);      
-      $count = mysqli_num_rows($result);
+//       $result = mysqli_query($conn,$sql);      
+//       $row = mysqli_num_rows($result);      
+//       $count = mysqli_num_rows($result);
 
-      if($count == 1) {
-        $row = mysqli_fetch_assoc($result);
+//       if($count == 1) {
+//         $row = mysqli_fetch_assoc($result);
 
 	  
-        $username = $row['fullname']; // Fetching the username from the database
+//         $username = $row['fullname']; // Fetching the username from the database
 
-        // Store username in the session
-        $_SESSION['login_user'] = $username;
-         header("location: ../../Home/index.php");
-      } else {
-         $error = "Your Login Name or Password is invalid";
-      }
-   }
+//         // Store username in the session
+//         $_SESSION['login_user'] = $username;
+//          header("location: ../../Home/index.php");
+//       } else {
+//          $error = "Your Login Name or Password is invalid";
+//       }
+//    }
 
 
             // include("../../database/configDatabase.php");
