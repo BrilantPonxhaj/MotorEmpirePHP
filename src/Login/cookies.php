@@ -1,5 +1,5 @@
-<!-- <?php
-// // Krijimi i nje cookie
+<?php
+// Krijimi i nje cookie
 $cookie_name = "user";
 $cookie_value = "CookiesTest";
 $expire_time = time() + (86400 * 30); // 30 dite, kto sjon valid PERMANENT qata duhesh me caktu diqka si timestamp
@@ -10,7 +10,7 @@ $cookie_httponly = true; // nese cookie osht accessible veq permes HTTP (smunet 
 
 setcookie($cookie_name, $cookie_value, $expire_time, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
 
-// // Validimi dhe rujtja e emrit t userit
+// Validimi dhe rujtja e emrit t userit
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($_POST['username'])) {
         $error = "Please enter username";
@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-session_start();
+
 
 $users = [
     'user'=>"test", 
@@ -34,7 +34,7 @@ if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['passw
            if ($users[$_POST['username']] == $_POST['password']) { 
                $_SESSION['username'] = $_POST['username']; 
                echo "<script>alert('You have entered correct username and password');</script>";
-               header("Location: ../../Home/index.php"); 
+               header("Location: index.php"); 
                exit(); 
            } else {
                echo "<script>alert('You have entered wrong Password');</script>";
@@ -62,4 +62,4 @@ if(isset($_GET['cookie_decline']) && $_GET['cookie_decline'] == 1) {
 if(!isset($_COOKIE["cookie_consent"]) && !isset($_COOKIE["cookie_decline"])) { 
     echo "<div class=\"container-banner\">This site uses cookies to provide the best user experience. By continuing to use this site, you agree to the use of cookies. <a href='?cookie_consent=1'>Accept</a> | <a href='?cookie_decline=1'>Reject</a> </div>";
 }
-?> -->
+?>
