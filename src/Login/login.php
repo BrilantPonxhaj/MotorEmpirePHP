@@ -150,32 +150,7 @@ section a{
             <header>Login</header>
         </div>
         <?php
-        /*
-            if(isset($_POST["login"])){
-                $email = $_POST["email"];
-                $password = $_POST["password"];
-                require_once "database/configDatabase.php";
-                $sql = "SELECT * FROM register WHERE email = '$email'";
-                $result = mysqli_query($conn, $sql);
-                $useri = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                if ($useri) {
-                    if (password_verify($password,$useri["passwordi"])) {
-                        header("Location: index.php");
-                        die();
-                    }else{
-                        echo "<div class='alert alert-danger'>Incorrect Password<br></div>";                        
-                    }
-                }else{
-                    echo "<div class='alert alert-danger'>Email doesn't match<br></div>";
-                }
-            } */
-
-
-
-
-
-
-
+       
             class User {
                 protected $email;
                 private $password;
@@ -197,15 +172,7 @@ section a{
                     // Example: Cleaning up logs or closing connections
                 }
             }
-            
-
-
-
-
- 
-
-
-
+        
 
 class AuthUser extends User {
     public function login($conn) {
@@ -242,69 +209,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-            
-
-
-
-
-
-
-
-          
-//             include("../../database/configDatabase.php");
-//    session_start();
-//    $error='';
-//    if($_SERVER["REQUEST_METHOD"] == "POST") {
-   
-//       // username and password sent from form 
-//       $myemail = mysqli_real_escape_string($conn,$_POST['email']);
-//       $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
-
-//       $sql = "SELECT fullname FROM register WHERE email = '$myemail' and passwordi = '$mypassword'";
-
-//       $result = mysqli_query($conn,$sql);      
-//       $row = mysqli_num_rows($result);      
-//       $count = mysqli_num_rows($result);
-
-//       if($count == 1) {
-//         $row = mysqli_fetch_assoc($result);
-
-	  
-//         $username = $row['fullname']; // Fetching the username from the database
-
-//         // Store username in the session
-//         $_SESSION['login_user'] = $username;
-//          header("location: ../../Home/index.php");
-//       } else {
-//          $error = "Your Login Name or Password is invalid";
-//       }
-//    }
-
-
-            // include("../../database/configDatabase.php");
-            // if(isset($_POST['login'])) {
-            //     $email = mysqli_real_escape_string($conn, $_POST['email']);
-            //     $password = mysqli_real_escape_string($conn, $_POST['password']);
-
-            //     $result = mysqli_query($conn, "SELECT * FROM register WHERE email ='$email' AND passwordi ='$password' ") or die("Error");
-            //     $row = mysqli_fetch_assoc($result);
-
-            //     if(is_array($row) &&  !empty($row)) {
-            //         $_SESSION['valid'] = $row['email'];
-            //         $_SESSION['fullname'] = $row['fullname'];
-            //         $_SESSION['id'] = $row['id'];
-                
-            //             $_SESSION['user_logged_in'] = $row['email'];
-            //             header("refresh:0.1;url=../../Home/index.php");
-            //             exit();
-                    
-            //     }else{
-            //         echo "<div class='alert alert-danger'>Wrong email or password<br></div>";
-            //     }
-              
-            // }
-
         ?>
+
+
+
         <br>
         <form action="login.php" method="post">
         <div class="input-box">
