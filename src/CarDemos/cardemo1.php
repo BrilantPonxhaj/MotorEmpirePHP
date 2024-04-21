@@ -1,19 +1,17 @@
-
 <?php
-// Check if the cookie exists
+// Kontrollohet nëse ekziston cookie
 if(isset($_COOKIE['colorSettings'])) {
-    // Explode the string into an array based on the delimiter and trim spaces
+    // Ndahet vargun bazuar në ndarësin dhe hiqni hapësirat
     $colors = array_map('trim', explode('|', $_COOKIE['colorSettings']));
 
-    $backgroundColor = $colors[0]; // Assuming this is '#222831'
-    $_Color = $colors[1]; // Assuming this is 'white'
+    $backgroundColor = $colors[0]; //  kjo është #222831
+    $_Color = $colors[1]; //  kjo është e bardha
 } else {
-    // Default colors if the cookie isn't set
-    $backgroundColor = 'defaultBackground'; //
-    $_Color = 'defaultHeader'; //
+    // Ngjyrat e parazgjedhura nëse cookie nuk është vendosur
+    $backgroundColor = 'defaultBackground'; // Ngjyra e paracaktuar e sfondit
+    $_Color = 'defaultHeader'; // Ngjyra e paracaktuar e tekstit të header
 }
 ?>
-
 
 
 

@@ -61,7 +61,7 @@
             $result = mysqli_query($conn, $sql);
             // Kontrollon nëse ka një rezultat, që do të thotë se përdoruesi është i vlefshëm
             if (mysqli_num_rows($result) == 1) {  //E kqyr nese osht ni row n databaz qe osht tu bo match me qato t dhana
-                $row = mysqli_fetch_assoc($result);
+                $row = mysqli_fetch_assoc($result); //i vendos te dhenat ne variablen row
                 $_SESSION['login_user'] = $row['fullname']; // Ruajtja e emrit të plotë në session për përdorim të mëtejshëm
      
                 $colorSettings = "#222831|white"; // No spaces around "|"
