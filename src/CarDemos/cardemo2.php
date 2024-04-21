@@ -1,3 +1,19 @@
+<?php
+// Check if the cookie exists
+if(isset($_COOKIE['colorSettings'])) {
+    // Explode the string into an array based on the delimiter and trim spaces
+    $colors = array_map('trim', explode('|', $_COOKIE['colorSettings']));
+
+    $backgroundColor = $colors[0]; // Assuming this is '#222831'
+    $_Color = $colors[1]; // Assuming this is 'white'
+} else {
+    // Default colors if the cookie isn't set
+    $backgroundColor = 'defaultBackground'; //
+    $_Color = 'defaultHeader'; //
+}
+?>
+
+
 
 
 <!DOCTYPE html>
@@ -33,7 +49,11 @@ header
     left: 0;
     right: 0;
     padding: 2rem 9%;
-    background: #fff;
+    background-color:
+   <?php
+   echo htmlspecialchars($backgroundColor); 
+  ?>;
+  
     box-shadow: var(--box_shadow);
     display: flex;
     justify-content: space-between;
@@ -58,9 +78,12 @@ header .navbar a{
     height: 10px; /* Adjust based on your layout */
     margin: auto; /* Center the navbar */
      /* Flexbox layout for the items */
+     color: 
+  <?php
+   echo htmlspecialchars($_Color); 
+  ?>;
+    font-size: 1.9rem;
 
-    font-size: 1.6rem;
-    color: #000;
     margin: 0.6rem;
     justify-content: space-between;
 }

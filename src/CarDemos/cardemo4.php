@@ -1,3 +1,24 @@
+
+<?php
+// Check if the cookie exists
+if(isset($_COOKIE['colorSettings'])) {
+    // Explode the string into an array based on the delimiter and trim spaces
+    $colors = array_map('trim', explode('|', $_COOKIE['colorSettings']));
+
+    $backgroundColor = $colors[0]; // Assuming this is '#222831'
+    $_Color = $colors[1]; // Assuming this is 'white'
+} else {
+    // Default colors if the cookie isn't set
+    $backgroundColor = 'defaultBackground'; //
+    $_Color = 'defaultHeader'; //
+}
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,48 +38,58 @@
 
     <style>
         /* Your CSS styles here */
-        .heading {
-            padding-bottom: 2rem;
-            font-size: 4.5rem;
-            text-align: center;
-        }
-        header {
-            z-index: 10000;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem 9%;
-            background: #fff;
-            box-shadow: var(--box_shadow);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header .logo {
-            color: #000;
-            border: #000;
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        header .logo span {
-            color: var(--main);
-        }
-        header .navbar {
-            position: relative;
-            min-height: 9px;
-            margin-bottom: 6px;
-            border: 1px solid transparent;
-        }
-        header .navbar a {
-            height: 10px; /* Adjust based on your layout */
-            margin: auto; /* Center the navbar */
-            /* Flexbox layout for the items */
-            font-size: 1.6rem;
-            color: #000;
-            margin: 0.6rem;
-            justify-content: space-between;
-        }
+        .heading
+{
+    padding-bottom: 2rem;
+    font-size: 4.5rem;
+    text-align: center;
+}
+header
+{
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 9%;
+    background-color:
+   <?php
+   echo htmlspecialchars($backgroundColor); 
+  ?>;
+  
+    box-shadow: var(--box_shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .logo{
+    color: #000;
+    border: #000;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+header .logo span{
+    color:var(--main);
+}
+header .navbar{
+    position: relative;
+    min-height: 9px;
+    margin-bottom: 6px;
+    border: 1px solid transparent;
+}
+header .navbar a{
+    height: 10px; /* Adjust based on your layout */
+    margin: auto; /* Center the navbar */
+     /* Flexbox layout for the items */
+     color: 
+  <?php
+   echo htmlspecialchars($_Color); 
+  ?>;
+    font-size: 1.9rem;
+
+    margin: 0.6rem;
+    justify-content: space-between;
+}
         header .navbar a:hover {
             color: var(--main);
             text-decoration: none;
