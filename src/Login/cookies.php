@@ -1,14 +1,14 @@
 <!-- <?php
 // // Krijimi i nje cookie
-// $cookie_name = "user";
-// $cookie_value = "CookiesTest";
-// $expire_time = time() + (86400 * 30); // 30 dite, kto sjon valid PERMANENT qata duhesh me caktu diqka si timestamp
-// $cookie_path = "/"; // per '/' domethan qe cookie osht valid n secilin domain
-// $cookie_domain = ""; // domaini per t cilin ky osht valid, empty per me leju domenin aktual
-// $cookie_secure = false; // nese cookie duhet me u dergu veq permes HTTPS
-// $cookie_httponly = true; // nese cookie osht accessible veq permes HTTP (smunet me u lexu permes js)
+$cookie_name = "user";
+$cookie_value = "CookiesTest";
+$expire_time = time() + (86400 * 30); // 30 dite, kto sjon valid PERMANENT qata duhesh me caktu diqka si timestamp
+$cookie_path = "/"; // per '/' domethan qe cookie osht valid n secilin domain
+$cookie_domain = ""; // domaini per t cilin ky osht valid, empty per me leju domenin aktual
+$cookie_secure = false; // nese cookie duhet me u dergu veq permes HTTPS
+$cookie_httponly = true; // nese cookie osht accessible veq permes HTTP (smunet me u lexu permes js)
 
-// setcookie($cookie_name, $cookie_value, $expire_time, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
+setcookie($cookie_name, $cookie_value, $expire_time, $cookie_path, $cookie_domain, $cookie_secure, $cookie_httponly);
 
 // // Validimi dhe rujtja e emrit t userit
 if($_SERVER["REQUEST_METHOD"] == "POST") {

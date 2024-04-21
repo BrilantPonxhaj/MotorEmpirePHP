@@ -1,3 +1,17 @@
+<?php
+// Check if the cookie exists
+if(isset($_COOKIE['colorSettings'])) {
+    // Explode the string into an array based on the delimiter and trim spaces
+    $colors = array_map('trim', explode('|', $_COOKIE['colorSettings']));
+
+    $backgroundColor = $colors[0]; // Assuming this is '#222831'
+    $_Color = $colors[1]; // Assuming this is 'white'
+} else {
+    // Default colors if the cookie isn't set
+    $backgroundColor = 'defaultBackground'; //
+    $_Color = 'defaultHeader'; //
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +35,10 @@
     <link rel="stylesheet" href="../style.css" />
     <style>
 .userbtn{
- border: 2px solid black; 
+  color:
+  <?php
+   echo htmlspecialchars($_Color); 
+  ?>;
  font-size:16px;
  padding: 7px;
   padding-top: 8px; 
@@ -29,11 +46,27 @@
   margin-right:5px;
   font-weight: bold
 }
-
+header { 
+  background-color:
+   <?php
+   echo htmlspecialchars($backgroundColor); 
+  ?>;
+  
+ }
+ header .navbar a{
+  color: 
+  <?php
+   echo htmlspecialchars($_Color); 
+  ?>;
+ }
+ 
 
     </style>
   </head>
   <body>
+
+
+
 
     <!--HEADER/NAVBAR start-->
     <header>
@@ -92,7 +125,7 @@ if (isset($_SESSION['login_user'])) {
       <h1>Motor Empire </h1>
       <h2>Where Your Automotive Dreams Begin </h2>\
       <div>
-        <a href="https://www.bmwusa.com/special-offers.html" class="red-button">Explore Vehicles</a>
+        <a href="../vehicles.php" class="red-button">Explore Vehicles</a>
       </div>
     </p>
     
