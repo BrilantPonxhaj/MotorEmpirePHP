@@ -21,8 +21,8 @@ Me këto shërbime, ky projekt do të ofrojë një përvojë më të pasur dhe t
 * Brilant Ponxhaj
 
 # Profesoreshë e lëndës
-Prof.Ass.Dr. Dhuratë Hyseni
-Ass. Dalinë Vranovci
+* Prof.Ass.Dr. Dhuratë Hyseni
+* Ass. Dalinë Vranovci
 
 
 
