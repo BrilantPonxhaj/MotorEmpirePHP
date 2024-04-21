@@ -159,11 +159,14 @@ width:100%;
                             <select class="form-control" name="model">
                                 <option value="">-- All --</option>
                                 <option value="BMW 7 series">BMW 7 series</option>
+                                <option value="BMW X7">BMW X7</option>
                                 <option value="BMW M5 CS">BMW M5</option>
                                 <option value="BMW 5 series">BMW 5 series</option>
                                 <option value="BMW M4 Competition">BMW M4</option>
-                                <option value="BMW M3 CS">BMW M3</option>
+                                <option value="BMW M3 CS">BMW M3 CS</option>
+                                <option value="BMW M3 Competition">BMW M3 Competition</option>
                                 <option value="BMW 3 series">BMW 3 Series</option>
+                                <option value="BMW iX2">BMW iX2</option>
                             </select>
                         </div>
                     </div>
@@ -303,14 +306,14 @@ $products = [
     [
         "name" => "BMW iX2",
         "category" => "new vehicles",
-        "model" => "BMW ix2",
+        "model" => "BMW iX2",
         "price" => 61660,
         "kilometers" => "15,000 km",
         "engineType" => "electric",
         "gearbox" => "Automatic",
         "image" => "images/bmw cards/ix2.jpg",
         "link" => "src/CarDemos/cardemo7.php",
-        "description" => "                    Experience the future of sustainable luxury with the BMW iX2, where innovative technology meets eco-conscious design, delivering an unmatched driving experience.
+        "description" => "Experience the future of sustainable luxury with the BMW iX2, where innovative technology meets eco-conscious design, delivering an unmatched driving experience.
         Crafted with precision to redefine electric mobility, it embodies the essence of automotive advancement, setting a new benchmark in sustainability and sophistication.             
         "
     ],
@@ -318,25 +321,25 @@ $products = [
         "name" => "BMW M3 Competition",
         "category" => "used vehicles",
         "model" => "BMW M3 Competition",
-        "price" => 50,500,
+        "price" => 50500,
         "kilometers" => "120,000 km",
         "engineType" => "petrol",
         "gearbox" => "Manual",
-        "image" => "images/bmw cards/bmw m5CS.jpg",
+        "image" => "images/bmw cards/m3.7.jpg",
         "link" => "src/CarDemos/cardemo8.php",
-        "description" => "Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill. Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication."
+        "description" => "Experience the ultimate fusion of power and precision with the BMW M3 Competition. Crafted to reign supreme on every road and circuit, it epitomizes automotive perfection, pushing the boundaries of performance and luxury to new heights."
     ],
     [
         "name" => "BMW X7",
         "category" => "new vehicles",
         "model" => "BMW X7",
-        "price" => 116,050,
+        "price" => 116050,
         "kilometers" => "15,000 km",
         "engineType" => "petrol",
         "gearbox" => "Automatic",
-        "image" => "images/bmw cards/bmw m5CS.jpg",
+        "image" => "images/bmw cards/x7.7.jpg",
         "link" => "src/CarDemos/cardemo9.php",
-        "description" => "Experience the pinnacle of performance luxury with the BMW M5 CS, where relentless power meets refined elegance, delivering an unparalleled driving thrill. Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication."
+        "description" => "Embark on a journey of unparalleled luxury and commanding power with the BMW X7. Designed to traverse any terrain with effortless grace and precision, the X7 stands as a testament to automotive excellence, setting new standards in performance and opulence."
     ],
     
 
@@ -362,16 +365,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     });
 
     // Sort products based on selection
-    if ($sortOrder === 'A-Z') {
-        ksort($filteredProducts);
-    } elseif ($sortOrder === 'Z-A') {
-        krsort($filteredProducts);
+    if ($sortOrder === 'A-Z' || $sortOrder === 'Z-A') {
+        // Create an array of names with original keys preserved
+        $names = array_column($filteredProducts, 'name', 'id'); // Assume each product has an 'id' or use array keys
+        if ($sortOrder === 'A-Z') {
+            asort($names);
+        } else {
+            arsort($names);
+        }
+        // Reconstruct the array based on sorted names
+        $sortedProducts = [];
+        foreach ($names as $id => $name) {
+            $sortedProducts[$id] = $filteredProducts[$id];
+        }
+        $filteredProducts = $sortedProducts;
     }
-
-    if ($sortPrice === 'lowestToHighest') {
-        asort($filteredProducts);
-    } elseif ($sortPrice === 'highestToLowest') {
-        arsort($filteredProducts);
+    
+    // Sorting by price using a workaround with ksort()
+    if ($sortPrice === 'lowestToHighest' || $sortPrice === 'highestToLowest') {
+        // This approach presumes adjusting the array so that keys are prices
+        // This is not typical; you'd normally use usort(), but here's a ksort() approach as requested
+        $priceSorted = [];
+        foreach ($filteredProducts as $key => $product) {
+            $uniquePriceKey = $product['price'] * 1000 + $key; // Multiplying to handle decimal places
+            $priceSorted[$uniquePriceKey] = $product;
+        }
+        if ($sortPrice === 'lowestToHighest') {
+            ksort($priceSorted);
+        } else {
+            krsort($priceSorted);
+        }
+        $filteredProducts = array_values($priceSorted); // Reset keys after sorting
     }
 
     $products = $filteredProducts;

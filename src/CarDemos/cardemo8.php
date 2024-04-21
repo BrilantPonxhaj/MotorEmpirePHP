@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMW M5 CS</title>
+    <title>BMW M3 Competition</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../../bootstrap+fonte/bootstrap.css">
@@ -244,6 +244,137 @@ img{
     </style>
 </head>
 <body>
+<header>
+        <div id="MenuBtn" class="fas fa-bars"></div>
+        <a href="../../Home/index.php" class="logo"><span> <img src="../../images/logo2.png" width="100px " height="50px" > </span></a>
+        <nav class="navbar">
+            <a href="../../Home/index.php">Home</a>
+            <a href="../../vehicles.php">Vehicles</a>
+            <a href="../../src/ContactUs/contact.php">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Product Information -->
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="product-div">
+                <div class="product-div-left">
+                    <div class="img-container">
+                        <img src="../../images/bmw cards/m3.1.webp" alt="BMW M3 Competition">
+                    </div>
+                    <div class="hover-container">
+                        <?php
+                        // Image paths
+                        $imagePaths = [
+                            "../../images/bmw cards/m3.1.webp",
+                            "../../images/bmw cards/m3.2.webp",
+                            "../../images/bmw cards/m3.3.webp",
+                            "../../images/bmw cards/m3.4.webp",
+                            "../../images/bmw cards/m3.5.webp",
+                            "../../images/bmw cards/m3.6.webp"
+                        ];
+
+                        // Loop through the image paths and generate HTML for each image
+                        foreach ($imagePaths as $index => $path) {
+                            echo '<div>';
+                            echo '<img src="' . $path . '" alt="Image ' . ($index + 1) . '">';
+                            echo '</div>';
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="product-div-right">
+                    <span class="product-name">BMW M3 Competition</span>
+                    <span class="product-price">$50,500</span>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        (478 ratings)
+                    </div>
+                    <p class="product-description">    
+                        Experience the ultimate fusion of power and precision with the BMW M3 Competition. Crafted to reign supreme on every road and circuit, 
+                        it epitomizes automotive perfection, pushing the boundaries of performance and luxury to new heights.
+                    </p>
+                    <div class="btn-groups">
+                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i>buy now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="about-veno">
+                        <div class="logo">
+                            <img src="../../images/2.png" alt="Venue Logo">
+                        </div>
+                        <p>MotorEmpire is authorised and regulated by the Financial Conduct Authority.All vehicles are subject to prior sale. By accessing this website, you agree to the MotorEmpire's Terms of Service and Privacy Policy.</p>
+                        <ul class="social-icons">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="useful-links">
+                        <div class="footer-heading">
+                            <h4>Useful Links</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><a href="../../index.php"><i class="fa fa-stop"></i>Home</a></li>
+                                    <li><a href="../../contact.html"><i class="fa fa-stop"></i>About</a></li>
+                                    <li><a href="../../contact.html"><i class="fa fa-stop"></i>Team</a></li>
+                                    <li><a href="../../contact.php"><i class="fa fa-stop"></i>Contact Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-stop"></i>FAQ</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Testimonials</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Blog</a></li>
+                                    <li><a href="#"><i class="fa fa-stop"></i>Terms</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="footer-heading">
+                            <h4>Contact Information</h4>
+                        </div>
+                        <p><i class="fa fa-map-marker"></i> 212 Barrington Court New York, ABC</p>
+                        <ul>
+                            <li>Phone:<a href="#">+38344412817</a></li>
+                            <li>Email:<a href="#">MotorEmpire@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">Copyright © 2024 MotorEmpire </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../script.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMW M5 CS</title>
+    <title>BMW iX2</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../../bootstrap+fonte/bootstrap.css">
@@ -287,11 +287,11 @@ img{
                     <span class="product-name">BMW iX2</span>
                     <span class="product-price">$61,660</span>
                     <div class="product-rating">
+                    <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
                         (482 ratings)
                     </div>
                     <p class="product-description">
