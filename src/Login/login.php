@@ -105,15 +105,7 @@
         <div class="input-box">
             <input type="password" class="input-field" name="password" placeholder="Password" autocomplete="off">
         </div>
-        <div class="forgot">
-            <section>
-                <input type="checkbox" id="check">
-                <label for="check">Remember me</label>
-            </section>
-            <section>
-                <a href="#">Forgot password</a>
-            </section>
-        </div>
+        
         <div class="input-submit">
             <input type="submit" name="login" value="Sign in" class="submit-btn" id="submit1" style="color: #fff;">
         </div>
