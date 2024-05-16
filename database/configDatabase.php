@@ -12,3 +12,19 @@ if (mysqli_connect_errno()) {
 }
 
 ?>
+
+<?php 
+// MainDB database for cars data
+$servername = "localhost";
+$username = "root";
+$password = ""; 
+$dbname = "maindb";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+?>
