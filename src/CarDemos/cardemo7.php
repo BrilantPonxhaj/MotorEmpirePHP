@@ -325,7 +325,9 @@ img{
 Crafted with precision to redefine electric mobility, it embodies the essence of automotive advancement, setting a new benchmark in sustainability and sophistication.                    </p>
 
                     <div class="btn-groups">
-                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i>buy now</button>
+                    <a href="checkout.php">
+                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                    </a>
                     </div>
                 </div>
             </div>

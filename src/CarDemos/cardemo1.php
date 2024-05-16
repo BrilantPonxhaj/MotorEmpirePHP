@@ -322,7 +322,9 @@ img{
                         Elevate your drive with cutting-edge technology and unrivaled comfort, defining the essence of luxury driving.
                     </p>
                     <div class="btn-groups">
+                    <a href="checkout.php">
                         <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                    </a>
                     </div>
                 </div>
             </div>

@@ -343,7 +343,9 @@ header .navbar a{
                         Experience the ultimate driving experience, where every curve becomes a conquest and every moment an exhilarating symphony of performance and precision.
                     </p>
                     <div class="btn-groups">
+                    <a href="checkout.php">
                         <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                    </a>
                     </div>
                 </div>
             </div>

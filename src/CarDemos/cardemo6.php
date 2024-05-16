@@ -324,7 +324,9 @@ img{
                         Precision-engineered to dominate both road and track, it embodies the epitome of automotive excellence, setting new standards in exhilaration and sophistication.
                     </p>
                     <div class="btn-groups">
-                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i>buy now</button>
+                    <a href="checkout.php">
+                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                    </a>
                     </div>
                 </div>
             </div>
