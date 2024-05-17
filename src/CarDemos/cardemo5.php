@@ -324,9 +324,10 @@ img{
                         Pushing boundaries with its adrenaline-pumping performance and iconic design, it's the epitome of automotive excellence, redefining the art of exhilaration behind the wheel.
                     </p>
                     <div class="btn-groups">
-                    <a href="checkout.php">
-                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
-                    </a>
+                        <form action="checkout.php" method="post">
+                            <input type="hidden" name="carId" value="5"> <!-- Example car ID -->
+                            <button type="submit" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -316,9 +316,10 @@ img{
                         Experience the epitome of driving pleasure, where innovation meets elegance, setting new standards in automotive excellence.
                     </p>
                     <div class="btn-groups">
-                    <a href="checkout.php">
-                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
-                    </a>
+                        <form action="checkout.php" method="post">
+                            <input type="hidden" name="carId" value="2"> <!-- Example car ID -->
+                            <button type="submit" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -4,8 +4,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Start the session
+session_start();
+
 // Database connection
-$servername = "localhost";
+$servername = "localhost:3308";
 $username = "root";
 $password = "";
 $dbname = "maindb";
@@ -18,11 +21,37 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Retrieve car data based on car ID
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['carId'])) {
+    $carId = $conn->real_escape_string($_POST['carId']);
+    
+    // Fetch car data from the database
+    $sql = "SELECT * FROM cars WHERE carID = '$carId'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Store car data in session
+        $carData = $result->fetch_assoc();
+        $_SESSION['productName'] = $carData['name'];
+        $_SESSION['productPrice'] = $carData['price'];
+        $_SESSION['productImage'] = $carData['image'];
+    } else {
+        $_SESSION['productName'] = 'No product selected';
+        $_SESSION['productPrice'] = 'No price available';
+        $_SESSION['productImage'] = '';
+    }
+}
+
+// Retrieve product data from session
+$productName = isset($_SESSION['productName']) ? $_SESSION['productName'] : 'No product selected';
+$productPrice = isset($_SESSION['productPrice']) ? $_SESSION['productPrice'] : 'No price available';
+$productImage = isset($_SESSION['productImage']) ? $_SESSION['productImage'] : '';
+
 $success_message = '';
 $error_message = '';
 
 // Check if the form has been submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     // Escape user inputs for security
     $name = $conn->real_escape_string($_POST['name']);
     $surname = $conn->real_escape_string($_POST['surname']);
@@ -45,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         $success_message = "New record created successfully";
-        // Refresh the page after 5 seconds
+        // Refresh the page after 9 seconds
         header("refresh:9;url=" . $_SERVER['PHP_SELF']);
     } else {
         $error_message = "Error: " . $sql . "<br>" . $conn->error;
@@ -58,7 +87,7 @@ $conn->close();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
@@ -67,44 +96,41 @@ $conn->close();
     <link rel="stylesheet" href="../../bootstrap+fonte/bootstrap.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!--External Css-->
     <link rel="stylesheet" href="../../stylecards.css">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-     <!--FONT AWESOME LINK edhe ma posht osht si link i downlodum-->
-     <link rel="stylesheet" href="../../bootstrap+fonte/fontAwesome.css">
+    <link rel="stylesheet" href="../../bootstrap+fonte/fontAwesome.css">
+
     <style>
         .container {
-            background-color: #e0e0e0; /* Slightly darker background for the form container */
+            background-color: #e0e0e0;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
         }
         h2.heading {
-            color: red; /* Red heading */
+            color: red;
             text-align: center;
             margin-bottom: 30px;
         }
         label.form-label {
-            color: red; /* Red labels */
+            color: red;
         }
         input.form-control,
         select.form-select {
-            border: 1px solid red; /* Red borders for input fields */
+            border: 1px solid red;
             border-radius: 5px;
         }
         input[type="radio"].form-check-input {
-            border-color: red; /* Red radio button borders */
+            border-color: red;
         }
         .btn-primary {
-            background-color: red; /* Red button */
-            border-color: red; /* Red button border */
+            background-color: red;
+            border-color: red;
         }
         .btn-primary:hover {
-            background-color: #c62828; /* Darker red on hover */
-            border-color: #c62828; /* Darker red border on hover */
+            background-color: #c62828;
+            border-color: #c62828;
         }
         svg {
             width: 30px;
@@ -143,8 +169,8 @@ $conn->close();
             border: 1px solid transparent;
         }
         header .navbar a {
-            height: 10px; /* Adjust based on your layout */
-            margin: auto; /* Center the navbar */
+            height: 10px;
+            margin: auto;
             color: #000;
             font-size: 1.6rem;
             margin: 0.6rem;
@@ -158,51 +184,82 @@ $conn->close();
             display: flex;
             justify-content: center;
         }
-        /* Style for Payment Method Section */
         .payment-method {
-            background-color: #f8f9fa; /* Light grey background */
+            background-color: #f8f9fa;
             border-radius: 8px;
             padding: 15px;
             margin-bottom: 20px;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
         }
-
         .payment-method p {
             font-size: 1.2rem;
             font-weight: bold;
             color: red;
             margin-bottom: 10px;
         }
-
         .payment-method .form-check {
             margin-bottom: 10px;
         }
-
         .payment-method .form-check-label {
             font-size: 1.1rem;
             color: #333;
         }
-
         .payment-method .form-check-input {
             margin-right: 10px;
+        }
+        .product-card {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .product-card img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .product-card .product-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card .product-info .product-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-card .product-info .product-price {
+            font-size: 20px;
+            color: red;
         }
     </style>
 </head>
 <body>
 
-<!-- HEADER/NAVBAR start -->
 <header>
-        <div id="MenuBtn" class="fas fa-bars"></div>
-        <a href="../../Home/index.php" class="logo"><span><img src="../../images/logo2.png" width="100px" height="50px"></span></a>
-        <nav class="navbar">
-            <a href="../../Home/index.php">Home</a>
-            <a href="../../vehicles.php">Vehicles</a>
-            <a href="../../src/ContactUs/contact.php">Contact</a>
-        </nav>
-    </header>
+    <div id="MenuBtn" class="fas fa-bars"></div>
+    <a href="../../Home/index.php" class="logo"><span><img src="../../images/logo2.png" width="100px" height="50px"></span></a>
+    <nav class="navbar">
+        <a href="../../Home/index.php">Home</a>
+        <a href="../../vehicles.php">Vehicles</a>
+        <a href="../../src/ContactUs/contact.php">Contact</a>
+    </nav>
+</header>
 <br><br>
 
 <div class="container" style="margin-top: 80px">
+    <!-- Product Card -->
+    <div class="product-card">
+        <img src="../../<?php echo $productImage; ?>" alt="Product Image">
+        <div class="product-info">
+            <div class="product-name"><?php echo $productName; ?></div>
+            <div class="product-price">$<?php echo $productPrice; ?></div>
+        </div>
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h2 class="heading">Customer Information</h2>

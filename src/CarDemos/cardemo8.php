@@ -325,9 +325,10 @@ img{
                         it epitomizes automotive perfection, pushing the boundaries of performance and luxury to new heights.
                     </p>
                     <div class="btn-groups">
-                    <a href="checkout.php">
-                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
-                    </a>
+                        <form action="checkout.php" method="post">
+                            <input type="hidden" name="carId" value="8"> <!-- Example car ID -->
+                            <button type="submit" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                        </form>
                     </div>
                 </div>
             </div>

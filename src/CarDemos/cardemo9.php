@@ -322,9 +322,10 @@ img{
 Embark on a journey of unparalleled luxury and commanding power with the BMW X7. Designed to traverse any terrain with effortless grace and precision, the X7 stands as a testament to automotive excellence, setting new standards in performance and opulence.
                     </p>
                     <div class="btn-groups">
-                    <a href="checkout.php">
-                        <button type="button" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
-                    </a>
+                        <form action="checkout.php" method="post">
+                            <input type="hidden" name="carId" value="9"> <!-- Example car ID -->
+                            <button type="submit" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                        </form>
                     </div>
                 </div>
             </div>

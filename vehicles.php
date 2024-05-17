@@ -367,7 +367,7 @@ if (isset($_COOKIE['colorSettings'])) {
                                     echo strlen($product['description']) > 100 ? substr($product['description'], 0, 100) . '...' : $product['description'];
                                     ?>
                                 </div>
-                                <div class="card-text">$<?= number_format($product['price']); ?></div>
+                                <div class="card-text">$<?= htmlspecialchars($product['price']); ?></div>
                                 <a href="<?= htmlspecialchars($product['link']); ?>" class="card-button">Purchase</a>
                             </div>
                         </div>
