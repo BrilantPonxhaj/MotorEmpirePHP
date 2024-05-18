@@ -1,39 +1,49 @@
 <?php
-
 require_once('database/configDatabase.php');
-// Fetch product data from the database
-$sql = "SELECT * FROM cars";
-$result = $conn->query($sql);
 
-$products = [];
-if ($result) {
-    // Check if there are any rows returned
+// Fetch product data from the database
+try {
+    $sql = "SELECT * FROM cars";
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        throw new Exception("Error executing SQL query: " . $conn->error);
+    }
+
+    $products = [];
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $products[] = $row;
         }
     } else {
-        echo "No products found in the database.";
+        throw new Exception("No products found in the database.");
     }
-} else {
-    // Handle SQL query errors
-    echo "Error executing SQL query: " . $conn->error;
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
 }
 
 // Close the database connection
 $conn->close();
 
 // Check if the cookie exists
-if (isset($_COOKIE['colorSettings'])) {
-    // Explode the string into an array based on the delimiter and trim spaces
-    $colors = array_map('trim', explode('|', $_COOKIE['colorSettings']));
+try {
+    if (isset($_COOKIE['colorSettings'])) {
+        // Explode the string into an array based on the delimiter and trim spaces
+        $colors = array_map('trim', explode('|', $_COOKIE['colorSettings']));
 
-    $backgroundColor = $colors[0]; // Assuming this is '#222831'
-    $_Color = $colors[1]; // Assuming this is 'white'
-} else {
-    // Default colors if the cookie isn't set
-    $backgroundColor = 'defaultBackground'; // Adjust these to your desired defaults
-    $_Color = 'defaultHeader'; // Adjust these to your desired defaults
+        if (count($colors) < 2) {
+            throw new Exception("Invalid color settings in the cookie.");
+        }
+
+        $backgroundColor = $colors[0]; // Assuming this is '#222831'
+        $_Color = $colors[1]; // Assuming this is 'white'
+    } else {
+        // Default colors if the cookie isn't set
+        $backgroundColor = 'defaultBackground'; // Adjust these to your desired defaults
+        $_Color = 'defaultHeader'; // Adjust these to your desired defaults
+    }
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
 }
 ?>
 <!DOCTYPE html>

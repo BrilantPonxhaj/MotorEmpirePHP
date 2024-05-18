@@ -4,8 +4,34 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Custom error handler
+function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
+    switch ($errno) {
+        case E_USER_ERROR:
+            $errorMessage = "Gabim kritik [$errno]: $errstr në linjën $errline në skedarin $errfile";
+            break;
+        case E_USER_WARNING:
+            $errorMessage = "Paralajmërim [$errno]: $errstr në linjën $errline në skedarin $errfile";
+            break;
+        case E_USER_NOTICE:
+            $errorMessage = "Njoftim [$errno]: $errstr në linjën $errline në skedarin $errfile";
+            break;
+        default:
+            $errorMessage = "Gabim [$errno]: $errstr në linjën $errline në skedarin $errfile";
+            break;
+    }
+    error_log($errorMessage); // Log the error
+    echo $errorMessage; // Display the error message
+}
+
+// Set the custom error handler
+set_error_handler("customErrorHandler");
+
 // Start the session
 session_start();
+
+$success_message = '';
+$error_message = '';
 
 // Database connection
 $servername = "localhost:3308";
@@ -369,6 +395,16 @@ $conn->close();
         </div>
     </div>
 </div>
+
+    <?php   
+        if (!empty($success_message)) {
+        echo '<div class="alert alert-success mt-3">' . $success_message . '</div>';
+        }
+        if (!empty($error_message)) {
+        echo '<div class="alert alert-danger mt-3">' . $error_message . '</div>';
+        }
+    ?>
+
 
 <!-- JavaScript to Toggle Card Information -->
 <script>
