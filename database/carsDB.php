@@ -14,6 +14,7 @@ if ($conn->connect_error) {
 
 ?>
 
+<!-- CARS DATABASE -->
 <!-- CREATE TABLE `cars` (
   `carID` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -42,3 +43,32 @@ INSERT INTO `cars` (`carID`, `name`, `category`, `model`, `price`, `kilometers`,
 (7, 'BMW iX2', 'new vehicles', 'BMW iX2', '61,660', '15,000', 'electric', 'Automatic', 'images/bmw cards/ix2.jpg', 'src/CarDemos/cardemo7.php', 'Experience the future of sustainable luxury with the BMW iX2, where innovative technology meets eco-conscious design, delivering an unmatched driving experience. Crafted with precision to redefine electric mobility, it embodies the essence of automotive advancement, setting a new benchmark in sustainability and sophistication.'),
 (8, 'BMW M3 Competition', 'used vehicles', 'BMW M3 Competition', '50,500', '120,000', 'petrol', 'Manual', 'images/bmw cards/m3.7.jpg', 'src/CarDemos/cardemo8.php', 'Experience the ultimate fusion of power and precision with the BMW M3 Competition. Crafted to reign supreme on every road and circuit, it epitomizes automotive perfection, pushing the boundaries of performance and luxury to new heights.'),
 (9, 'BMW X7', 'new vehicles', 'BMW X7', '116,050', '15,000', 'petrol', 'Automatic', 'images/bmw cards/x7.7.jpg', 'src/CarDemos/cardemo9.php', 'Embark on a journey of unparalleled luxury and commanding power with the BMW X7. Designed to traverse any terrain with effortless grace and precision, the X7 stands as a testament to automotive excellence, setting new standards in performance and opulence.'); -->
+
+
+<!-- CAR DEMO DATABASE-->
+<!-- CREATE TABLE `car_demos` (
+  `car_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `img1` varchar(255) NOT NULL,
+  `img2` varchar(255) NOT NULL,
+  `img3` varchar(255) NOT NULL,
+  `img4` varchar(255) NOT NULL,
+  `img5` varchar(255) NOT NULL,
+  `img6` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `car_demos`
+--
+
+INSERT INTO `car_demos` (`car_id`, `name`, `img1`, `img2`, `img3`, `img4`, `img5`, `img6`) VALUES
+(1, 'BMW 3 Series', '../../images/bmw cards/1-BMW-3-Series.jpg', '../../images/bmw cards/bmw3.1.webp', '../../images/bmw cards/bmw3.2.webp', '../../images/bmw cards/bmw3.3.webp', '../../images/bmw cards/bmw3.4.webp', '../../images/bmw cards/bmw3.5.webp'),
+(2, 'BMW 545e xDrive', '../../images/bmw cards/bmw5.1.webp', '../../images/bmw cards/bmw5.2.webp', '../../images/bmw cards/bmw5.3.webp', '../../images/bmw cards/bmw5.4.webp', '../../images/bmw cards/bmw5.5.webp', '../../images/bmw cards/bmw5.6.webp'),
+(3, 'BMW M3 CS', '../../images/bmw cards/m3cs1.webp', '../../images/bmw cards/m3cs2.webp', '../../images/bmw cards/m3cs3.webp', '../../images/bmw cards/m3cs4.webp', '../../images/bmw cards/m3cs5.webp', '../../images/bmw cards/m3cs6.webp'),
+(4, 'BMW 7 Series', '../../images/bmw cards/bmw7.2.webp', '../../images/bmw cards/bmw7.1.webp', '../../images/bmw cards/bmw7.3.webp', '../../images/bmw cards/bmw7.4.webp', '../../images/bmw cards/bmw7.5.webp', '../../images/bmw cards/bmw7.6.webp'),
+(5, 'BMW M4 Competition', '../../images/bmw cards/m4.1.webp', '../../images/bmw cards/m4.2.webp', '../../images/bmw cards/m4.3.webp', '../../images/bmw cards/m4.4.webp', '../../images/bmw cards/m4.5.webp', '../../images/bmw cards/m4.6.webp'),
+(6, 'BMW M5 CS', '../../images/bmw cards/m5cs1.webp', '../../images/bmw cards/m5cs2.webp', '../../images/bmw cards/m5cs3.webp', '../../images/bmw cards/m5cs4.webp', '../../images/bmw cards/m5cs5.webp', '../../images/bmw cards/m5cs6.webp'),
+(7, 'BMW iX2', '../../images/bmw cards/ix2.1.webp', '../../images/bmw cards/ix2.2.webp', '../../images/bmw cards/ix2.3.webp', '../../images/bmw cards/ix2.4.webp', '../../images/bmw cards/ix2.5.webp', '../../images/bmw cards/ix2.6.webp'),
+(8, 'BMW M3 Competition', '../../images/bmw cards/m3.1.webp', '../../images/bmw cards/m3.2.webp', '../../images/bmw cards/m3.3.webp', '../../images/bmw cards/m3.4.webp', '../../images/bmw cards/m3.5.webp', '../../images/bmw cards/m3.6.webp'),
+(9, 'BMW X7', '../../images/bmw cards/x7.1.webp', '../../images/bmw cards/x7.2.webp', '../../images/bmw cards/x7.3.webp', '../../images/bmw cards/x7.4.webp', '../../images/bmw cards/x7.5.webp', '../../images/bmw cards/x7.6.webp');
+-->
