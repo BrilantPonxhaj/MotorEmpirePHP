@@ -1,22 +1,48 @@
 <?php
-// Kontrollohet nëse ekziston cookie
-if(isset($_COOKIE['colorSettings'])) {
-    // Ndahet vargun bazuar në ndarësin dhe hiqni hapësirat
-    $colors = array_map('trim', explode('|', $_COOKIE['colorSettings']));
+require_once('../../database/carsDB.php');
 
-    $backgroundColor = $colors[0]; //  kjo është #222831
-    $_Color = $colors[1]; //  kjo është e bardha
+if (isset($_POST['carId'])) {
+    $carId = $_POST['carId'];
+
+    // Fetch car data from the cars table
+    $carSql = "SELECT * FROM cars WHERE carID = ?";
+    $stmt = $conn->prepare($carSql);
+    $stmt->bind_param('i', $carId);
+    $stmt->execute();
+    $carResult = $stmt->get_result();
+
+    // Fetch car demo data from the car_demos table
+    $demoSql = "SELECT * FROM car_demos WHERE car_id = ?";
+    $stmt = $conn->prepare($demoSql);
+    $stmt->bind_param('i', $carId);
+    $stmt->execute();
+    $demoResult = $stmt->get_result();
+
+    if ($carResult->num_rows > 0 && $demoResult->num_rows > 0) {
+        $car = $carResult->fetch_assoc();
+        $demo = $demoResult->fetch_assoc();
+    } else {
+        die("Car data not found.");
+    }
+
+    // Close database connection
+    $stmt->close();
+    $conn->close();
 } else {
-    // Ngjyrat e parazgjedhura nëse cookie nuk është vendosur
-    $backgroundColor = 'defaultBackground'; // Ngjyra e paracaktuar e sfondit
-    $_Color = 'defaultHeader'; // Ngjyra e paracaktuar e tekstit të header
+    die("Invalid car ID.");
+}
+
+// Check if the color settings cookie exists
+if (isset($_COOKIE['colorSettings'])) {
+    $colors = array_map('trim', explode('|', $_COOKIE['colorSettings']));
+    $backgroundColor = $colors[0]; // This should be #222831
+    $_Color = $colors[1]; // This should be white
+} else {
+    // Default colors if cookie is not set
+    $backgroundColor = '#ffffff'; // Default background color
+    $_Color = '#000000'; // Default text color
 }
 ?>
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,92 +50,71 @@ if(isset($_COOKIE['colorSettings'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMW M3 CS</title>
-    
+    <title><?php echo htmlspecialchars($car['name']); ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../../bootstrap+fonte/bootstrap.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../stylecards.css">
     <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../../bootstrap+fonte/fontAwesome.css">
-
     <style>
-        /* Your CSS styles here */
-        .heading
-{
-    padding-bottom: 2rem;
-    font-size: 4.5rem;
-    text-align: center;
-}
-header
-{
-    z-index: 10000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 2rem 9%;
-    background-color:
-   <?php
-   echo htmlspecialchars($backgroundColor); 
-  ?>;
-  
-    box-shadow: var(--box_shadow);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-header .logo{
-    color: #000;
-    border: #000;
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-header .logo span{
-    color:var(--main);
-}
-header .navbar{
-    position: relative;
-    min-height: 9px;
-    margin-bottom: 6px;
-    border: 1px solid transparent;
-}
-header .navbar a{
-    height: 10px; /* Adjust based on your layout */
-    margin: auto; /* Center the navbar */
-     /* Flexbox layout for the items */
-     color: 
-  <?php
-   echo htmlspecialchars($_Color); 
-  ?>;
-    font-size: 1.9rem;
-
-    margin: 0.6rem;
-    justify-content: space-between;
-}
+        .heading {
+            padding-bottom: 2rem;
+            font-size: 4.5rem;
+            text-align: center;
+        }
+        header {
+            z-index: 10000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 9%;
+            background-color: <?php echo htmlspecialchars($backgroundColor); ?>;
+            box-shadow: var(--box_shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            color: #000;
+            border: #000;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        header .logo span {
+            color: var(--main);
+        }
+        header .navbar {
+            position: relative;
+            min-height: 9px;
+            margin-bottom: 6px;
+            border: 1px solid transparent;
+        }
+        header .navbar a {
+            height: 10px;
+            margin: auto;
+            color: <?php echo htmlspecialchars($_Color); ?>;
+            font-size: 1.9rem;
+            margin: 0.6rem;
+            justify-content: space-between;
+        }
         header .navbar a:hover {
             color: var(--main);
             text-decoration: none;
         }
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
-
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
-
         html, body {
             font-family: 'Roboto', sans-serif;
         }
-
         img {
             width: 100%;
             display: block;
         }
-
         .main-wrapper {
             min-height: 100vh;
             background-color: #f1f1f1;
@@ -117,15 +122,12 @@ header .navbar a{
             align-items: center;
             justify-content: center;
         }
-
         .container {
             max-width: 1500px;
-            /* height:200px;*/
             padding: 0 1rem;
             margin: 0 auto;
             margin-top: 90px;
         }
-
         .product-div {
             margin: 1rem 0;
             padding: 2rem 0;
@@ -135,21 +137,14 @@ header .navbar a{
             border-radius: 3px;
             column-gap: 10px;
         }
-
-        .product-div-left {
+        .product-div-left, .product-div-right {
             padding: 20px;
         }
-
-        .product-div-right {
-            padding: 20px;
-        }
-
         .img-container img {
             width: 700px;
             margin: 0 auto;
             color: red;
         }
-
         .hover-container {
             display: flex;
             flex-wrap: wrap;
@@ -158,7 +153,6 @@ header .navbar a{
             margin-top: 32px;
             color: red;
         }
-
         .hover-container div {
             border: 1.5px solid red;
             padding: 1rem;
@@ -169,24 +163,19 @@ header .navbar a{
             justify-content: center;
             color: red;
         }
-
         .active {
-            border-color: red!important;
+            border-color: red !important;
         }
-
         .hover-container div:hover {
             border-color: red;
         }
-
         .hover-container div img {
             width: 80px;
             cursor: pointer;
         }
-
         .product-div-right span {
             display: block;
         }
-
         .product-name {
             font-size: 26px;
             margin-bottom: 22px;
@@ -196,7 +185,6 @@ header .navbar a{
             font-family: serif;
             color: black;
         }
-
         .product-price {
             font-weight: bold;
             font-size: 24px;
@@ -204,18 +192,15 @@ header .navbar a{
             font-weight: 500;
             color: black;
         }
-
         .product-rating {
             display: flex;
             align-items: center;
             margin-top: 12px;
             color: red;
         }
-
         .product-rating span {
             margin-right: 6px;
         }
-
         .product-description {
             font-weight: 22px;
             line-height: 1.8;
@@ -224,11 +209,9 @@ header .navbar a{
             margin-top: 22px;
             font-size: 12px;
         }
-
         .btn-groups {
             margin-top: 22px;
         }
-
         .btn-groups button {
             display: inline-block;
             font-size: 16px;
@@ -239,52 +222,42 @@ header .navbar a{
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .btn-groups button .fas {
             margin-right: 8px;
         }
-
         .add-cart-btn {
             background-color: red;
             border: 2px solid red;
             margin-right: 8px;
         }
-
         .add-cart-btn:hover {
             background-color: red;
             color: black;
         }
-
         .buy-now-btn {
             background-color: #000;
             border: 2px solid #000;
         }
-
         .buy-now-btn:hover {
             background-color: #fff;
             color: #000;
         }
-
         @media screen and (max-width: 992px) {
             .product-div {
                 grid-template-columns: 100%;
             }
-
             .product-div-right {
                 text-align: center;
             }
-
             .product-rating {
                 justify-content: center;
             }
-
             .product-description {
                 max-width: 400px;
                 margin-right: auto;
                 margin-left: auto;
             }
         }
-
         @media screen and (max-width: 400px) {
             .btn-groups button {
                 width: 100%;
@@ -309,42 +282,37 @@ header .navbar a{
             <div class="product-div">
                 <div class="product-div-left">
                     <div class="img-container">
-                        <img src="../../images/bmw cards/m3cs1.webp" alt="BMW M3 CS">
+                        <img src="<?php echo htmlspecialchars($demo['img1']); ?>" alt="<?php echo htmlspecialchars($car['name']); ?>">
                     </div>
                     <div class="hover-container">
                         <?php
-                            $imagePaths = [
-                                "../../images/bmw cards/m3cs1.webp",
-                                "../../images/bmw cards/m3cs2.webp",
-                                "../../images/bmw cards/m3cs3.webp",
-                                "../../images/bmw cards/m3cs4.webp",
-                                "../../images/bmw cards/m3cs5.webp",
-                                "../../images/bmw cards/m3cs6.webp"
-                            ];
-                            foreach ($imagePaths as $index => $path) {
-                                echo '<div><img src="' . $path . '" alt="Image ' . ($index + 1) . '"></div>';
+                        for ($i = 1; $i <= 6; $i++) {
+                            if (!empty($demo["img$i"])) {
+                                echo '<div>';
+                                echo '<img src="' . htmlspecialchars($demo["img$i"]) . '" alt="Image ' . $i . '">';
+                                echo '</div>';
                             }
+                        }
                         ?>
                     </div>
                 </div>
                 <div class="product-div-right">
-                    <span class="product-name">BMW M3 CS</span>
-                    <span class="product-price">$118,700</span>
+                    <span class="product-name"><?php echo htmlspecialchars($car['name']); ?></span>
+                    <span class="product-price">$<?php echo htmlspecialchars($car['price']); ?></span>
                     <div class="product-rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
-                        (312 ratings)
+                        (350 ratings)
                     </div>
                     <p class="product-description">
-                        Unleash the adrenaline with the BMW M3 CS series, designed to dominate both the road and the track.
-                        Experience the ultimate driving experience, where every curve becomes a conquest and every moment an exhilarating symphony of performance and precision.
+                        <?php echo htmlspecialchars($car['description']); ?>
                     </p>
                     <div class="btn-groups">
                         <form action="checkout.php" method="post">
-                            <input type="hidden" name="carId" value="3"> <!-- Example car ID -->
+                            <input type="hidden" name="carId" value="<?php echo htmlspecialchars($carId); ?>">
                             <button type="submit" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
                         </form>
                     </div>
@@ -364,9 +332,9 @@ header .navbar a{
                         <p>MotorEmpire is authorised and regulated by the Financial Conduct Authority.All vehicles are subject to prior sale. By accessing this website, you agree to the MotorEmpire's Terms of Service and Privacy Policy.</p>
                         <ul class="social-icons">
                             <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fas fa-facebook"></i></a>
+                                <a href="#"><i class="fas fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -379,10 +347,10 @@ header .navbar a{
                         <div class="row">
                             <div class="col-md-6">
                                 <ul>
-                                    <li><a href="../../index.php"><i class="fa fa-stop"></i>Home</a></li>
-                                    <li><a href="../../contact.html"><i class="fa fa-stop"></i>About</a></li>
-                                    <li><a href="../../contact.html"><i class="fa fa-stop"></i>Team</a></li>
-                                    <li><a href="../../contact.php"><i class="fa fa-stop"></i>Contact Us</a></li>
+                                    <li><a href="../index.php"><i class="fa fa-stop"></i>Home</a></li>
+                                    <li><a href="../contact.html"><i class="fa fa-stop"></i>About</a></li>
+                                    <li><a href="../contact.html"><i class="fa fa-stop"></i>Team</a></li>
+                                    <li><a href="../contact.php"><i class="fa fa-stop"></i>Contact Us</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
@@ -411,7 +379,7 @@ header .navbar a{
             </div>
         </div>
     </footer>
-    
+
     <div class="sub-footer">
         <div class="container">
             <div class="row">
