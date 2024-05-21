@@ -370,4 +370,4 @@ if(isset($_COOKIE['colorSettings'])) {
     </div>
     <script src="../../script.js"></script>
 </body>
-</html>
+</html> 

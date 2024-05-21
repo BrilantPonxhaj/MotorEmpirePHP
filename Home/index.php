@@ -450,13 +450,97 @@ if (isset($_SESSION['login_user'])) {
           </div>
         </div>
       </div>
+
     </section>
 
     <!--Services Section Start-->
+
+    <?php
+$services = [
+    [
+        "icon" => "fas fa-car",
+        "title" => "Car Selling",
+        "originalText" => "Discover a world of automotive sophistication as you peruse our extensive inventory, featuring an array of makes and models that epitomize cutting-edge engineering, design, and performance. From sleek sedans to robust SUVs and luxurious sports cars, our diverse range caters to every taste and preference.",
+        "newText" => "Explore our exclusive collection of vehicles designed for ultimate performance and style. From high-end luxury cars to reliable family vehicles, our selection has something for everyone. Experience the thrill of driving with our top-notch inventory."
+    ],
+    [
+        "icon" => "fas fa-tools",
+        "title" => "Parts Repair",
+        "originalText" => "Whether your car requires routine maintenance, diagnostic services, or complex repairs, we offer a comprehensive range of solutions tailored to address each issue with precision. From engine diagnostics and brake repairs to suspension tuning and electrical system troubleshooting, our technicians are adept at handling a diverse array of automotive challenges.",
+        "newText" => "Our skilled technicians are equipped with the latest tools and knowledge to provide top-notch repair services. We ensure your vehicle is back on the road safely and efficiently, regardless of the issue."
+    ],
+    [
+        "icon" => "fas fa-car-crash",
+        "title" => "Car Insurance",
+        "originalText" => "As part of our commitment to enhancing your insurance experience, we offer a range of additional benefits and discounts. These may include features such as roadside assistance, rental car coverage, and discounts for safe driving habits. Our goal is to add value to your policy while ensuring it remains tailored to your specific needs.",
+        "newText" => "Our insurance plans come with various perks including roadside assistance, rental car coverage, and rewards for safe driving. Get comprehensive coverage that suits your lifestyle."
+    ],
+    [
+        "icon" => "fas fa-car-battery",
+        "title" => "Battery Replacement",
+        "originalText" => "Recognizing the importance of quality and reliability, we exclusively offer premium replacement batteries from trusted manufacturers. Our selection ensures that your new battery meets or exceeds the specifications of your vehicle, providing consistent and dependable power for your daily journeys.",
+        "newText" => "Our premium battery replacements guarantee reliability and performance, ensuring your vehicle runs smoothly. Choose from a range of top-quality batteries to fit your needs."
+    ],
+    [
+        "icon" => "fas fa-gas-pump",
+        "title" => "Oil Change",
+        "originalText" => "Adhering to manufacturer-recommended service intervals is a cornerstone of our oil change services. Our technicians are well-versed in the specifications of various vehicle makes and models, ensuring that your oil change is performed in accordance with the guidelines set forth by your vehicle's manufacturer.",
+        "newText" => "We provide quick and efficient oil change services adhering to manufacturer specifications. Keep your engine running smoothly with our professional oil change service."
+    ],
+    [
+        "icon" => "fas fa-headset",
+        "title" => "24/7 Support",
+        "originalText" => "Our 24/7 support is not limited to problem resolution. We are also here to provide guidance and information about our products and services. Whether you need assistance navigating features, understanding policies, or exploring additional offerings, our team is dedicated to ensuring you have the information you need.",
+        "newText" => "Count on us to provide prompt and reliable support, empowering you to make informed decisions and maximize the value of our products and services.Our commitment to providing exceptional support doesn't end at resolving issues or offering guidance. We understand that each customer interaction is an opportunity to cultivate trust and satisfaction. That's why our team goes above and beyond to anticipate your needs, proactively addressing questions, and providing personalized assistance."
+    ]
+];
+?>
+
+    <!--Services Section Start-->
     <section id="Services" class="services">
+        <h1 class="heading">Our Services</h1>
+        <div class="boxContainer">
+            <?php foreach ($services as $index => $service) : ?>
+                <div class="box">
+                    <i class="<?= $service['icon'] ?>"></i>
+                    <h3><?= $service['title'] ?></h3>
+                    <p id="car-description-<?= $index ?>">
+                        <?= $service['originalText'] ?>
+                    </p>
+                    <button class="btn" id="toggle-button-<?= $index ?>">Read More</button>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            <?php foreach ($services as $index => $service) : ?>
+                (function() {
+                    var button = document.getElementById('toggle-button-<?= $index ?>');
+                    var description = document.getElementById('car-description-<?= $index ?>');
+
+                    button.addEventListener('click', function() {
+                        if (button.textContent === 'Read More') {
+                            description.textContent = "<?= addslashes($service['newText']) ?>";
+                            button.textContent = 'Back';
+                        } else {
+                            description.textContent = "<?= addslashes($service['originalText']) ?>";
+                            button.textContent = 'Read More';
+                        }
+                    });
+                })();
+            <?php endforeach; ?>
+        });
+    </script>
+    </section>
+
+
+
+    <!-- <section id="Services" class="services">
       <h1 class="heading">Our Services</h1>
       <div class="boxContainer">
-        <div class="box">
+        <div class="box" id= "demo">
           <i class="fas fa-car"></i>
           <h3>Car Selling</h3>
           <p>
@@ -466,8 +550,53 @@ if (isset($_SESSION['login_user'])) {
             sleek sedans to robust SUVs and luxurious sports cars, our diverse
             range caters to every taste and preference.
           </p>
-          <button class="btn">Read More</button>
+          <button class="btn" onclick="loadDoc()">Read More</button>
         </div>
+        <script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "./ajax_info/ajax_info11.php",true);
+  xhttp.send();
+}
+</script>
+
+
+
+   <script>
+        let originalContent;
+        let isOriginalContent = true;
+
+        function toggleContent() {
+            const demo = document.getElementById("demo");
+            const button = document.getElementById("toggleButton");
+
+            if (isOriginalContent) {
+                // Ruaj përmbajtjen origjinale
+                if (!originalContent) {
+                    originalContent = demo.innerHTML;
+                }
+
+                // Ngarko përmbajtjen e re me AJAX
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function() {
+                    demo.innerHTML = this.responseText;
+                    button.innerHTML = "Go Back";
+                    isOriginalContent = false;
+                }
+                xhttp.open("GET", "./ajax_info/ajax_info11.php", true);
+                xhttp.send();
+            } else {
+                // Kthe përmbajtjen origjinale
+                demo.innerHTML = originalContent;
+                button.innerHTML = "Read More";
+                isOriginalContent = true;
+            }
+        }
+    </script> 
         <div class="box">
           <i class="fas fa-tools"></i>
           <h3>Parts Repair</h3>
@@ -519,7 +648,7 @@ if (isset($_SESSION['login_user'])) {
           <button class="btn">Read More</button>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!--News Letter Section Start-->
     <section class="newsletter">
