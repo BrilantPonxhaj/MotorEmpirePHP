@@ -144,9 +144,10 @@ if (isset($_COOKIE['colorSettings'])) {
             padding: 20px;
         }
         .img-container img {
-            width: 700px;
+            width: 100%;
+            max-width: 700px;
             margin: 0 auto;
-            color: red;
+            object-fit: cover;
         }
         .hover-container {
             display: flex;
@@ -154,7 +155,6 @@ if (isset($_COOKIE['colorSettings'])) {
             align-items: center;
             justify-content: center;
             margin-top: 32px;
-            color: red;
         }
         .hover-container div {
             border: 1.5px solid red;
@@ -164,7 +164,6 @@ if (isset($_COOKIE['colorSettings'])) {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: red;
         }
         .active {
             border-color: red !important;
@@ -248,6 +247,8 @@ if (isset($_COOKIE['colorSettings'])) {
         @media screen and (max-width: 992px) {
             .product-div {
                 grid-template-columns: 100%;
+                justify-content: center;
+                text-align: center;
             }
             .product-div-right {
                 text-align: center;
@@ -265,6 +266,9 @@ if (isset($_COOKIE['colorSettings'])) {
             .btn-groups button {
                 width: 100%;
                 margin-bottom: 10px;
+            }
+            .img-container img {
+                max-width: 100%;
             }
         }
     </style>
