@@ -1,59 +1,47 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Admin Page - Manage Cars</title>
-    <script>
-        function readCarData() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'read_cars.php', true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById('carContent').innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
-        }
-
-        function updateCarData(carId) {
-            var xhr = new XMLHttpRequest();
-            var data = new FormData();
-                data.append('id', carId);
-                data.append('name', document.getElementById('carName' + carId).value);
-                data.append('category', document.getElementById('carCategory' + carId).value);
-                data.append('model', document.getElementById('carModel' + carId).value);
-                data.append('price', document.getElementById('carPrice' + carId).value); // Send as is
-                data.append('kilometers', document.getElementById('carKilometers' + carId).value); // Send as is
-                data.append('engineType', document.getElementById('carEngineType' + carId).value);
-                data.append('gearbox', document.getElementById('carGearbox' + carId).value);
-                data.append('description', document.getElementById('carDescription' + carId).value);
-                
-            xhr.open('POST', 'update_car.php', true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4) {
-                    console.log(xhr.responseText);
-                    if (xhr.status == 200) {
-                        alert('Car data updated successfully!');
-                        readCarData();
-                    } else {
-                        alert('Error updating car data: ' + xhr.statusText);
-                    }
-                }
-            };
-            xhr.send(data);
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            readCarData();
-        });
-
-    </script>
-</head>
+<style>
+<?php include 'adminCSS/admincss.css'; ?>   
+</style>  
 <body>
-    <h1>Admin Page - Manage Cars</h1>
-    <div id="carContent">
-        <!-- Car data will be loaded here -->
+<div class="d-flex">
+    <div class="sidebar">
+        <h3>Administrator</h3>
+        <a href="#">Dashboard</a>
+        <a href="includes/customers.php">Customers</a>
+        <a href="includes/users.php">Users</a>
+        <a href="includes/cars.php">Cars</a>
     </div>
-</body>
-</html>
-
-
+    <div class="main-content container-fluid">
+        <h1 class="my-4">Dashboard</h1>
+        <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Customers</div>
+                    <div class="card-body">
+                        <h5 class="card-title">View Details</h5>
+                        <a href="includes/customers.php" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Users</div>
+                    <div class="card-body">
+                        <h5 class="card-title">View Details</h5>
+                        <a href="includes/users.php" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Cars</div>
+                    <div class="card-body">
+                        <h5 class="card-title">View Details</h5>
+                        <a href="includes/cars.php" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include 'includes/footer.php'; ?>
