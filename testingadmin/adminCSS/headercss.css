@@ -30,32 +30,16 @@ ul li a:hover {
     background-color: #555;
 }
 
-.main-content {
-    margin-left: 220px; /* Slightly more than the sidebar width to prevent overlap */
-    margin-top: 20px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
 }
-
-
-table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 1px solid #ddd; /* Add border to make cells distinct */
-    text-align: left; /* Align text to the left */
-    padding: 8px; /* Padding inside cells */
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
 
 .sidebar {
     width: 200px; /* Adjust width as needed */
@@ -81,30 +65,6 @@ th {
 .sidebar a:hover {
     background: #555;
 }
-/* Style for buttons */
-.button {
-    display: inline-block;
-    padding: 5px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 3px #999;
-}
-
-.button:hover {background-color: #3e8e41}
-
-.button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 2px #666;
-    transform: translateY(2px);
-}
-
 
 @media (max-width: 768px) {
     .sidebar {
