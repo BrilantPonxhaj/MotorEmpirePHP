@@ -49,8 +49,13 @@
     </script>
 </head>
 <body>
-<div class="main-content table-container" id="carContent">
-    <!-- Car data will be loaded here -->
+<div class="main-content table-container">
+    <div class="add-car-button">
+        <a href="add_car.php"><button>Add Car</button></a>
+    </div>
+    <div id="carContent">
+        <?php include '../read_cars.php'; ?>
+    </div>
 </div>
 <?php include 'footer.php'; ?>
 </body>
