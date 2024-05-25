@@ -32,7 +32,6 @@ $conn->close();
 <?php include 'header.php'; ?>
 </header>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Car</title>
     <link rel="stylesheet" href="../adminCSS/edit_carcss.css">
     <script>
@@ -54,6 +53,27 @@ $conn->close();
                 }
             };
             xhr.send(formData);
+        }
+
+        function deleteCar(carId) {
+            if (confirm('Are you sure you want to delete this car?')) {
+                var xhr = new XMLHttpRequest();
+                var data = new FormData();
+                data.append('carID', carId);
+
+                xhr.open('POST', 'delete_car.php', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            alert('Car deleted successfully!');
+                            window.location.href = 'cars.php'; // Redirect back to cars page
+                        } else {
+                            alert('Error deleting car: ' + xhr.statusText);
+                        }
+                    }
+                };
+                xhr.send(data);
+            }
         }
 
         function cancelEdit() {
@@ -97,6 +117,7 @@ $conn->close();
         <textarea id="description" name="description" data-original="<?php echo htmlspecialchars($car['description']); ?>" required><?php echo htmlspecialchars($car['description']); ?></textarea>
         <div class="buttons">
             <button type="submit">Save</button>
+            <button type="button" onclick="deleteCar(<?php echo htmlspecialchars($car['carID']); ?>)">Delete</button>
             <button type="button" onclick="cancelEdit()">Cancel</button>
         </div>
     </form>
