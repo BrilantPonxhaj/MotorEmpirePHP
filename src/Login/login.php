@@ -117,7 +117,7 @@ if (isset($_SESSION['error'])) {
         </div>
         <div class="input-submit">
             <input type="submit" name="login" value="Sign in" class="submit-btn" style="color: #fff; font-size: 20px;">
-            <input type="submit" name="admin_login" value="Login as Admin" class="btn btn-link" style="color: #fff; font-size: 20px;">
+            <input type="submit" name="admin_login" value="Login as Admin" class="btn btn-link" style="font-size: 15px;">
         </div>
     </form>
     <div class="sign-up-link">

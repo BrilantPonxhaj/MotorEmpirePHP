@@ -90,6 +90,8 @@ section a{
 
 .input-submit{
     position: relative;
+    text-align: center;
+    justify-content: center;
 }
 
 .submit-btn{
