@@ -42,8 +42,14 @@ class User {
 
 // Function to get user by email, returning by reference
 function &getUserByEmail(&$conn, $email) {
-    $sql = "SELECT * FROM register WHERE email = '$email'";
-    $result = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM register WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    if ($stmt === false) {
+        throw new Exception("Failed to prepare the statement: " . mysqli_error($conn));
+    }
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     if ($row = mysqli_fetch_assoc($result)) {
         return $row;
     }
@@ -55,61 +61,68 @@ function &getUserByEmail(&$conn, $email) {
 class AuthUser extends User {
     // Method for user login
     public function login(&$conn, $isAdminLogin = false) {
-        // Sanitize email and password before sending to database to prevent SQL injection
-        $email = mysqli_real_escape_string($conn, $this->getEmail());
-        $password = mysqli_real_escape_string($conn, $this->getPassword());
+        $email = $this->getEmail();
+        $password = $this->getPassword();
 
         // Use getUserByEmail function to get user data
         $user = &getUserByEmail($conn, $email);
 
         // Check if user exists and password matches
-        if ($user && $user['passwordi'] === $password) {
-            $_SESSION['login_user'] = $user['fullname'];
-            $_SESSION['isAdmin'] = $user['isAdmin'];
-            $_SESSION['last_login'] = $user['last_login'];
+        if ($user) {
+            if ($password === $user['passwordi']) {
+                $_SESSION['login_user'] = $user['fullname'];
+                $_SESSION['isAdmin'] = $user['isAdmin'];
+                $_SESSION['last_login'] = $user['last_login'];
 
-            // Update last login time
-            $lastLogin = date("Y-m-d H:i:s");
-            $sqlUpdate = "UPDATE register SET last_login='$lastLogin' WHERE email='$email'";
+                // Update last login time
+                $lastLogin = date("Y-m-d H:i:s");
+                $sqlUpdate = "UPDATE register SET last_login='$lastLogin' WHERE email=?";
+                $updateStmt = mysqli_prepare($conn, $sqlUpdate);
+                mysqli_stmt_bind_param($updateStmt, "s", $email);
+                mysqli_stmt_execute($updateStmt);
 
-            if (mysqli_query($conn, $sqlUpdate)) {
-                $_SESSION['last_login'] = $lastLogin; // Update session with the new login time
-            } else {
-                // Debugging statement
-                error_log("Failed to update last login time: " . mysqli_error($conn));
-                throw new Exception("Failed to update last login time: " . mysqli_error($conn));
-            }
-
-            $colorSettings = "#222831|white";
-            setcookie('colorSettings', $colorSettings, time() + (86400 * 30), '/');
-
-            if ($isAdminLogin && $user['isAdmin'] == 1) {
-                $adminPath = '../../testingadmin/admin.php';
-
-                if (file_exists($adminPath)) {
-                    $handle = fopen($adminPath, 'r');
-                    if ($handle) {
-                        $fileSize = filesize($adminPath);
-                        $fileContent = fread($handle, $fileSize);
-                        fclose($handle);
-                        // Optional: Write to the file if needed
-                        $handle = fopen($adminPath, 'a');
-                        fwrite($handle, "\n<!-- User accessed admin panel on: " . date("Y-m-d H:i:s") . " -->");
-                        fclose($handle);
-                        header("location: $adminPath");
-                        exit();
-                    } else {
-                        throw new Exception("Unable to access the admin page.");
-                    }
+                if (mysqli_stmt_affected_rows($updateStmt) > 0) {
+                    $_SESSION['last_login'] = $lastLogin; // Update session with the new login time
                 } else {
-                    throw new Exception("Admin page does not exist.");
+                    // Debugging statement
+                    error_log("Failed to update last login time: " . mysqli_error($conn));
+                    throw new Exception("Failed to update last login time: " . mysqli_error($conn));
                 }
-            } elseif (!$isAdminLogin) {
-                header("location: ../../Home/index.php");
+                mysqli_stmt_close($updateStmt);
+
+                $colorSettings = "#222831|white";
+                setcookie('colorSettings', $colorSettings, time() + (86400 * 30), '/');
+
+                if ($isAdminLogin && $user['isAdmin'] == 1) {
+                    $adminPath = '../../testingadmin/admin.php';
+
+                    if (file_exists($adminPath)) {
+                        $handle = fopen($adminPath, 'r');
+                        if ($handle) {
+                            $fileSize = filesize($adminPath);
+                            $fileContent = fread($handle, $fileSize);
+                            fclose($handle);
+                            // Optional: Write to the file if needed
+                            $handle = fopen($adminPath, 'a');
+                            fwrite($handle, "\n<!-- User accessed admin panel on: " . date("Y-m-d H:i:s") . " -->");
+                            fclose($handle);
+                            header("location: $adminPath");
+                            exit();
+                        } else {
+                            throw new Exception("Unable to access the admin page.");
+                        }
+                    } else {
+                        throw new Exception("Admin page does not exist.");
+                    }
+                } elseif (!$isAdminLogin) {
+                    header("location: ../../Home/index.php");
+                } else {
+                    throw new Exception("You do not have admin privileges.");
+                }
+                exit();
             } else {
-                throw new Exception("You do not have admin privileges.");
+                throw new Exception("Invalid login credentials.");
             }
-            exit();
         } else {
             throw new Exception("Invalid login credentials.");
         }

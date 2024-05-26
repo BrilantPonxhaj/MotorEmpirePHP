@@ -1,0 +1,166 @@
+.container {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+h2.heading {
+    color: red;
+    text-align: center;
+    margin-bottom: 30px;
+}
+label.form-label {
+    color: red;
+}
+input.form-control,
+select.form-select {
+    border: 1px solid red;
+    border-radius: 5px;
+}
+input[type="radio"].form-check-input {
+    border-color: red;
+}
+.btn-primary {
+    background-color: red;
+    border-color: red;
+}
+.btn-primary:hover {
+    background-color: #c62828;
+    border-color: #c62828;
+}
+svg {
+    width: 30px;
+}
+.heading {
+    padding-bottom: 2rem;
+    font-size: 4.5rem;
+    text-align: center;
+}
+header {
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 9%;
+    background-color: #ffffff;
+    box-shadow: var(--box_shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .logo {
+    color: #000;
+    border: #000;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+header .logo span {
+    color: var(--main);
+}
+header .navbar {
+    position: relative;
+    min-height: 9px;
+    margin-bottom: 6px;
+    border: 1px solid transparent;
+}
+header .navbar a {
+    height: 10px;
+    margin: auto;
+    color: #000;
+    font-size: 1.6rem;
+    margin: 0.6rem;
+    justify-content: space-between;
+}
+header .navbar a:hover {
+    color: var(--main);
+    text-decoration: none;
+}
+.center-submit {
+    display: flex;
+    justify-content: center;
+}
+.payment-method {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.payment-method p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 10px;
+}
+.payment-method .form-check {
+    margin-bottom: 10px;
+}
+.payment-method .form-check-label {
+    font-size: 1.1rem;
+    color: #333;
+}
+.payment-method .form-check-input {
+    margin-right: 10px;
+}
+.product-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.product-card img {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+.product-card .product-info {
+    display: flex;
+    flex-direction: column;
+}
+.product-card .product-info .product-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.product-card .product-info .product-price {
+    font-size: 20px;
+    color: red;
+}
+/* Add this to your checkoutstyle.css or within a <style> tag in your HTML */
+body {
+    font-size: 16px; /* Base font size */
+}
+
+h2.heading {
+    font-size: 2em; /* Increase heading size */
+}
+
+.form-label {
+    font-size: 1.2em; /* Increase label size */
+}
+
+.form-control {
+    font-size: 1.1em; /* Increase input field size */
+}
+
+.form-check-label {
+    font-size: 1.1em; /* Increase radio button label size */
+}
+
+.submit-btn, .btn-primary {
+    font-size: 1.2em; /* Increase submit button size */
+}
+
+.alert {
+    font-size: 1.1em; /* Increase alert message size */
+}
+
+.product-info .product-name,
+.product-info .product-price {
+    font-size: 1.5em; /* Increase product info size */
+}

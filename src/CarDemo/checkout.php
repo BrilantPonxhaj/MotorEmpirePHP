@@ -8,16 +8,16 @@ error_reporting(E_ALL);
 function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
     switch ($errno) {
         case E_USER_ERROR:
-            $errorMessage = "Gabim kritik [$errno]: $errstr në linjën $errline në skedarin $errfile";
+            $errorMessage = "Critical Error [$errno]: $errstr on line $errline in file $errfile";
             break;
         case E_USER_WARNING:
-            $errorMessage = "Paralajmërim [$errno]: $errstr në linjën $errline në skedarin $errfile";
+            $errorMessage = "Warning [$errno]: $errstr on line $errline in file $errfile";
             break;
         case E_USER_NOTICE:
-            $errorMessage = "Njoftim [$errno]: $errstr në linjën $errline në skedarin $errfile";
+            $errorMessage = "Notice [$errno]: $errstr on line $errline in file $errfile";
             break;
         default:
-            $errorMessage = "Gabim [$errno]: $errstr në linjën $errline në skedarin $errfile";
+            $errorMessage = "Error [$errno]: $errstr on line $errline in file $errfile";
             break;
     }
     error_log($errorMessage); // Log the error
@@ -52,8 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['carId'])) {
     $carId = $conn->real_escape_string($_POST['carId']);
     
     // Fetch car data from the database
-    $sql = "SELECT * FROM cars WHERE carID = '$carId'";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM cars WHERE carID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $carId);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         // Store car data in session
@@ -61,20 +64,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['carId'])) {
         $_SESSION['productName'] = $carData['name'];
         $_SESSION['productPrice'] = $carData['price'];
         $_SESSION['productImage'] = $carData['image'];
+        $_SESSION['carId'] = $carData['carID']; // Store car ID in session
     } else {
         $_SESSION['productName'] = 'No product selected';
         $_SESSION['productPrice'] = 'No price available';
         $_SESSION['productImage'] = '';
+        $_SESSION['carId'] = null;
     }
+    $stmt->close();
 }
 
 // Retrieve product data from session
 $productName = isset($_SESSION['productName']) ? $_SESSION['productName'] : 'No product selected';
 $productPrice = isset($_SESSION['productPrice']) ? $_SESSION['productPrice'] : 'No price available';
 $productImage = isset($_SESSION['productImage']) ? $_SESSION['productImage'] : '';
-
-$success_message = '';
-$error_message = '';
+$carId = isset($_SESSION['carId']) ? $_SESSION['carId'] : null;
 
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
@@ -88,23 +92,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $street1 = $conn->real_escape_string($_POST['street1']);
     $street2 = $conn->real_escape_string($_POST['street2']);
     $payment = $conn->real_escape_string($_POST['payment']);
+    $carName = $productName; // Retrieve car name from session
 
     // Initialize card information
     $cardNumber = !empty($_POST['cardNumber']) ? hash('sha256', $conn->real_escape_string($_POST['cardNumber'])) : '';
     $cardExpiry = !empty($_POST['cardExpiry']) ? hash('sha256', $conn->real_escape_string($_POST['cardExpiry'])) : '';
     $cardCVV = !empty($_POST['cardCVV']) ? hash('sha256', $conn->real_escape_string($_POST['cardCVV'])) : '';
 
-    // Insert data into database
-    $sql = "INSERT INTO customer_info (name, surname, dateofbirth, country, city, postcode, street1, street2, payment, card_number, card_expiry, card_cvv)
-            VALUES ('$name', '$surname', '$dateofbirth', '$country', '$city', '$postcode', '$street1', '$street2', '$payment', '$cardNumber', '$cardExpiry', '$cardCVV')";
+    // Insert data into database using prepared statement
+    $sql = "INSERT INTO customer_info (name, surname, dateofbirth, country, city, postcode, street1, street2, payment, card_number, card_expiry, card_cvv, car_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sssssssssssss', $name, $surname, $dateofbirth, $country, $city, $postcode, $street1, $street2, $payment, $cardNumber, $cardExpiry, $cardCVV, $carName);
 
-    if ($conn->query($sql) === TRUE) {
-        $success_message = "New record created successfully";
+    if ($stmt->execute()) {
+        // Remove the car from the database
+        $deleteSql = "DELETE FROM cars WHERE carID = ?";
+        $deleteStmt = $conn->prepare($deleteSql);
+        $deleteStmt->bind_param('i', $carId);
+        $deleteStmt->execute();
+        $deleteStmt->close();
+
+        $success_message = "You have succesfully bought the car!";
         // Refresh the page after 9 seconds
         header("refresh:9;url=" . $_SERVER['PHP_SELF']);
     } else {
-        $error_message = "Error: " . $sql . "<br>" . $conn->error;
+        $error_message = "Error: " . $stmt->error;
     }
+    $stmt->close();
 }
 
 $conn->close();
@@ -126,141 +140,13 @@ $conn->close();
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../bootstrap+fonte/fontAwesome.css">
+    <link rel="stylesheet"href="checkoutstyle.css">
 
     <style>
-        .container {
-            background-color: #e0e0e0;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        body {
+            font-size: 16px; /* Base font size */
         }
-        h2.heading {
-            color: red;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        label.form-label {
-            color: red;
-        }
-        input.form-control,
-        select.form-select {
-            border: 1px solid red;
-            border-radius: 5px;
-        }
-        input[type="radio"].form-check-input {
-            border-color: red;
-        }
-        .btn-primary {
-            background-color: red;
-            border-color: red;
-        }
-        .btn-primary:hover {
-            background-color: #c62828;
-            border-color: #c62828;
-        }
-        svg {
-            width: 30px;
-        }
-        .heading {
-            padding-bottom: 2rem;
-            font-size: 4.5rem;
-            text-align: center;
-        }
-        header {
-            z-index: 10000;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem 9%;
-            background-color: #ffffff;
-            box-shadow: var(--box_shadow);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header .logo {
-            color: #000;
-            border: #000;
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        header .logo span {
-            color: var(--main);
-        }
-        header .navbar {
-            position: relative;
-            min-height: 9px;
-            margin-bottom: 6px;
-            border: 1px solid transparent;
-        }
-        header .navbar a {
-            height: 10px;
-            margin: auto;
-            color: #000;
-            font-size: 1.6rem;
-            margin: 0.6rem;
-            justify-content: space-between;
-        }
-        header .navbar a:hover {
-            color: var(--main);
-            text-decoration: none;
-        }
-        .center-submit {
-            display: flex;
-            justify-content: center;
-        }
-        .payment-method {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        }
-        .payment-method p {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: red;
-            margin-bottom: 10px;
-        }
-        .payment-method .form-check {
-            margin-bottom: 10px;
-        }
-        .payment-method .form-check-label {
-            font-size: 1.1rem;
-            color: #333;
-        }
-        .payment-method .form-check-input {
-            margin-right: 10px;
-        }
-        .product-card {
-            display: flex;
-            align-items: center;
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .product-card img {
-            width: 150px;
-            height: auto;
-            border-radius: 10px;
-            margin-right: 20px;
-        }
-        .product-card .product-info {
-            display: flex;
-            flex-direction: column;
-        }
-        .product-card .product-info .product-name {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .product-card .product-info .product-price {
-            font-size: 20px;
-            color: red;
-        }
+
     </style>
 </head>
 <body>
@@ -351,16 +237,16 @@ $conn->close();
                 <div class="row mb-3">
                     <div class="col-md-12">
                         <div class="payment-method">
-                            <p>Payment Method:</p>
+                            <p style="font-size:large">Payment Method:</p>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="payment" id="payCard" value="card" onclick="showCardInfo()">
-                                <label class="form-check-label" for="payCard">
+                                <label class="form-check-label" for="payCard" style="font-size:large">
                                     Pay with Card
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="payment" id="payCash" value="cash" onclick="hideCardInfo()">
-                                <label class="form-check-label" for="payCash">
+                                <label class="form-check-label" for="payCash" style="font-size:large">
                                     Pay with Cash
                                 </label>
                             </div>
@@ -389,21 +275,12 @@ $conn->close();
                 </div>
 
                 <div class="center-submit">
-                    <input type="submit" class="btn btn-primary" name="submit" id="submit">
+                    <input type="submit" class="btn btn-primary submit-btn" name="submit" id="submit">
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-    <?php   
-        if (!empty($success_message)) {
-        echo '<div class="alert alert-success mt-3">' . $success_message . '</div>';
-        }
-        if (!empty($error_message)) {
-        echo '<div class="alert alert-danger mt-3">' . $error_message . '</div>';
-        }
-    ?>
 
 
 <!-- JavaScript to Toggle Card Information -->

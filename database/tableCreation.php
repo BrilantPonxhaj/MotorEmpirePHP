@@ -17,6 +17,8 @@ CREATE TABLE IF NOT EXISTS customer_info (
     card_expiry VARCHAR(64) NOT NULL,
     card_cvv VARCHAR(64) NOT NULL
 );
+ALTER TABLE customer_info ADD COLUMN car_name VARCHAR(255);
+
 ";
 
 if ($conn->query($table_creation_sql) === FALSE) {
