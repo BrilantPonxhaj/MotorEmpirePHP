@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
 <?php
 session_start();
 include("../../database/configDatabase.php"); // Include the database configuration file
@@ -41,28 +40,70 @@ class User {
     }
 }
 
+// Function to get user by email, returning by reference
+function &getUserByEmail(&$conn, $email) {
+    $sql = "SELECT * FROM register WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql);
+    if ($row = mysqli_fetch_assoc($result)) {
+        return $row;
+    }
+    $null = null;
+    return $null;
+}
+
 // Class for user authentication, inherits from User class
 class AuthUser extends User {
     // Method for user login
-    public function login($conn, $isAdminLogin = false) {
+    public function login(&$conn, $isAdminLogin = false) {
         // Sanitize email and password before sending to database to prevent SQL injection
         $email = mysqli_real_escape_string($conn, $this->getEmail());
         $password = mysqli_real_escape_string($conn, $this->getPassword());
 
-        // Query to check user in database
-        $sql = "SELECT fullname, isAdmin FROM register WHERE email = '$email' AND passwordi = '$password'";
-        $result = mysqli_query($conn, $sql);
-        // Check if there is a result, meaning the user is valid
-        if (mysqli_num_rows($result) == 1) {
-            $row = mysqli_fetch_assoc($result);
-            $_SESSION['login_user'] = $row['fullname'];
-            $_SESSION['isAdmin'] = $row['isAdmin'];
+        // Use getUserByEmail function to get user data
+        $user = &getUserByEmail($conn, $email);
+
+        // Check if user exists and password matches
+        if ($user && $user['passwordi'] === $password) {
+            $_SESSION['login_user'] = $user['fullname'];
+            $_SESSION['isAdmin'] = $user['isAdmin'];
+            $_SESSION['last_login'] = $user['last_login'];
+
+            // Update last login time
+            $lastLogin = date("Y-m-d H:i:s");
+            $sqlUpdate = "UPDATE register SET last_login='$lastLogin' WHERE email='$email'";
+
+            if (mysqli_query($conn, $sqlUpdate)) {
+                $_SESSION['last_login'] = $lastLogin; // Update session with the new login time
+            } else {
+                // Debugging statement
+                error_log("Failed to update last login time: " . mysqli_error($conn));
+                throw new Exception("Failed to update last login time: " . mysqli_error($conn));
+            }
 
             $colorSettings = "#222831|white";
             setcookie('colorSettings', $colorSettings, time() + (86400 * 30), '/');
 
-            if ($isAdminLogin && $row['isAdmin'] == 1) {
-                header("location: ../../testingadmin/admin.php");
+            if ($isAdminLogin && $user['isAdmin'] == 1) {
+                $adminPath = '../../testingadmin/admin.php';
+
+                if (file_exists($adminPath)) {
+                    $handle = fopen($adminPath, 'r');
+                    if ($handle) {
+                        $fileSize = filesize($adminPath);
+                        $fileContent = fread($handle, $fileSize);
+                        fclose($handle);
+                        // Optional: Write to the file if needed
+                        $handle = fopen($adminPath, 'a');
+                        fwrite($handle, "\n<!-- User accessed admin panel on: " . date("Y-m-d H:i:s") . " -->");
+                        fclose($handle);
+                        header("location: $adminPath");
+                        exit();
+                    } else {
+                        throw new Exception("Unable to access the admin page.");
+                    }
+                } else {
+                    throw new Exception("Admin page does not exist.");
+                }
             } elseif (!$isAdminLogin) {
                 header("location: ../../Home/index.php");
             } else {
@@ -91,9 +132,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $error_message = '';
+$last_login_message = '';
 if (isset($_SESSION['error'])) {
     $error_message = $_SESSION['error'];
-    unset($_SESSION['error']);
+    unset($_SESSION['error']); // Remove the error message after displaying it
+} elseif (isset($_SESSION['last_login'])) {
+    $last_login_message = "Your last login was on: " . $_SESSION['last_login'];
 }
 ?>
 
@@ -106,6 +150,10 @@ if (isset($_SESSION['error'])) {
         <div class="alert alert-danger">
             <?php echo $error_message; ?>
         </div>
+    <?php elseif ($last_login_message): ?>
+        <div class="alert alert-info">
+            <?php echo $last_login_message; ?>
+        </div>
     <?php endif; ?>
 
     <form action="login.php" method="post">
@@ -117,7 +165,7 @@ if (isset($_SESSION['error'])) {
         </div>
         <div class="input-submit">
             <input type="submit" name="login" value="Sign in" class="submit-btn" style="color: #fff; font-size: 20px;">
-            <input type="submit" name="admin_login" value="Login as Admin" class="btn btn-link" style="font-size: 15px;">
+            <input type="submit" name="admin_login" value="Login as Admin" class="btn btn-link" style="font-size: 20px;">
         </div>
     </form>
     <div class="sign-up-link">
@@ -126,9 +174,7 @@ if (isset($_SESSION['error'])) {
     </div>
 </div>
 
-<?php
-include("../../src/Login/cookies.php");
-?>
+<?php include("../../src/Login/cookies.php"); ?>
 
 </body>
 </html>
