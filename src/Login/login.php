@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,23 +6,11 @@
     <title>MotorEmpire</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <link rel="stylesheet" href="login.css">
-
-    <style>
-    
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<br><br>
-
-<div class="login-box">
-    <div class="login-header">
-
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 include("../../database/configDatabase.php"); // Include the database configuration file
 
@@ -75,7 +62,7 @@ class AuthUser extends User {
             setcookie('colorSettings', $colorSettings, time() + (86400 * 30), '/');
 
             if ($isAdminLogin && $row['isAdmin'] == 1) {
-                header("location: ../../testing_admin/admin.php");
+                header("location: ../../testingadmin/admin.php");
             } elseif (!$isAdminLogin) {
                 header("location: ../../Home/index.php");
             } else {
@@ -97,8 +84,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $authUser->login($conn, $isAdminLogin);
         }
     } catch (Exception $e) {
-        echo "<div class='alert alert-danger'>" . $e->getMessage() . "</div>";
+        $_SESSION['error'] = $e->getMessage();
+        header("Location: login.php");
+        exit();
     }
+}
+
+$error_message = '';
+if (isset($_SESSION['error'])) {
+    $error_message = $_SESSION['error'];
+    unset($_SESSION['error']);
 }
 ?>
 
@@ -106,6 +101,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="login-header">
         <header>Login</header>
     </div>
+
+    <?php if ($error_message): ?>
+        <div class="alert alert-danger">
+            <?php echo $error_message; ?>
+        </div>
+    <?php endif; ?>
 
     <form action="login.php" method="post">
         <div class="input-box">
@@ -115,8 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" class="input-field" name="password" placeholder="Password" autocomplete="off" required>
         </div>
         <div class="input-submit">
-            <input type="submit" name="login" value="Sign in" class="submit-btn" style="color: #fff;">
-            <input type="submit" name="admin_login" value="Login as Admin" class="btn-btn link" style="color: #fff;">
+            <input type="submit" name="login" value="Sign in" class="submit-btn" style="color: #fff; font-size: 20px;">
+            <input type="submit" name="admin_login" value="Login as Admin" class="btn btn-link" style="color: #fff; font-size: 20px;">
         </div>
     </form>
     <div class="sign-up-link">
