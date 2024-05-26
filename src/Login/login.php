@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,107 +18,116 @@
 
 <div class="login-box">
     <div class="login-header">
+
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+include("../../database/configDatabase.php"); // Include the database configuration file
+
+// Base class for user
+class User {
+    protected $email; // Declare variable for email
+    private $password; // Declare variable for password
+
+    // Constructor to initialize email and password when an object is created
+    public function __construct($email, $password) {
+        $this->email = $email; // Store email in protected variable
+        $this->password = $password; // Store password in private variable
+    }
+
+    // Public method to get email
+    public function getEmail() {
+        return $this->email;
+    }
+
+    // Protected method to get password, accessible only within class and subclasses
+    protected function getPassword() {
+        return $this->password;
+    }
+
+    // Destructor, called automatically when the object is destroyed
+    public function __destruct() {
+        // Cleanup logs or close connections
+    }
+}
+
+// Class for user authentication, inherits from User class
+class AuthUser extends User {
+    // Method for user login
+    public function login($conn, $isAdminLogin = false) {
+        // Sanitize email and password before sending to database to prevent SQL injection
+        $email = mysqli_real_escape_string($conn, $this->getEmail());
+        $password = mysqli_real_escape_string($conn, $this->getPassword());
+
+        // Query to check user in database
+        $sql = "SELECT fullname, isAdmin FROM register WHERE email = '$email' AND passwordi = '$password'";
+        $result = mysqli_query($conn, $sql);
+        // Check if there is a result, meaning the user is valid
+        if (mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_assoc($result);
+            $_SESSION['login_user'] = $row['fullname'];
+            $_SESSION['isAdmin'] = $row['isAdmin'];
+
+            $colorSettings = "#222831|white";
+            setcookie('colorSettings', $colorSettings, time() + (86400 * 30), '/');
+
+            if ($isAdminLogin && $row['isAdmin'] == 1) {
+                header("location: ../../testing_admin/admin.php");
+            } elseif (!$isAdminLogin) {
+                header("location: ../../Home/index.php");
+            } else {
+                throw new Exception("You do not have admin privileges.");
+            }
+            exit();
+        } else {
+            throw new Exception("Invalid login credentials.");
+        }
+    }
+}
+
+// Check if the request method is POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        if (isset($_POST['login']) || isset($_POST['admin_login'])) {
+            $isAdminLogin = isset($_POST['admin_login']);
+            $authUser = new AuthUser($_POST['email'], $_POST['password']);
+            $authUser->login($conn, $isAdminLogin);
+        }
+    } catch (Exception $e) {
+        echo "<div class='alert alert-danger'>" . $e->getMessage() . "</div>";
+    }
+}
+?>
+
+<div class="login-box">
+    <div class="login-header">
         <header>Login</header>
     </div>
-    <?php
-    
-    // Klasa bazë për përdoruesin
-    class User {
-        protected $email; // Deklarimi i variables për emailin
-        private $password; // Deklarimi i variables fjalëkalimin
-    
-        // Konstruktori që inicializon emailin dhe fjalëkalimin kur krijohet një objekt
-        public function __construct($email, $password) {
-            $this->email = $email; // Ruajtja e emailit në variablin e mbrojtur
-            $this->password = $password; // Ruajtja e fjalëkalimit në variablin privat
-        }
-    
-        // Metodë publike për marrjen e emailit
-        public function getEmail() {
-            return $this->email;
-        }
-    
-        // Metodë e mbrojtur për marrjen e fjalëkalimit, e qasshme vetëm brenda klasës dhe nënklasave
-        protected function getPassword() {
-            return $this->password;
-        }
-    
-        // Destruktori, thirret automatikisht kur objekti shkatërrohet
-        public function __destruct() {
-            //  Pastrimi i log-eve ose mbyllja e lidhjeve
-        }
-    }
-    
-    // Klasa për autentikim të përdoruesit, trashëgohet nga klasa User
-    class AuthUser extends User {
-        // Metoda për logimin e përdoruesit
-        public function login($conn) {
-            // Pastrimi i emailit dhe fjalëkalimit nga karakteret e dëmshme përpara se të dërgohen në databazë kjo perdoret per tu mbrojtur nga SqlInjections
-            $email = mysqli_real_escape_string($conn, $this->getEmail());
-            $password = mysqli_real_escape_string($conn, $this->getPassword());
-    
-            // Query për kontrollin e përdoruesit në databazë
-            $sql = "SELECT fullname FROM register WHERE email = '$email' AND passwordi = '$password'";
-            $result = mysqli_query($conn, $sql);
-            // Kontrollon nëse ka një rezultat, që do të thotë se përdoruesi është i vlefshëm
-            if (mysqli_num_rows($result) == 1) {  //E kqyr nese osht ni row n databaz qe osht tu bo match me qato t dhana
-                $row = mysqli_fetch_assoc($result); //i vendos te dhenat ne variablen row
-                $_SESSION['login_user'] = $row['fullname']; // Ruajtja e emrit të plotë në session për përdorim të mëtejshëm
-     
-                $colorSettings = "#222831|white"; // No spaces around "|"
-                setcookie('colorSettings', $colorSettings, time() + (86400 * 30), '/'); // Set the cookie
-                
-         
-                header("location: ../../Home/index.php"); // Ridrejtimi i përdoruesit në faqen kryesore
-                exit(); // Ndërpret ekzekutimin e mëtejshëm të skriptit
-            } else {
-                // Throws një përjashtim nëse kredencialet janë të pavlefshme
-                throw new Exception("Invalid login credentials.");
-            }
-        }
-    }
-     
-    include("../../database/configDatabase.php"); // Përfshin skedarin për konfigurimin e databazës
-    session_start(); // Fillon një sesion ose vazhdon sesionin ekzistues
-    
-    // Kontrollon nëse metoda e kërkesës është POST
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        try {
-            // Provimi i krijimit dhe logimit të përdoruesit
-            $authUser = new AuthUser($_POST['email'], $_POST['password']); // Krijimi i një instance të AuthUser me email dhe fjalëkalim
-            $authUser->login($conn); // Thirrja e metodës login
-        } catch (Exception $e) {
-            $error = $e->getMessage(); // Merr mesazhin e përjashtimit nëse diçka shkon keq
-            echo $error;  // Shfaqja e mesazhit të errorit, konsideroni ridrejtimin ose shfaqjen e një mesazhi miqësor për përdoruesin
-        }
-    }
-    
-    ?>
 
-
-
-
-        <br>
-        <form action="login.php" method="post">
+    <form action="login.php" method="post">
         <div class="input-box">
-            <input type="email" class="input-field" name="email" placeholder="Email">
+            <input type="email" class="input-field" name="email" placeholder="Email" required>
         </div>
         <div class="input-box">
-            <input type="password" class="input-field" name="password" placeholder="Password" autocomplete="off">
+            <input type="password" class="input-field" name="password" placeholder="Password" autocomplete="off" required>
         </div>
-        
         <div class="input-submit">
-            <input type="submit" name="login" value="Sign in" class="submit-btn" id="submit1" style="color: #fff;">
+            <input type="submit" name="login" value="Sign in" class="submit-btn" style="color: #fff;">
+            <input type="submit" name="admin_login" value="Login as Admin" class="btn-btn link" style="color: #fff;">
         </div>
-        <div class="sign-up-link">
-            <p>Don't have an account? <a href="register.php">Register</a></p>
-            <a href="../../Home/index.php"><u>Return To Homepage</u></a>
-        </div>
-       
-    
-    <?php
-    include("../../src/Login/cookies.php");
-   
-     ?>
+    </form>
+    <div class="sign-up-link">
+        <p>Don't have an account? <a href="register.php">Register</a></p>
+        <a href="../../Home/index.php"><u>Return To Homepage</u></a>
+    </div>
+</div>
+
+<?php
+include("../../src/Login/cookies.php");
+?>
+
 </body>
 </html>

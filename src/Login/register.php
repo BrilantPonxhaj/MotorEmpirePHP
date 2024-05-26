@@ -70,39 +70,70 @@
                 $email = $_POST["email"];
                 $password = $_POST["password"];
                 $confirmpassword = $_POST["confirmpassword"];
+                $errors = array();
 
-                $verify_query = mysqli_query($conn, "SELECT email FROM register WHERE email = '$email'");
-                
-                if(empty($fullname) OR empty($email) OR empty($password) OR empty($confirmpassword) ) {
-                    echo "<div class='alert alert-danger'>All fields are required</div>";
+                // Check for empty fields
+                if(empty($fullname) || empty($email) || empty($password) || empty($confirmpassword)) {
+                    array_push($errors, "All fields are required");
                 }
+                // Validate email
+                if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    array_push($errors, "Email is not valid");
+                }
+                // Check password length
+                if(strlen($password) < 8) {
+                    array_push($errors, "Password must be at least 8 characters long");
+                }
+                // Check if passwords match
                 if($password !== $confirmpassword) {
-                    echo "<div class='alert alert-danger'>Passwords do not match</div>";
+                    array_push($errors, "Passwords do not match");
                 }
-                
-                if(mysqli_num_rows($verify_query) !=0 ) {
-                    echo "<div class='alert alert-danger'>This email is used, try another one please</div>";
-                }else{
-                    mysqli_query($conn, "INSERT INTO register(fullname,email,passwordi) VALUES('$fullname', '$email', '$password')") or die("Error occurred");
-                    echo "<div class='alert alert-success'>You are registered succesfully</div>";
+                // Check if email already exists
+                $verify_query = mysqli_query($conn, "SELECT email FROM register WHERE email = '$email'");
+                if(mysqli_num_rows($verify_query) != 0) {
+                    array_push($errors, "Email already exists");
                 }
-            } 
+
+                if(count($errors) > 0) {
+                    foreach($errors as $error) {
+                        echo "<div class='alert alert-danger'>$error</div>";
+                    }
+                } else {
+                    // Insert into database
+                    $sql = "INSERT INTO register (fullname, email, passwordi, isAdmin) VALUES (?, ?, ?, 0)";
+                    $stmt = mysqli_stmt_init($conn);
+                    $prepareStmt = mysqli_stmt_prepare($stmt, $sql); 
+                    if($prepareStmt){
+                        mysqli_stmt_bind_param($stmt, "sss", $fullname, $email, $password);
+                        mysqli_stmt_execute($stmt);
+                        echo "<div class='alert alert-success'>You are registered successfully</div>";
+                    } else {
+                        die("Something went wrong");
+                    }
+                }
+            }
         ?>
         <form action="register.php" method="post">
-        <div class="input-box">
-            <input type="text" class="input-field" name="fullname" placeholder="Full Name" required>
+            <div class="input-box">
+                <input type="text" class="input-field" name="fullname" placeholder="Full Name" required>
+            </div>
+            <div class="input-box">
+                <input type="email" class="input-field" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" name="confirmpassword" placeholder="Confirm your password" required>
+            </div>
+            <div class="input-submit">
+                <input type="submit" name="submit" value="Register" class="submit-btn" style="color: #fff;" id="submit1"> 
+            </div>
+        </form>
+        <div class="sign-up-link">
+            <p>Already have an account? <a href="login.php">Log In</a></p>
         </div>
-        <div class="input-box">
-            <input type="email" class="input-field" name="email" placeholder="Email" required>
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" name="password" placeholder="Password" required>
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" name="confirmpassword" placeholder="Confirm your password" required>
-        </div>
-        
-
+    </div>
         
         <!-- <div class="forgot">
             <section>
@@ -113,12 +144,7 @@
                 <a href="#">Forgot password</a>
             </section>
         </div> -->
-        <div class="input-submit">
-        <input type="submit" name="submit" value="Register" class="submit-btn" style="color: #fff;" id="submit1"> 
-        </div>
-        </form>
-        <div class="sign-up-link">
-            <p>Already have an account? <a href="login.php">Log In</a></p>
+       
         </div>
     </div>
 </body>
