@@ -1,38 +1,105 @@
-/* Common styles for the entire site, including the sidebar */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    background-color: #f4f4f9;
 }
 
-/* Sidebar Styles */
 .sidebar {
-    width: 200px; /* Adjust width as needed */
+    height: 100vh;
+    width: 250px;
     position: fixed;
-    left: 0;
     top: 0;
-    height: 100%;
-    background: #333;
-    padding: 20px;
-    box-sizing: border-box;
-    color: white;
+    left: 0;
+    background-color: #343a40;
+    padding-top: 20px;
+}
+
+.sidebar h3 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .sidebar a {
-    color: white;
+    padding: 15px 20px;
     text-decoration: none;
+    font-size: 18px;
+    color: #d1d1d1;
     display: block;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
 }
 
 .sidebar a:hover {
-    background: #555;
+    background-color: #575d63;
+    color: #fff;
 }
 
-/* Responsive adjustments for sidebar */
+.main-content {
+    margin-left: 250px; /* Adjust for sidebar width */
+    padding: 20px;
+}
+
+.table-container {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+ul{
+    list-style-type: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    text-align: center;
+}
+
+th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.add-car-button {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.add-car-button button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-car-button button:hover {
+    background-color: #0056b3;
+}
+
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;
@@ -44,85 +111,9 @@ body {
     }
 }
 
-/* Main content styles */
-.main-content {
-    margin-left: 220px; /* Slightly more than the sidebar width to prevent overlap */
-    margin-top: 20px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* Table styles */
-table {
-    width: 100%;
-    table-layout: fixed; /* This helps in maintaining a uniform column width */
-    border-collapse: collapse;
-}
-
-th, td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    overflow: hidden; /* Prevents data from overflowing */
-    text-overflow: ellipsis; /* Adds an ellipsis if the text overflows */
-    white-space: nowrap; /* Keeps the content on a single line */
-}
-
-th {
-    position: sticky; /* Makes the header sticky */
-    top: 0;
-    background-color: #f2f2f2;
-}
-
-th.car-id, td.car-id {
-    width: 20px; /* Adjust width as necessary */
-}
-
-.table-container {
-    overflow-x: auto; /* Adds horizontal scroll on smaller screens */
-}
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-    td, th {
-        padding: 8px 4px; /* Reduces padding at smaller screen widths */
+@media (max-width: 480px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
     }
-}
-
-@media (max-width: 768px) {
-    .main-content {
-        margin-left: 10px; /* Adjusts margin for smaller screens */
-        margin-right: 10px;
-    }
-
-    th, td {
-        font-size: 0.9em; /* Reduces font size for smaller screens */
-    }
-}
-
-/* Style for buttons */
-button {
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    margin: 5px 0;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
 }

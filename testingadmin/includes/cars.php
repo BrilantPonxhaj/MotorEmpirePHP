@@ -1,9 +1,10 @@
-<header>
-    <?php include 'header.php'; ?>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <title>Admin Page - Manage Cars</title>
     <link rel="stylesheet" type="text/css" href="../adminCSS/carscss.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script>
         function readCarData(editingId = '') {
             var xhr = new XMLHttpRequest();
@@ -49,14 +50,27 @@
     </script>
 </head>
 <body>
-<div class="main-content table-container">
-    <div class="add-car-button">
-        <a href="add_car.php"><button>Add Car</button></a>
+    <div class="sidebar">
+        <h3>Administrator</h3>
+        <ul>
+            <li><a href="../admin.php">Dashboard</a></li>
+            <li><a href="customers.php">Customers</a></li>
+            <li><a href="users.php">Users</a></li>
+            <li><a href="cars.php">Cars</a></li>
+        </ul>
     </div>
-    <div id="carContent">
-        <?php include '../read_cars.php'; ?>
+    <header>
+        <?php include 'header.php'; ?>
+    </header>
+    <div class="main-content table-container">
+        <div class="add-car-button">
+            <a href="add_car.php"><button>Add Car</button></a>
+        </div>
+        <div id="carContent">
+            <?php include '../read_cars.php'; ?>
+        </div>
     </div>
-</div>
-<?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
