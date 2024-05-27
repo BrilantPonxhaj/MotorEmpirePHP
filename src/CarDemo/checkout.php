@@ -1,11 +1,23 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    echo '<script type="text/javascript">
+            alert("Please log in to proceed with the purchase.");
+            window.location.href = "../Login/login.php";
+          </script>';
+    exit();
+}
+
+
 // Enable error reporting
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Custom error handler
-function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
+function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = null) {
     switch ($errno) {
         case E_USER_ERROR:
             $errorMessage = "Critical Error [$errno]: $errstr on line $errline in file $errfile";
