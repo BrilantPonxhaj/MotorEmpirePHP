@@ -71,6 +71,7 @@ class AuthUser extends User {
         if ($user) {
             if ($password === $user['passwordi']) {
                 $_SESSION['login_user'] = $user['fullname'];
+                $_SESSION['user_id'] = $user['id'];
                 $_SESSION['isAdmin'] = $user['isAdmin'];
                 $_SESSION['last_login'] = $user['last_login'];
 

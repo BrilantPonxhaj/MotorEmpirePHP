@@ -1,4 +1,16 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    echo '<script type="text/javascript">
+            alert("Please log in to proceed with the purchase.");
+            window.location.href = "../Login/login.php";
+          </script>';
+    exit();
+}
+
+
 // Enable error reporting
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -8,6 +20,7 @@ error_reporting(E_ALL);
 function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = [])
 {
     $errorMessage = "[$errno] $errstr in $errfile on line $errline";
+function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = null) {
     switch ($errno) {
         case E_USER_ERROR:
             $errorMessage = "Gabim kritik [$errno]: $errstr në linjën $errline në skedarin $errfile";

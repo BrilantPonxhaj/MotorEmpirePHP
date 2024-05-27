@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once('../../database/carsDB.php');
 
 if (isset($_POST['carId'])) {
@@ -42,6 +44,8 @@ if (isset($_COOKIE['colorSettings'])) {
     $backgroundColor = '#ffffff'; // Default background color
     $_Color = '#000000'; // Default text color
 }
+
+$isLoggedIn = isset($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -318,10 +322,14 @@ if (isset($_COOKIE['colorSettings'])) {
                         <?php echo htmlspecialchars($car['description']); ?>
                     </p>
                     <div class="btn-groups">
+                        <?php if($isLoggedIn): ?>
                         <form action="checkout.php" method="post">
                             <input type="hidden" name="carId" value="<?php echo htmlspecialchars($carId); ?>">
                             <button type="submit" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
                         </form>
+                        <?php else: ?>
+                            <button onclick="alert('Please log in to proceed with the purchase.'); window.location.href = '../Login/login.php';" class="buy-now-btn"><i class="fas fa-wallet"></i> Buy now</button>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
