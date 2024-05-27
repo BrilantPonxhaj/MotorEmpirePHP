@@ -5,19 +5,21 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Custom error handler
-function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext) {
+function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = [])
+{
+    $errorMessage = "[$errno] $errstr in $errfile on line $errline";
     switch ($errno) {
         case E_USER_ERROR:
-            $errorMessage = "Critical Error [$errno]: $errstr on line $errline in file $errfile";
+            $errorMessage = "Gabim kritik [$errno]: $errstr në linjën $errline në skedarin $errfile";
             break;
         case E_USER_WARNING:
-            $errorMessage = "Warning [$errno]: $errstr on line $errline in file $errfile";
+            $errorMessage = "Paralajmërim [$errno]: $errstr në linjën $errline në skedarin $errfile";
             break;
         case E_USER_NOTICE:
-            $errorMessage = "Notice [$errno]: $errstr on line $errline in file $errfile";
+            $errorMessage = "Njoftim [$errno]: $errstr në linjën $errline në skedarin $errfile";
             break;
         default:
-            $errorMessage = "Error [$errno]: $errstr on line $errline in file $errfile";
+            $errorMessage = "Gabim [$errno]: $errstr në linjën $errline në skedarin $errfile";
             break;
     }
     error_log($errorMessage); // Log the error
@@ -33,6 +35,9 @@ session_start();
 $success_message = '';
 $error_message = '';
 
+// Define the base URL of your project
+$baseUrl = "http://localhost:8080/Web-2-1/";
+
 // Database connection
 $servername = "localhost:3308";
 $username = "root";
@@ -44,7 +49,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    trigger_error("Connection failed: " . $conn->connect_error, E_USER_ERROR);
 }
 
 // Retrieve car data based on car ID
@@ -54,6 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['carId'])) {
     // Fetch car data from the database
     $sql = "SELECT * FROM cars WHERE carID = ?";
     $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        trigger_error("Statement preparation failed: " . $conn->error, E_USER_ERROR);
+    }
     $stmt->bind_param('i', $carId);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -62,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['carId'])) {
         // Store car data in session
         $carData = $result->fetch_assoc();
         $_SESSION['productName'] = $carData['name'];
-        $_SESSION['productPrice'] = $carData['price'];
+        $_SESSION['productPrice'] = str_replace(',', '', $carData['price']); // Remove commas from the price
         $_SESSION['productImage'] = $carData['image'];
         $_SESSION['carId'] = $carData['carID']; // Store car ID in session
     } else {
@@ -76,9 +84,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['carId'])) {
 
 // Retrieve product data from session
 $productName = isset($_SESSION['productName']) ? $_SESSION['productName'] : 'No product selected';
-$productPrice = isset($_SESSION['productPrice']) ? $_SESSION['productPrice'] : 'No price available';
+$productPrice = isset($_SESSION['productPrice']) ? (float)$_SESSION['productPrice'] : 0.00; // Convert to float
 $productImage = isset($_SESSION['productImage']) ? $_SESSION['productImage'] : '';
 $carId = isset($_SESSION['carId']) ? $_SESSION['carId'] : null;
+
+// Include Stripe PHP library
+require '../../vendor/autoload.php';
+\Stripe\Stripe::setApiKey('sk_test_51PL2if01whnfybSl3EE4RcE3XSfDQQy673bndEoMyqFBLADIakfapImrUUehPz0sOe5fku6YV7VYRCgFf9GpmBXP00jRsXOy6s');
 
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
@@ -94,31 +106,65 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $payment = $conn->real_escape_string($_POST['payment']);
     $carName = $productName; // Retrieve car name from session
 
-    // Initialize card information
-    $cardNumber = !empty($_POST['cardNumber']) ? hash('sha256', $conn->real_escape_string($_POST['cardNumber'])) : '';
-    $cardExpiry = !empty($_POST['cardExpiry']) ? hash('sha256', $conn->real_escape_string($_POST['cardExpiry'])) : '';
-    $cardCVV = !empty($_POST['cardCVV']) ? hash('sha256', $conn->real_escape_string($_POST['cardCVV'])) : '';
+    if ($payment === 'cash') {
+        // Process payment without Stripe
+        try {
+            // Insert customer data into database
+            $sql = "INSERT INTO customer_info (name, surname, dateofbirth, country, city, postcode, street1, street2, payment, car_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            if (!$stmt) {
+                trigger_error("Statement preparation failed: " . $conn->error, E_USER_ERROR);
+            }
+            $stmt->bind_param('ssssssssss', $name, $surname, $dateofbirth, $country, $city, $postcode, $street1, $street2, $payment, $carName);
 
-    // Insert data into database using prepared statement
-    $sql = "INSERT INTO customer_info (name, surname, dateofbirth, country, city, postcode, street1, street2, payment, card_number, card_expiry, card_cvv, car_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('sssssssssssss', $name, $surname, $dateofbirth, $country, $city, $postcode, $street1, $street2, $payment, $cardNumber, $cardExpiry, $cardCVV, $carName);
+            if ($stmt->execute()) {
+                // Remove the car from the database
+                $deleteSql = "DELETE FROM cars WHERE carID = ?";
+                $deleteStmt = $conn->prepare($deleteSql);
+                if (!$deleteStmt) {
+                    trigger_error("Statement preparation failed: " . $conn->error, E_USER_ERROR);
+                }
+                $deleteStmt->bind_param('i', $carId);
+                $deleteStmt->execute();
+                $deleteStmt->close();
 
-    if ($stmt->execute()) {
-        // Remove the car from the database
-        $deleteSql = "DELETE FROM cars WHERE carID = ?";
-        $deleteStmt = $conn->prepare($deleteSql);
-        $deleteStmt->bind_param('i', $carId);
-        $deleteStmt->execute();
-        $deleteStmt->close();
-
-        $success_message = "You have succesfully bought the car!";
-        // Refresh the page after 9 seconds
-        header("refresh:9;url=" . $_SERVER['PHP_SELF']);
+                $success_message = "You have successfully bought the car!";
+                // Refresh the page after 9 seconds
+                header("refresh:9;url=" . $_SERVER['PHP_SELF']);
+            } else {
+                trigger_error("Execution failed: " . $stmt->error, E_USER_ERROR);
+            }
+            $stmt->close();
+        } catch (Exception $e) {
+            $error_message = "Payment processing failed: " . $e->getMessage();
+        }
     } else {
-        $error_message = "Error: " . $stmt->error;
+        // Process payment with Stripe Checkout
+        try {
+            $checkout_session = \Stripe\Checkout\Session::create([
+                'payment_method_types' => ['card'],
+                'line_items' => [[
+                    'price_data' => [
+                        'currency' => 'usd',
+                        'product_data' => [
+                            'name' => $productName,
+                        ],
+                        'unit_amount' => $productPrice * 100, // Amount in cents
+                    ],
+                    'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                'success_url' => $baseUrl . 'src/CarDemo/success.php',
+                'cancel_url' => $baseUrl . 'src/CarDemo/cancel.php',
+            ]);
+
+            // Redirect to Stripe Checkout
+            header("Location: " . $checkout_session->url);
+            exit();
+        } catch (\Stripe\Exception\ApiErrorException $e) {
+            $error_message = "Payment failed: " . $e->getMessage();
+        }
     }
-    $stmt->close();
 }
 
 $conn->close();
@@ -168,7 +214,7 @@ $conn->close();
         <img src="../../<?php echo $productImage; ?>" alt="Product Image">
         <div class="product-info">
             <div class="product-name"><?php echo $productName; ?></div>
-            <div class="product-price">$<?php echo $productPrice; ?></div>
+            <div class="product-price">$<?php echo number_format($productPrice, 2); ?></div>
         </div>
     </div>
 
@@ -184,7 +230,7 @@ $conn->close();
                     <?php echo $error_message; ?>
                 </div>
             <?php endif; ?>
-            <form action="" method="post">
+            <form action="" method="post" id="payment-form">
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
@@ -239,13 +285,13 @@ $conn->close();
                         <div class="payment-method">
                             <p style="font-size:large">Payment Method:</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="payment" id="payCard" value="card" onclick="showCardInfo()">
+                                <input class="form-check-input" type="radio" name="payment" id="payCard" value="card">
                                 <label class="form-check-label" for="payCard" style="font-size:large">
                                     Pay with Card
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="payment" id="payCash" value="cash" onclick="hideCardInfo()">
+                                <input class="form-check-input" type="radio" name="payment" id="payCash" value="cash">
                                 <label class="form-check-label" for="payCash" style="font-size:large">
                                     Pay with Cash
                                 </label>
@@ -254,45 +300,13 @@ $conn->close();
                     </div>
                 </div>
 
-                <!-- Card Information -->
-                <div id="cardInfo" style="display: none;">
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <label for="cardNumber" class="form-label">Card Number</label>
-                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" pattern="\d{16}" title="Please enter a valid 16-digit card number">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="cardExpiry" class="form-label">Expiry Date</label>
-                            <input type="text" class="form-control" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" pattern="(?:0[1-9]|1[0-2])\/[0-9]{2}" title="Please enter a valid expiry date in MM/YY format">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="cardCVV" class="form-label">CVV</label>
-                            <input type="text" class="form-control" id="cardCVV" name="cardCVV" pattern="\d{3,4}" title="Please enter a valid 3 or 4-digit CVV">
-                        </div>
-                    </div>
-                </div>
-
                 <div class="center-submit">
-                    <input type="submit" class="btn btn-primary submit-btn" name="submit" id="submit">
+                    <input type="submit" class="btn btn-primary submit-btn" name="submit" id="submitButton">
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
-<!-- JavaScript to Toggle Card Information -->
-<script>
-function showCardInfo() {
-    document.getElementById('cardInfo').style.display = 'block';
-}
-
-function hideCardInfo() {
-    document.getElementById('cardInfo').style.display = 'none';
-}
-</script>
 
 </body>
 </html>
