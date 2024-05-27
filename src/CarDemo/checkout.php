@@ -10,16 +10,12 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-
 // Enable error reporting
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Custom error handler
-function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = [])
-{
-    $errorMessage = "[$errno] $errstr in $errfile on line $errline";
 function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = null) {
     switch ($errno) {
         case E_USER_ERROR:
@@ -41,9 +37,6 @@ function customErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = n
 
 // Set the custom error handler
 set_error_handler("customErrorHandler");
-
-// Start the session
-session_start();
 
 $success_message = '';
 $error_message = '';
