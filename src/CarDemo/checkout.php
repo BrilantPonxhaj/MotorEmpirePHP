@@ -112,6 +112,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $payment = $conn->real_escape_string($_POST['payment']);
     $carName = $productName; // Retrieve car name from session
 
+    $_SESSION['name'] = $name;
+    $_SESSION['surname'] = $surname;
+    $_SESSION['dob'] = $dateofbirth;
+    $_SESSION['country'] = $country;
+    $_SESSION['city'] = $city;
+    $_SESSION['postcode'] = $postcode;
+    $_SESSION['street1'] = $street1;
+    $_SESSION['street2'] = $street2;
+
     if ($payment === 'cash') {
         // Process payment without Stripe
         try {

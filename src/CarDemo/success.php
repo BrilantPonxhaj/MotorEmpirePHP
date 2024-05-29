@@ -52,29 +52,57 @@ if ($conn->connect_error) {
 // Check if car ID is set in the session
 if (isset($_SESSION['carId'])) {
     $carId = $_SESSION['carId'];
+    $name = $_SESSION['name'];
+    $surname = $_SESSION['surname'];
+    $dateofbirth = $_SESSION['dob'];
+    $country = $_SESSION['country'];
+    $city = $_SESSION['city'];
+    $postcode = $_SESSION['postcode'];
+    $street1 = $_SESSION['street1'];
+    $street2 = $_SESSION['street2'];
+    $carName = $_SESSION['productName'];
+    $payment = 'card'; // Assuming payment method is 'card'. Update as needed.
 
-    // Remove the car from the database
-    $deleteSql = "DELETE FROM cars WHERE carID = ?";
-    $deleteStmt = $conn->prepare($deleteSql);
-    if (!$deleteStmt) {
-        trigger_error("Statement preparation failed: " . $conn->error, E_USER_ERROR);
-    }
-    $deleteStmt->bind_param('i', $carId);
-    if ($deleteStmt->execute()) {
-        echo "You have successfully bought the car!";
-    } else {
-        trigger_error("Execution failed: " . $deleteStmt->error, E_USER_ERROR);
-    }
-    $deleteStmt->close();
+    // Only process the transaction if car ID exists in session
+    try {
+        // Insert customer data into the database
+        $sql = "INSERT INTO customer_info (name, surname, dateofbirth, country, city, postcode, street1, street2, payment, car_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("Statement preparation failed: " . $conn->error);
+        }
+        $stmt->bind_param('ssssssssss', $name, $surname, $dateofbirth, $country, $city, $postcode, $street1, $street2, $payment, $carName);
 
-    // Clear the session
-    session_unset();
-    session_destroy();
+        if ($stmt->execute()) {
+            // Remove the car from the database
+            $deleteSql = "DELETE FROM cars WHERE carID = ?";
+            $deleteStmt = $conn->prepare($deleteSql);
+            if (!$deleteStmt) {
+                throw new Exception("Statement preparation failed: " . $conn->error);
+            }
+            $deleteStmt->bind_param('i', $carId);
+            if ($deleteStmt->execute()) {
+                // Clear the session
+                session_unset();
+                session_destroy();
+                // Redirect to success page
+                header("Location: success.php");
+                exit();
+            } else {
+                throw new Exception("Execution failed: " . $deleteStmt->error);
+            }
+        } else {
+            throw new Exception("Execution failed: " . $stmt->error);
+        }
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    } finally {
+        $stmt->close();
+        $conn->close();
+    }
 } else {
     echo "No car ID found in the session.";
 }
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
