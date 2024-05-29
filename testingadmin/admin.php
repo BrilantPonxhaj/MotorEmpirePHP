@@ -111,6 +111,18 @@
                 float: none;
             }
         }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -123,6 +135,7 @@
         <li><a href="includes/users.php">Users</a></li>
         <li><a href="includes/cars.php">Cars</a></li>
         </ul>
+        <a href="../testingadmin/logout.php" class="logout-btn">Logout</a> 
     </div>
     <div class="main-content container-fluid">
         <h1 class="my-4">Dashboard</h1>
@@ -162,6 +175,5 @@
 </body>
 </html>
 
-<!-- User accessed admin panel on: 2024-05-27 13:18:30 -->
-<!-- User accessed admin panel on: 2024-05-29 18:55:44 -->
-<!-- User accessed admin panel on: 2024-05-29 18:56:24 -->
+<!-- User accessed admin panel on: 2024-05-29 21:26:19 -->
+<!-- User accessed admin panel on: 2024-05-29 21:28:24 -->

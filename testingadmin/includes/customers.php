@@ -99,6 +99,7 @@
                 float: none;
             }
         }
+        
     </style>
 </head>
 <body>
@@ -110,6 +111,7 @@
             <li><a href="users.php">Users</a></li>
             <li><a href="cars.php">Cars</a></li>
         </ul>
+        
     </div>
     <header>
         <?php include 'header.php'; ?>
