@@ -74,6 +74,44 @@ if (isset($_SESSION['carId'])) {
     echo "No car ID found in the session.";
 }
 
+
+$name = $_SESSION['name'];
+$surname = $_SESSION['surname'];
+$dateofbirth = $_SESSION['dob'];
+$country = $_SESSION['country'];
+$city = $_SESSION['city'];
+$postcode = $_SESSION['postcode'];
+$street1 = $_SESSION['street1'];
+$street2 = $_SESSION['street2'];
+$carName = $_SESSION['productName'];
+$carId = $_SESSION['carId'];
+
+try {
+    // Insert customer data into database
+    $sql = "INSERT INTO customer_info (name, surname, dateofbirth, country, city, postcode, street1, street2, payment, car_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssssssssss', $name, $surname, $dateofbirth, $country, $city, $postcode, $street1, $street2, $payment, $carName);
+
+    if ($stmt->execute()) {
+        // Remove the car from the database
+        $deleteSql = "DELETE FROM cars WHERE carID = ?";
+        $deleteStmt = $conn->prepare($deleteSql);
+        $deleteStmt->bind_param('i', $carId);
+        $deleteStmt->execute();
+        $deleteStmt->close();
+
+        echo "You have successfully bought the car!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    $stmt->close();
+} catch (Exception $e) {
+    echo "Payment processing failed: " . $e->getMessage();
+}
+
+
+
+
 $conn->close();
 ?>
 

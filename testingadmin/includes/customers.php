@@ -129,9 +129,6 @@
                         <th>Street 1</th>
                         <th>Street 2</th>
                         <th>Payment Method</th>
-                        <th>Card Number</th>
-                        <th>Card Expiry</th>
-                        <th>Card CVV</th>
                         <th>Car Name</th>
                     </tr>
                 </thead>
@@ -153,9 +150,6 @@
                                     <td>" . htmlspecialchars($row["street1"]). "</td>
                                     <td>" . htmlspecialchars($row["street2"]). "</td>
                                     <td>" . htmlspecialchars($row["payment"]). "</td>
-                                    <td>" . htmlspecialchars($row["card_number"]). "</td>
-                                    <td>" . htmlspecialchars($row["card_expiry"]). "</td>
-                                    <td>" . htmlspecialchars($row["card_cvv"]). "</td>
                                     <td>" . htmlspecialchars($row["car_name"]). "</td>
                                   </tr>";
                         }
