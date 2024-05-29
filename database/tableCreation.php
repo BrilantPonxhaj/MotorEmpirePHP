@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS customer_info (
     street1 VARCHAR(255) NOT NULL,
     street2 VARCHAR(255),
     payment VARCHAR(255) NOT NULL,
-    car_name VARCHAR(255) NOT NULL
+   
 );
 ALTER TABLE customer_info ADD COLUMN car_name VARCHAR(255);
 
