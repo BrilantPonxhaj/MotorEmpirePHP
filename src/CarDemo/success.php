@@ -103,6 +103,8 @@ if (isset($_SESSION['carId'])) {
 } else {
     echo "No car ID found in the session.";
 }
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
